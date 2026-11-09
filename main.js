@@ -127,12 +127,12 @@ function renderCourses() {
 function renderTests() {
   const grid = document.getElementById('tests-grid');
   if (!grid) return;
-  grid.innerHTML = testTasks.map(t => {
+  grid.innerHTML = testTasks.map((t, idx) => {
     const title = currentLang === 'ru' ? t.title_ru : t.title_en;
     const summary = currentLang === 'ru' ? t.summary_ru : t.summary_en;
     const tags = t.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
     const img = t.image ? `<img src="${t.image}" alt="${title}" loading="lazy" onerror="this.style.display='none'">` : '';
-    return `<div class="card">${img}<div class="year">${t.year}</div><h3>${title}</h3><p>${summary}</p><div class="tags">${tags}</div></div>`;
+    return `<div class="card" data-type="test" data-idx="${idx}">${img}<div class="year">${t.year}</div><h3>${title}</h3><p>${summary}</p><div class="tags">${tags}</div></div>`;
   }).join('');
 }
 
@@ -177,15 +177,19 @@ function render() {
       return `<div class="card" data-idx="${idx}">${img}<div class="year">${cs.year}</div><h3>${title}</h3><p>${summary}</p><div class="tags">${tags}</div></div>`;
     }).join('');
 
-    document.querySelectorAll('.card[data-idx]').forEach(card => {
+    document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('click', () => {
-        const cs = cases[card.dataset.idx];
-        const title = currentLang === 'ru' ? cs.title_ru : cs.title_en;
-        const full = currentLang === 'ru' ? (cs.full_ru || summary) : (cs.full_en || summary);
+        const isTest = card.dataset.type === 'test';
+        const idx = card.dataset.idx;
+        const item = isTest ? testTasks[idx] : cases[idx];
+        if (!item) return;
+        const title = currentLang === 'ru' ? item.title_ru : item.title_en;
+        const summary = currentLang === 'ru' ? item.summary_ru : item.summary_en;
+        const full = isTest ? summary : (currentLang === 'ru' ? (item.full_ru || summary) : (item.full_en || summary));
         document.getElementById('modal-body').innerHTML = `
           <h2>${title}</h2>
-          <p style="color:#666;margin:8px 0 16px">${cs.year} · ${cs.tags.join(', ')}</p>
-          ${cs.image ? `<img src="${cs.image}" style="width:100%;border-radius:8px;margin-bottom:16px">` : ''}
+          <p style="color:#666;margin:8px 0 16px">${item.year} · ${(item.tags || []).join(', ')}</p>
+          ${item.image ? `<img src="${item.image}" style="width:100%;border-radius:8px;margin-bottom:16px">` : ''}
           <div style="line-height:1.6">${full}</div>
         `;
         document.getElementById('modal').classList.add('open');
