@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Леонид Михалев — Исследователь-аналитик</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#about">Обо мне</a>
+      <a href="#services">Что я делаю</a>
+      <a href="#cases">Исследования</a>
+      <a href="#tests">Тестовые</a>
+      <a href="#learning">Я учусь</a>
+      <a href="#contacts">Контакты</a>
+      <button id="lang-toggle">EN</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="hero">
+      <div class="hero-top">
+        <div class="hero-photo">
+          <img src="https://flipkers.notion.site/image/attachment%3A80a1cd33-8dae-4901-a580-7e428020be37%3AImage_13.04.2024_at_22.29.jpeg?table=block&id=18444bc3-f6b4-81bd-8a4e-e5e243611531&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=600&userId=&cache=v2" alt="Леонид Михалев">
+        </div>
+        <div class="hero-text">
+          <h1 id="name">Леонид Михалев</h1>
+          <p id="bio" class="bio">Я продуктовый исследователь и консультант с опытом в разных доменах, от финтеха до healthtech. Помогаю компаниям принимать стратегические решения через анализ рынка, исследование конкурентов и разработку продуктового позиционирования.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Что я делаю</h2>
+      <div class="services" id="services-list"></div>
+    </section>
+
+    <section id="cases">
+      <h2 data-i18n="cases.title">Исследования</h2>
+      <div id="cases-grid" class="grid"></div>
+    </section>
+
+    <section id="tests">
+      <h2 id="tests-title">Тестовые задания</h2>
+      <div id="tests-grid" class="grid"></div>
+    </section>
+
+    <section id="learning">
+      <h2 id="learning-title">Я учусь</h2>
+      <div id="courses"></div>
+    </section>
+
+    <section id="contacts">
+      <h2 data-i18n="contacts.title">Контакты</h2>
+      <p><a href="mailto:leomikhalev@proton.me">leomikhalev@proton.me</a></p>
+      <p><a href="https://t.me/leomihalev" target="_blank">Telegram</a></p>
+      <p><a href="https://www.linkedin.com/in/leonidmikhalev" target="_blank">LinkedIn</a></p>
+    </section>
+  </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

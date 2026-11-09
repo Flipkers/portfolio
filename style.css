@@ -1,0 +1,136 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: #fff;
+  color: #111;
+  line-height: 1.55;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+header nav {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 50px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+header nav a { color: #111; text-decoration: none; }
+header nav a:hover { text-decoration: underline; }
+#lang-toggle {
+  margin-left: auto;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 20px;
+}
+#lang-toggle:hover { background: #333; }
+
+.hero { margin-bottom: 80px; }
+.hero-top { display: flex; gap: 48px; align-items: flex-start; }
+.hero-photo img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 12px;
+}
+.hero-text { flex: 1; }
+h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
+.bio { margin: 0; color: #222; font-size: 16px; }
+
+.services { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+.services span {
+  border: 1px solid #111;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 20px;
+}
+
+section { margin-bottom: 80px; }
+h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.card:hover { border-color: #111; }
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  background: #f8f8f8;
+  display: block;
+}
+.card > *:not(img) { padding-left: 18px; padding-right: 18px; }
+.card .year { font-size: 12px; color: #888; padding-top: 16px; }
+.card h3 { font-size: 17px; font-weight: 500; margin: 6px 0 8px; }
+.card p { font-size: 14px; color: #333; margin-bottom: 12px; }
+.card .tags { padding-bottom: 16px; }
+.card .tag {
+  display: inline-block;
+  font-size: 11px;
+  border: 1px solid #ddd;
+  padding: 2px 8px;
+  margin-right: 4px;
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+.course { margin-bottom: 18px; }
+.course-name { font-size: 15px; margin-bottom: 6px; }
+.progress-bar { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background: #111; }
+.progress-text { font-size: 12px; color: #888; margin-top: 4px; }
+
+#contacts a { color: #111; }
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal.open { display: flex; }
+.modal-content {
+  background: #fff;
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #111;
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media (max-width: 720px) {
+  .hero-top { flex-direction: column; gap: 20px; }
+  .hero-photo img { width: 180px; height: 180px; }
+  body { padding: 24px 16px; }
+}

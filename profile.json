@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "name": "Леонид Михалев",
+    "name_en": "Leonid Mikhalev",
+    "title_ru": "Исследователь-аналитик",
+    "title_en": "Product Researcher & Analyst",
+    "email": "leomikhalev@proton.me",
+    "telegram": "https://t.me/leomihalev",
+    "linkedin": "https://www.linkedin.com/in/leonidmikhalev",
+    "github": "Flipkers"
+  },
+  "services_ru": [
+    "Market Research",
+    "Market Sizing (TAM/SAM/SOM)",
+    "Competitor Analysis",
+    "Industry Analysis",
+    "Customer Segmentation",
+    "Product Positioning",
+    "Go-To-Market Research"
+  ],
+  "services_en": [
+    "Market Research",
+    "Market Sizing (TAM/SAM/SOM)",
+    "Competitor Analysis",
+    "Industry Analysis",
+    "Customer Segmentation",
+    "Product Positioning",
+    "Go-To-Market Research"
+  ],
+  "frameworks": [
+    "Business Model Canvas",
+    "Lean Canvas",
+    "Jobs-to-Be-Done (JTBD)",
+    "SWOT Analysis",
+    "Porter’s Five Forces",
+    "Value Proposition Canvas",
+    "Customer Journey Mapping"
+  ]
+}
