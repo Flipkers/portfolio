@@ -1,0 +1,12 @@
+{
+  "id": "peopledo",
+  "year": 2025,
+  "tags": ["gigeconomy"],
+  "title_ru": "PeopleDo Discovery",
+  "title_en": "PeopleDo Discovery",
+  "summary_ru": "Исследование комиссий и выплат фрилансерам на платформах.",
+  "summary_en": "Research on platform fees and freelancer payouts.",
+  "cover": "images/image.png",
+  "lang_original": "en",
+  "notion_page_id": "32244bc3f6b4819ab82bf13e71a52098"
+}

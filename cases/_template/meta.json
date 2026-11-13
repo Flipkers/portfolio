@@ -1,0 +1,12 @@
+{
+  "id": "slug-here",
+  "year": 2025,
+  "tags": ["Fintech"],
+  "title_ru": "Заголовок",
+  "title_en": "Title",
+  "summary_ru": "Краткое описание для карточки.",
+  "summary_en": "Short card summary.",
+  "cover": "images/cover.webp",
+  "lang_original": "en",
+  "notion_page_id": ""
+}

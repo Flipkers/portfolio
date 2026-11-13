@@ -1,0 +1,75 @@
+[
+  {
+    "id": "peopledo",
+    "year": 2025,
+    "tags": ["gigeconomy"],
+    "title_ru": "PeopleDo Discovery",
+    "title_en": "PeopleDo Discovery",
+    "summary_ru": "Исследование комиссий и выплат фрилансерам на платформах.",
+    "summary_en": "Research on platform fees and freelancer payouts.",
+    "image": "cases/peopledo/images/image.png",
+    "path": "cases/peopledo",
+    "notion_page_id": "32244bc3f6b4819ab82bf13e71a52098",
+    "lang_original": "en"
+  },
+  {
+    "id": "gtm-crypto",
+    "year": 2024,
+    "tags": ["Crypto"],
+    "title_ru": "GTM Strategy for Crypto Investment Fund",
+    "title_en": "GTM Strategy for Crypto Investment Fund",
+    "summary_ru": "Комплексная go-to-market стратегия для криптоинвестфонда на основе лучших мировых практик.",
+    "summary_en": "Developed a comprehensive go-to-market strategy for a crypto investment fund by researching global best practices.",
+    "image": "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F1c4baffc-50b8-41c7-be21-c295fdcbc2dc%2F9.png?table=block&id=32244bc3-f6b4-81cf-aaa6-fa0e31cbf870&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2",
+    "path": "cases/gtm-crypto",
+    "lang_original": "en"
+  },
+  {
+    "id": "latam",
+    "year": 2024,
+    "tags": ["Fintech"],
+    "title_ru": "Market Discovery: экспансия в Латинскую Америку",
+    "title_en": "Market Discovery for a Tech Startup Expansion in Latin America",
+    "summary_ru": "Анализ 5 стран Латинской Америки для запуска финтех-стартапа. Рекомендация — Аргентина.",
+    "summary_en": "Conducted market research on five Latin American countries for a fintech expansion. Identified Argentina as the best opportunity.",
+    "image": "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F6816d81d-51f7-4085-8ccf-6032f5c94a6e%2FProduct_cases_presentation.png?table=block&id=32244bc3-f6b4-81a0-8d8c-f76164c8c300&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2",
+    "path": "cases/latam",
+    "lang_original": "en"
+  },
+  {
+    "id": "dao",
+    "year": 2023,
+    "tags": ["Crypto"],
+    "title_ru": "Что такое DAO и как запустить",
+    "title_en": "What is DAO and how to launch one",
+    "summary_ru": "Исследование DAO-платформ и инвестиционных DAO для запуска фонда.",
+    "summary_en": "Conducted comprehensive research on DAO platforms and investment-focused DAOs for a founder exploring a DAO-based fund.",
+    "image": "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F382ac706-0bf4-4ac2-aadc-4cc522841fbb%2F10.png?table=block&id=32244bc3-f6b4-8108-aba3-fdd24c91d6c5&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2",
+    "path": "cases/dao",
+    "lang_original": "en"
+  },
+  {
+    "id": "philippines",
+    "year": 2024,
+    "tags": ["Fintech"],
+    "title_ru": "Регулирование платёжных провайдеров на Филиппинах",
+    "title_en": "Market Research on Payment Provider Regulations in the Philippines",
+    "summary_ru": "Анализ регулирования платёжных провайдеров и лицензирования на Филиппинах.",
+    "summary_en": "In-depth analysis of the Philippine market focusing on central bank regulations concerning payment provider licenses.",
+    "image": "",
+    "path": "cases/philippines",
+    "lang_original": "en"
+  },
+  {
+    "id": "merchant-onboarding",
+    "year": 2023,
+    "tags": ["Fintech"],
+    "title_ru": "Designing merchant onboarding",
+    "title_en": "Designing merchant onboarding",
+    "summary_ru": "Переработка процесса онбординга мерчантов для ускорения KYB.",
+    "summary_en": "Revamped the merchant onboarding process to expedite Know Your Business (KYB) procedures.",
+    "image": "",
+    "path": "cases/merchant-onboarding",
+    "lang_original": "en"
+  }
+]

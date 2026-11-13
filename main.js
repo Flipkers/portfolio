@@ -1,212 +1,462 @@
-let currentLang = 'ru';
+let currentLang = localStorage.getItem('portfolio-lang') || 'ru';
 
-const profile = {
-  meta: { name: "Леонид Михалев", name_en: "Leonid Mikhalev" },
-  services_ru: ["Market Research", "Market Sizing (TAM/SAM/SOM)", "Competitor Analysis", "Industry Analysis", "Customer Segmentation", "Product Positioning", "Go-To-Market Research"],
-  services_en: ["Market Research", "Market Sizing (TAM/SAM/SOM)", "Competitor Analysis", "Industry Analysis", "Customer Segmentation", "Product Positioning", "Go-To-Market Research"]
+let profile = null;
+let courses = [];
+let testTasks = [];
+let cases = [];
+
+const i18n = {
+  ru: {
+    'nav.about': 'Обо мне',
+    'nav.services': 'Что я делаю',
+    'nav.cases': 'Исследования',
+    'nav.tests': 'Тестовые',
+    'nav.learning': 'Я учусь',
+    'nav.contacts': 'Контакты',
+    'services.title': 'Что я делаю',
+    'cases.title': 'Исследования',
+    'tests.title': 'Тестовые задания',
+    'learning.title': 'Я учусь',
+    'contacts.title': 'Контакты',
+    'case.back': '← К портфолио',
+    'case.loading': 'Загрузка…',
+    'case.missing': 'Кейс не найден.',
+    'case.noImage': 'Нет изображения',
+    'doc.title': 'Леонид Михалев — Исследователь-аналитик'
+  },
+  en: {
+    'nav.about': 'About',
+    'nav.services': 'What I do',
+    'nav.cases': 'Research',
+    'nav.tests': 'Test tasks',
+    'nav.learning': 'Studying',
+    'nav.contacts': 'Contacts',
+    'services.title': 'What I do',
+    'cases.title': 'Research',
+    'tests.title': 'Test tasks',
+    'learning.title': 'Studying',
+    'contacts.title': 'Contacts',
+    'case.back': '← Back to portfolio',
+    'case.loading': 'Loading…',
+    'case.missing': 'Case not found.',
+    'case.noImage': 'No image',
+    'doc.title': 'Leonid Mikhalev — Product Researcher & Analyst'
+  }
 };
 
-const courses = [
-  { name_ru: "Product Discovery", name_en: "Product Discovery", progress: 70 },
-  { name_ru: "Market Research Advanced", name_en: "Market Research Advanced", progress: 45 },
-  { name_ru: "JTBD Framework", name_en: "JTBD Framework", progress: 90 }
-];
+function t(key) {
+  return (i18n[currentLang] && i18n[currentLang][key]) || (i18n.ru[key] || key);
+}
 
-const testTasks = [
-  { year: 2025, tags: ["Crypto"], title_ru: "Квартальный Roadmap для B2Broker", title_en: "Quarterly Roadmap for B2Broker", summary_ru: "Квартальный roadmap для B2Broker.", summary_en: "Quarterly roadmap for B2Broker.", image: "" },
-  { year: 2025, tags: ["Gaming"], title_ru: "Решение кейсов для Lesta Games", title_en: "Case solutions for Lesta Games", summary_ru: "Решение кейсов для Lesta Games.", summary_en: "Case solutions for Lesta Games.", image: "" },
-  { year: 2025, tags: ["AI"], title_ru: "Техническая спецификация для Soul Publishing", title_en: "Technical specification for Soul Publishing", summary_ru: "Техническая спецификация для Soul Publishing.", summary_en: "Technical specification for Soul Publishing.", image: "" },
-  { year: 2025, tags: ["AI"], title_ru: "Product Discovery для AI Startup", title_en: "Product Discovery for AI Startup", summary_ru: "Product Discovery для нового продукта в AI-стартапе.", summary_en: "Product Discovery for a new product in an AI startup.", image: "" },
-  { year: 2024, tags: ["Fintech"], title_ru: "Designing automatic invoice collection for FINOM", title_en: "Designing automatic invoice collection for FINOM", summary_ru: "Техническая спецификация системы автоматического сбора инвойсов для FINOM.", summary_en: "Created a technical specification for FINOM's automatic invoice collection system.", image: "" },
-  { year: 2024, tags: ["Fintech"], title_ru: "Designing mobile onboarding for Salmon Credit Line", title_en: "Designing mobile onboarding for Salmon Credit Line", summary_ru: "Мобильный онбординг для Salmon Credit Line.", summary_en: "Developed a comprehensive mobile onboarding process for Salmon Credit Line.", image: "" }
-];
-
-const cases = [
-  {
-    id: "peopledo", year: 2025, tags: ["gigeconomy"],
-    title_ru: "PeopleDo Discovery", title_en: "PeopleDo Discovery",
-    summary_ru: "Исследование комиссий и выплат фрилансерам на платформах.",
-    summary_en: "Research on platform fees and freelancer payouts.",
-    full_ru: `<h3>1. Где сидит комиссия?</h3>
-<ul>
-<li>Изучение комиссии, которую платит клиент</li>
-<li>Сравнение с комиссией, которую платит фрилансер</li>
-<li>Реальные примеры платформ. Плюсы и минусы с учётом регулирования в ОАЭ, Великобритании, ЕС и США</li>
-</ul>
-<p><strong>Definition of Done:</strong> продуктовые рекомендации с примерами реальных платформ и best practices.</p>
-
-<h3>2. Выплаты фрилансерам</h3>
-<ul>
-<li>Хранение денег для фрилансеров и клиентов</li>
-<li>Решение споров, отправка денег на банковские счета и т.д.</li>
-<li>Реальные примеры платформ. Плюсы и минусы</li>
-<li>Опросник для внешних исследователей + оценка результатов</li>
-</ul>
-<p><strong>Definition of Done:</strong> примеры реальных платформ, best practices и user flow диаграммы.</p>
-
-<h3>3. Подписочная модель</h3>
-<ul>
-<li>Воронка списания с фрилансеров/клиентов</li>
-<li>Реальные примеры платформ. Плюсы и минусы</li>
-<li>UX-практики, value proposition и т.д.</li>
-</ul>
-<p><strong>Definition of Done:</strong> UX-референсы и best practices по разработке.</p>`,
-    full_en: `<h3>1. Where does the fee sit?</h3>
-<ul>
-<li>Exploring client-paid commission</li>
-<li>Comparing it to freelancer-paid commission</li>
-<li>Actual examples of the platforms. Pros and cons, considering possible regulations in the UAE, UK, EU, and US.</li>
-</ul>
-<p><strong>Definition of Done:</strong> product recommendations with examples of real platforms and best practices.</p>
-
-<h3>2. Paying money to freelancers</h3>
-<ul>
-<li>Holding money for freelancers and clients</li>
-<li>Solving disputes, sending money to bank accounts, etc.</li>
-<li>Actual examples of the platforms. Pros, cons.</li>
-</ul>
-<p><strong>Definition of Done:</strong> examples of real platforms, best practices and user flow diagrams.</p>
-
-<h3>3. Charging for subscription</h3>
-<ul>
-<li>Funnel for charging freelancers/clients</li>
-<li>Actual examples of the platforms. Pros, cons.</li>
-<li>UX practices, value proposition, etc.</li>
-</ul>
-<p><strong>Definition of Done:</strong> UX references and best development practices.</p>`,
-    image: "https://flipkers.notion.site/image/attachment%3Aece38885-1fda-4990-beff-3de443d19c69%3Aimage.png?table=block&id=32244bc3-f6b4-803b-a75d-d1bfa94d2e41&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2"
-  },
-  {
-    id: "gtm-crypto", year: 2024, tags: ["Crypto"],
-    title_ru: "GTM Strategy for Crypto Investment Fund", title_en: "GTM Strategy for Crypto Investment Fund",
-    summary_ru: "Комплексная go-to-market стратегия для криптоинвестфонда на основе лучших мировых практик.",
-    summary_en: "Developed a comprehensive go-to-market strategy for a crypto investment fund by researching global best practices.",
-    image: "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F1c4baffc-50b8-41c7-be21-c295fdcbc2dc%2F9.png?table=block&id=32244bc3-f6b4-81cf-aaa6-fa0e31cbf870&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2"
-  },
-  {
-    id: "latam", year: 2024, tags: ["Fintech"],
-    title_ru: "Market Discovery: экспансия в Латинскую Америку", title_en: "Market Discovery for a Tech Startup Expansion in Latin America",
-    summary_ru: "Анализ 5 стран Латинской Америки для запуска финтех-стартапа. Рекомендация — Аргентина.",
-    summary_en: "Conducted market research on five Latin American countries for a fintech expansion. Identified Argentina as the best opportunity.",
-    image: "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F6816d81d-51f7-4085-8ccf-6032f5c94a6e%2FProduct_cases_presentation.png?table=block&id=32244bc3-f6b4-81a0-8d8c-f76164c8c300&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2"
-  },
-  {
-    id: "dao", year: 2023, tags: ["Crypto"],
-    title_ru: "Что такое DAO и как запустить", title_en: "What is DAO and how to launch one",
-    summary_ru: "Исследование DAO-платформ и инвестиционных DAO для запуска фонда.",
-    summary_en: "Conducted comprehensive research on DAO platforms and investment-focused DAOs for a founder exploring a DAO-based fund.",
-    image: "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F382ac706-0bf4-4ac2-aadc-4cc522841fbb%2F10.png?table=block&id=32244bc3-f6b4-8108-aba3-fdd24c91d6c5&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2"
-  },
-  {
-    id: "philippines", year: 2024, tags: ["Fintech"],
-    title_ru: "Регулирование платёжных провайдеров на Филиппинах", title_en: "Market Research on Payment Provider Regulations in the Philippines",
-    summary_ru: "Анализ регулирования платёжных провайдеров и лицензирования на Филиппинах.",
-    summary_en: "In-depth analysis of the Philippine market focusing on central bank regulations concerning payment provider licenses.",
-    image: ""
-  },
-  {
-    id: "merchant-onboarding", year: 2023, tags: ["Fintech"],
-    title_ru: "Designing merchant onboarding", title_en: "Designing merchant onboarding",
-    summary_ru: "Переработка процесса онбординга мерчантов для ускорения KYB.",
-    summary_en: "Revamped the merchant onboarding process to expedite Know Your Business (KYB) procedures.",
-    image: ""
+function applyI18n() {
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    if (!key) return;
+    if (el.hasAttribute('data-i18n-attr')) {
+      el.setAttribute(el.getAttribute('data-i18n-attr'), t(key));
+    } else {
+      el.textContent = t(key);
+    }
+  });
+  const pageTitle = document.querySelector('title');
+  if (pageTitle && !document.body.classList.contains('case-page')) {
+    pageTitle.textContent = t('doc.title');
   }
-].sort((a, b) => b.year - a.year);
+}
+
+function mediaBlock(image, title) {
+  const label = escapeHtml(t('case.noImage'));
+  if (image) {
+    return `<img class="card-media" src="${escapeAttr(image)}" alt="${escapeAttr(title)}" loading="lazy" onerror="this.outerHTML='<div class=\\'card-media placeholder\\' aria-hidden=\\'true\\'>${label}</div>'">`;
+  }
+  return `<div class="card-media placeholder" aria-hidden="true">${label}</div>`;
+}
+
+function escapeAttr(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function pick(item, field) {
+  return currentLang === 'ru' ? item[`${field}_ru`] : item[`${field}_en`];
+}
 
 function renderCourses() {
   const el = document.getElementById('courses');
-  const titleEl = document.getElementById('learning-title');
-  if (titleEl) titleEl.textContent = currentLang === 'ru' ? 'Я учусь' : 'Studying';
   if (!el) return;
-  el.innerHTML = courses.map(c => {
-    const name = currentLang === 'ru' ? c.name_ru : c.name_en;
-    return `<div class="course"><div class="course-name">${name}</div><div class="progress-bar"><div class="progress-fill" style="width:${c.progress}%"></div></div><div class="progress-text">${c.progress}%</div></div>`;
+  el.innerHTML = courses.map((c) => {
+    const name = pick(c, 'name');
+    return `<div class="course"><div class="course-name">${escapeHtml(name)}</div><div class="progress-bar"><div class="progress-fill" style="width:${c.progress}%"></div></div><div class="progress-text">${c.progress}%</div></div>`;
   }).join('');
 }
 
 function renderTests() {
   const grid = document.getElementById('tests-grid');
   if (!grid) return;
-  grid.innerHTML = testTasks.map((t, idx) => {
-    const title = currentLang === 'ru' ? t.title_ru : t.title_en;
-    const summary = currentLang === 'ru' ? t.summary_ru : t.summary_en;
-    const tags = t.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-    const img = t.image ? `<img src="${t.image}" alt="${title}" loading="lazy" onerror="this.style.display='none'">` : '';
-    return `<div class="card" data-type="test" data-idx="${idx}">${img}<div class="year">${t.year}</div><h3>${title}</h3><p>${summary}</p><div class="tags">${tags}</div></div>`;
+  grid.innerHTML = testTasks.map((item) => {
+    const title = pick(item, 'title');
+    const summary = pick(item, 'summary');
+    const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
+    return `<div class="card" role="button" tabindex="0" data-type="test" data-id="${escapeAttr(item.id)}">${mediaBlock(item.image, title)}<div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p><div class="tags">${tags}</div></div>`;
   }).join('');
 }
 
-function render() {
+function renderCases() {
+  const grid = document.getElementById('cases-grid');
+  if (!grid) return;
+  grid.innerHTML = cases.map((cs) => {
+    const title = pick(cs, 'title');
+    const summary = pick(cs, 'summary');
+    const tags = (cs.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
+    return `<a class="card" href="case.html?id=${encodeURIComponent(cs.id)}">${mediaBlock(cs.image, title)}<div class="year">${cs.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p><div class="tags">${tags}</div></a>`;
+  }).join('');
+}
+
+function renderHome() {
+  if (!profile) return;
+
   const nameEl = document.getElementById('name');
   const bioEl = document.getElementById('bio');
   if (nameEl) nameEl.textContent = currentLang === 'ru' ? profile.meta.name : profile.meta.name_en;
-  if (bioEl) {
-    bioEl.textContent = currentLang === 'ru'
-      ? "Я продуктовый исследователь и консультант с опытом в разных доменах, от финтеха до healthtech. Помогаю компаниям принимать стратегические решения через анализ рынка, исследование конкурентов и разработку продуктового позиционирования."
-      : "I am a product researcher and consultant with experience across domains from fintech to healthtech. I help companies make strategic decisions through market analysis, competitor research, and product positioning.";
-  }
-
-  const navLinks = document.querySelectorAll('header nav a');
-  const navTexts = currentLang === 'ru'
-    ? ['Обо мне', 'Что я делаю', 'Исследования', 'Тестовые', 'Я учусь', 'Контакты']
-    : ['About', 'What I do', 'Research', 'Test tasks', 'Studying', 'Contacts'];
-  navLinks.forEach((a, i) => { if (navTexts[i]) a.textContent = navTexts[i]; });
-
-  const servicesHeading = document.querySelector('#services h2');
-  if (servicesHeading) servicesHeading.textContent = currentLang === 'ru' ? 'Что я делаю' : 'What I do';
-
-  const testsTitle = document.getElementById('tests-title');
-  if (testsTitle) testsTitle.textContent = currentLang === 'ru' ? 'Тестовые задания' : 'Test tasks';
+  if (bioEl) bioEl.textContent = currentLang === 'ru' ? profile.meta.bio_ru : profile.meta.bio_en;
 
   const servicesEl = document.getElementById('services-list');
   if (servicesEl) {
     const services = currentLang === 'ru' ? profile.services_ru : profile.services_en;
-    servicesEl.innerHTML = services.map(s => `<span>${s}</span>`).join('');
+    servicesEl.innerHTML = services.map((s) => `<span>${escapeHtml(s)}</span>`).join('');
   }
 
+  const tg = document.getElementById('telegram-link');
+  if (tg && profile.meta.telegram) tg.href = profile.meta.telegram;
+  const li = document.getElementById('linkedin-link');
+  if (li && profile.meta.linkedin) li.href = profile.meta.linkedin;
+
+  applyI18n();
   renderCourses();
   renderTests();
-
-  const grid = document.getElementById('cases-grid');
-  if (grid) {
-    grid.innerHTML = cases.map((cs, idx) => {
-      const title = currentLang === 'ru' ? cs.title_ru : cs.title_en;
-      const summary = currentLang === 'ru' ? cs.summary_ru : cs.summary_en;
-      const tags = (cs.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
-      const img = cs.image ? `<img src="${cs.image}" alt="${title}" loading="lazy" onerror="this.style.display='none'">` : '';
-      return `<div class="card" data-idx="${idx}">${img}<div class="year">${cs.year}</div><h3>${title}</h3><p>${summary}</p><div class="tags">${tags}</div></div>`;
-    }).join('');
-
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        const isTest = card.dataset.type === 'test';
-        const idx = card.dataset.idx;
-        const item = isTest ? testTasks[idx] : cases[idx];
-        if (!item) return;
-        const title = currentLang === 'ru' ? item.title_ru : item.title_en;
-        const summary = currentLang === 'ru' ? item.summary_ru : item.summary_en;
-        const full = isTest ? summary : (currentLang === 'ru' ? (item.full_ru || summary) : (item.full_en || summary));
-        document.getElementById('modal-body').innerHTML = `
-          <h2>${title}</h2>
-          <p style="color:#666;margin:8px 0 16px">${item.year} · ${(item.tags || []).join(', ')}</p>
-          ${item.image ? `<img src="${item.image}" style="width:100%;border-radius:8px;margin-bottom:16px">` : ''}
-          <div style="line-height:1.6">${full}</div>
-        `;
-        document.getElementById('modal').classList.add('open');
-      });
-    });
-  }
+  renderCases();
 
   const toggle = document.getElementById('lang-toggle');
   if (toggle) toggle.textContent = currentLang === 'ru' ? 'EN' : 'RU';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('lang-toggle');
-  if (toggle) toggle.addEventListener('click', () => { currentLang = currentLang === 'ru' ? 'en' : 'ru'; render(); });
-  const modalClose = document.getElementById('modal-close');
-  if (modalClose) modalClose.addEventListener('click', () => document.getElementById('modal').classList.remove('open'));
+function openModal(item) {
   const modal = document.getElementById('modal');
-  if (modal) modal.addEventListener('click', (e) => { if (e.target.id === 'modal') modal.classList.remove('open'); });
-  render();
+  const body = document.getElementById('modal-body');
+  if (!modal || !body || !item) return;
+
+  const title = pick(item, 'title');
+  const summary = pick(item, 'summary');
+  const full = currentLang === 'ru'
+    ? (item.full_ru || summary)
+    : (item.full_en || summary);
+
+  body.innerHTML = `
+    <h2 id="modal-title">${escapeHtml(title)}</h2>
+    <p class="modal-body-meta">${escapeHtml(String(item.year))} · ${escapeHtml((item.tags || []).join(', '))}</p>
+    ${item.image ? `<img class="modal-body-image" src="${escapeAttr(item.image)}" alt="">` : `<div class="card-media placeholder" style="margin-bottom:16px">${t('case.noImage')}</div>`}
+    <div class="modal-body-text">${full}</div>
+  `;
+
+  modal.hidden = false;
+  modal.classList.add('open');
+  const closeBtn = document.getElementById('modal-close');
+  if (closeBtn) closeBtn.focus();
+}
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.hidden = true;
+}
+
+function findById(list, id) {
+  return list.find((item) => item.id === id);
+}
+
+function bindHomeEventsOnce() {
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle && !toggle.dataset.bound) {
+    toggle.dataset.bound = '1';
+    toggle.addEventListener('click', () => {
+      currentLang = currentLang === 'ru' ? 'en' : 'ru';
+      localStorage.setItem('portfolio-lang', currentLang);
+      renderHome();
+    });
+  }
+
+  const testsGrid = document.getElementById('tests-grid');
+  if (testsGrid && !testsGrid.dataset.bound) {
+    testsGrid.dataset.bound = '1';
+    const openFromCard = (card) => {
+      if (!card || card.dataset.type !== 'test') return;
+      const item = findById(testTasks, card.dataset.id);
+      openModal(item);
+    };
+    testsGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      openFromCard(card);
+    });
+    testsGrid.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const card = e.target.closest('.card');
+      if (!card) return;
+      e.preventDefault();
+      openFromCard(card);
+    });
+  }
+
+  const modalClose = document.getElementById('modal-close');
+  if (modalClose && !modalClose.dataset.bound) {
+    modalClose.dataset.bound = '1';
+    modalClose.addEventListener('click', closeModal);
+  }
+
+  const modal = document.getElementById('modal');
+  if (modal && !modal.dataset.bound) {
+    modal.dataset.bound = '1';
+    modal.addEventListener('click', (e) => {
+      if (e.target.id === 'modal') closeModal();
+    });
+  }
+
+  if (!document.body.dataset.escapeBound) {
+    document.body.dataset.escapeBound = '1';
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  }
+}
+
+/** Minimal Markdown → HTML (headings, lists, paragraphs, bold, images, links). */
+function renderMarkdown(md, basePath) {
+  const lines = String(md || '').replace(/\r\n/g, '\n').split('\n');
+  const html = [];
+  let inList = false;
+  let paragraph = [];
+
+  const flushParagraph = () => {
+    if (!paragraph.length) return;
+    const text = paragraph.join(' ').trim();
+    if (text) html.push(`<p>${inlineMarkdown(text, basePath)}</p>`);
+    paragraph = [];
+  };
+
+  const closeList = () => {
+    if (!inList) return;
+    html.push('</ul>');
+    inList = false;
+  };
+
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    const trimmed = line.trim();
+
+    if (!trimmed || trimmed.startsWith('<!--')) {
+      flushParagraph();
+      closeList();
+      continue;
+    }
+
+    const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
+    if (heading) {
+      flushParagraph();
+      closeList();
+      const level = heading[1].length;
+      html.push(`<h${level}>${inlineMarkdown(heading[2], basePath)}</h${level}>`);
+      continue;
+    }
+
+    const bullet = trimmed.match(/^[-*]\s+(.+)$/);
+    if (bullet) {
+      flushParagraph();
+      if (!inList) {
+        html.push('<ul>');
+        inList = true;
+      }
+      html.push(`<li>${inlineMarkdown(bullet[1], basePath)}</li>`);
+      continue;
+    }
+
+    closeList();
+    paragraph.push(trimmed);
+  }
+
+  flushParagraph();
+  closeList();
+  return html.join('\n');
+}
+
+function resolveCaseAsset(src, basePath) {
+  if (!src || /^(https?:|data:|mailto:|#)/i.test(src)) return src;
+  const clean = src.replace(/^\.\//, '');
+  return `${basePath.replace(/\/$/, '')}/${clean}`;
+}
+
+function inlineMarkdown(text, basePath) {
+  let out = escapeHtml(text);
+  // Allow ')' inside filenames (Notion exports sometimes use _(3).png).
+  out = out.replace(/!\[([^\]]*)\]\((.+?)\)(?=\s|$)/g, (_, alt, src) => {
+    const url = resolveCaseAsset(src, basePath);
+    return `<img src="${escapeAttr(url)}" alt="${escapeAttr(alt)}" loading="lazy">`;
+  });
+  out = out.replace(/(^|[^!])\[([^\]]+)\]\((.+?)\)(?=\s|$)/g, (_, pre, label, href) => {
+    const url = resolveCaseAsset(href, basePath);
+    return `${pre}<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+  });
+  out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  return out;
+}
+
+/** Drop Notion fields already shown in the case header (year/tags + cover). */
+function preprocessCaseMarkdown(md, item) {
+  let text = String(md || '').replace(/\r\n/g, '\n');
+  // Leading H1 duplicates the page title.
+  text = text.replace(/^#\s+.+\n+/, '');
+  // Industry / End Date (and RU labels) — already in case-meta.
+  text = text.replace(/^(?:Industry|Индустрия)\s*:\s*.+\n+/im, '');
+  text = text.replace(/^(?:End Date|Дата окончания)\s*:\s*.+\n+/im, '');
+  text = text.replace(/^\s*\n+/, '');
+
+  const coverName = (item.image || item.cover || '')
+    .split('/')
+    .pop()
+    .split('?')[0]
+    .toLowerCase();
+  if (coverName) {
+    const imgRe = new RegExp(
+      `^!\\[[^\\]]*\\]\\((?:\\.\\/)?(?:images\\/)?${coverName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)\\s*\\n+`,
+      'i'
+    );
+    text = text.replace(imgRe, '');
+  }
+  // Common Notion cover filename when catalog cover is the same file.
+  text = text.replace(/^!\[[^\]]*\]\((?:\.\/)?(?:images\/)?image\.png\)\s*\n+/i, '');
+
+  return text.trimStart();
+}
+
+async function loadCaseMarkdown(item) {
+  const basePath = item.path || `cases/${item.id}`;
+  const candidates = currentLang === 'ru'
+    ? [`${basePath}/index.ru.md`, `${basePath}/index.md`]
+    : [`${basePath}/index.md`, `${basePath}/index.ru.md`];
+
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const md = preprocessCaseMarkdown(await res.text(), item);
+      return { html: renderMarkdown(md, basePath), basePath };
+    } catch (_) {
+      /* try next */
+    }
+  }
+
+  const summary = pick(item, 'summary');
+  return { html: `<p>${escapeHtml(summary)}</p>`, basePath };
+}
+
+async function renderCasePage() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const article = document.getElementById('case-article');
+  if (!article) return;
+
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle && !toggle.dataset.bound) {
+    toggle.dataset.bound = '1';
+    toggle.addEventListener('click', () => {
+      currentLang = currentLang === 'ru' ? 'en' : 'ru';
+      localStorage.setItem('portfolio-lang', currentLang);
+      renderCasePage();
+    });
+  }
+
+  applyI18n();
+  if (toggle) toggle.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+
+  const item = findById(cases, id);
+  if (!item) {
+    article.innerHTML = `<p class="case-error">${t('case.missing')}</p>`;
+    document.title = t('case.missing');
+    return;
+  }
+
+  const title = pick(item, 'title');
+  const loaded = await loadCaseMarkdown(item);
+  let bodyHtml = loaded.html
+    .replace(/^<h1>[\s\S]*?<\/h1>\s*/i, '');
+
+  // Safety: if body still starts with the same cover file as the header image, drop it.
+  if (item.image) {
+    const coverFile = item.image.split('/').pop().split('?')[0];
+    const dupImg = new RegExp(
+      `^<p>?<img[^>]+src=["'][^"']*${coverFile.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["'][^>]*>\\s*</p>\\s*`,
+      'i'
+    );
+    bodyHtml = bodyHtml.replace(dupImg, '');
+  }
+
+  const cover = item.image
+    ? `<img class="case-cover" src="${escapeAttr(item.image)}" alt="" onerror="this.outerHTML='<div class=\\'case-cover placeholder\\'>${escapeHtml(t('case.noImage'))}</div>'">`
+    : `<div class="case-cover placeholder">${t('case.noImage')}</div>`;
+
+  article.innerHTML = `
+    <h1>${escapeHtml(title)}</h1>
+    <p class="case-meta">${escapeHtml(String(item.year))} · ${escapeHtml((item.tags || []).join(', '))}</p>
+    ${cover}
+    <div class="case-body">${bodyHtml}</div>
+  `;
+  document.title = `${title} — ${currentLang === 'ru' ? profile.meta.name : profile.meta.name_en}`;
+}
+
+async function loadData() {
+  const [profileRes, coursesRes, casesRes, testsRes] = await Promise.all([
+    fetch('data/profile.json'),
+    fetch('data/courses.json'),
+    fetch('data/cases.json'),
+    fetch('data/tests.json')
+  ]);
+
+  if (!profileRes.ok || !coursesRes.ok || !casesRes.ok || !testsRes.ok) {
+    throw new Error('Failed to load data/*.json');
+  }
+
+  profile = await profileRes.json();
+  courses = await coursesRes.json();
+  cases = (await casesRes.json()).slice().sort((a, b) => b.year - a.year);
+  testTasks = await testsRes.json();
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadData();
+  } catch (err) {
+    console.error(err);
+    const main = document.querySelector('main');
+    if (main) {
+      main.insertAdjacentHTML('afterbegin', '<p class="case-error">Could not load data/. Serve the site over HTTP (not file://).</p>');
+    }
+    return;
+  }
+
+  if (document.body.classList.contains('case-page')) {
+    await renderCasePage();
+  } else {
+    bindHomeEventsOnce();
+    renderHome();
+  }
 });

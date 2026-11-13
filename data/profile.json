@@ -7,7 +7,9 @@
     "email": "leomikhalev@proton.me",
     "telegram": "https://t.me/leomihalev",
     "linkedin": "https://www.linkedin.com/in/leonidmikhalev",
-    "github": "Flipkers"
+    "github": "Flipkers",
+    "bio_ru": "Я продуктовый исследователь и консультант с опытом в разных доменах, от финтеха до healthtech. Помогаю компаниям принимать стратегические решения через анализ рынка, исследование конкурентов и разработку продуктового позиционирования.",
+    "bio_en": "I am a product researcher and consultant with experience across domains from fintech to healthtech. I help companies make strategic decisions through market analysis, competitor research, and product positioning."
   },
   "services_ru": [
     "Market Research",
@@ -26,14 +28,5 @@
     "Customer Segmentation",
     "Product Positioning",
     "Go-To-Market Research"
-  ],
-  "frameworks": [
-    "Business Model Canvas",
-    "Lean Canvas",
-    "Jobs-to-Be-Done (JTBD)",
-    "SWOT Analysis",
-    "Porter’s Five Forces",
-    "Value Proposition Canvas",
-    "Customer Journey Mapping"
   ]
 }

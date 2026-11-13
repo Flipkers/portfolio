@@ -1,0 +1,20 @@
+[
+  {
+    "id": "product-discovery",
+    "name_ru": "Product Discovery",
+    "name_en": "Product Discovery",
+    "progress": 70
+  },
+  {
+    "id": "market-research-advanced",
+    "name_ru": "Market Research Advanced",
+    "name_en": "Market Research Advanced",
+    "progress": 45
+  },
+  {
+    "id": "jtbd-framework",
+    "name_ru": "JTBD Framework",
+    "name_en": "JTBD Framework",
+    "progress": 90
+  }
+]

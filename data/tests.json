@@ -1,0 +1,62 @@
+[
+  {
+    "id": "b2broker-roadmap",
+    "year": 2025,
+    "tags": ["Crypto"],
+    "title_ru": "Квартальный Roadmap для B2Broker",
+    "title_en": "Quarterly Roadmap for B2Broker",
+    "summary_ru": "Квартальный roadmap для B2Broker.",
+    "summary_en": "Quarterly roadmap for B2Broker.",
+    "image": ""
+  },
+  {
+    "id": "lesta-games",
+    "year": 2025,
+    "tags": ["Gaming"],
+    "title_ru": "Решение кейсов для Lesta Games",
+    "title_en": "Case solutions for Lesta Games",
+    "summary_ru": "Решение кейсов для Lesta Games.",
+    "summary_en": "Case solutions for Lesta Games.",
+    "image": ""
+  },
+  {
+    "id": "soul-publishing",
+    "year": 2025,
+    "tags": ["AI"],
+    "title_ru": "Техническая спецификация для Soul Publishing",
+    "title_en": "Technical specification for Soul Publishing",
+    "summary_ru": "Техническая спецификация для Soul Publishing.",
+    "summary_en": "Technical specification for Soul Publishing.",
+    "image": ""
+  },
+  {
+    "id": "ai-startup-discovery",
+    "year": 2025,
+    "tags": ["AI"],
+    "title_ru": "Product Discovery для AI Startup",
+    "title_en": "Product Discovery for AI Startup",
+    "summary_ru": "Product Discovery для нового продукта в AI-стартапе.",
+    "summary_en": "Product Discovery for a new product in an AI startup.",
+    "image": ""
+  },
+  {
+    "id": "finom-invoice",
+    "year": 2024,
+    "tags": ["Fintech"],
+    "title_ru": "Designing automatic invoice collection for FINOM",
+    "title_en": "Designing automatic invoice collection for FINOM",
+    "summary_ru": "Техническая спецификация системы автоматического сбора инвойсов для FINOM.",
+    "summary_en": "Created a technical specification for FINOM's automatic invoice collection system.",
+    "image": ""
+  },
+  {
+    "id": "salmon-onboarding",
+    "year": 2024,
+    "tags": ["Fintech"],
+    "title_ru": "Designing mobile onboarding for Salmon Credit Line",
+    "title_en": "Designing mobile onboarding for Salmon Credit Line",
+    "summary_ru": "Мобильный онбординг для Salmon Credit Line.",
+    "summary_en": "Developed a comprehensive mobile onboarding process for Salmon Credit Line.",
+    "image": ""
+  }
+]
