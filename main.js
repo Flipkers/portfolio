@@ -307,13 +307,14 @@ function resolveCaseAsset(src, basePath) {
 
 function inlineMarkdown(text, basePath) {
   let out = escapeHtml(text);
-  out = out.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
+  // Allow ')' inside filenames (Notion exports sometimes use _(3).png).
+  out = out.replace(/!\[([^\]]*)\]\((.+?)\)(?=\s|$)/g, (_, alt, src) => {
     const url = resolveCaseAsset(src, basePath);
     return `<img src="${escapeAttr(url)}" alt="${escapeAttr(alt)}" loading="lazy">`;
   });
-  out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+  out = out.replace(/(^|[^!])\[([^\]]+)\]\((.+?)\)(?=\s|$)/g, (_, pre, label, href) => {
     const url = resolveCaseAsset(href, basePath);
-    return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    return `${pre}<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   });
   out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   return out;
