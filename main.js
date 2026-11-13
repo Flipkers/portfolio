@@ -320,6 +320,34 @@ function inlineMarkdown(text, basePath) {
   return out;
 }
 
+/** Drop Notion fields already shown in the case header (year/tags + cover). */
+function preprocessCaseMarkdown(md, item) {
+  let text = String(md || '').replace(/\r\n/g, '\n');
+  // Leading H1 duplicates the page title.
+  text = text.replace(/^#\s+.+\n+/, '');
+  // Industry / End Date (and RU labels) — already in case-meta.
+  text = text.replace(/^(?:Industry|Индустрия)\s*:\s*.+\n+/im, '');
+  text = text.replace(/^(?:End Date|Дата окончания)\s*:\s*.+\n+/im, '');
+  text = text.replace(/^\s*\n+/, '');
+
+  const coverName = (item.image || item.cover || '')
+    .split('/')
+    .pop()
+    .split('?')[0]
+    .toLowerCase();
+  if (coverName) {
+    const imgRe = new RegExp(
+      `^!\\[[^\\]]*\\]\\((?:\\.\\/)?(?:images\\/)?${coverName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)\\s*\\n+`,
+      'i'
+    );
+    text = text.replace(imgRe, '');
+  }
+  // Common Notion cover filename when catalog cover is the same file.
+  text = text.replace(/^!\[[^\]]*\]\((?:\.\/)?(?:images\/)?image\.png\)\s*\n+/i, '');
+
+  return text.trimStart();
+}
+
 async function loadCaseMarkdown(item) {
   const basePath = item.path || `cases/${item.id}`;
   const candidates = currentLang === 'ru'
@@ -330,7 +358,7 @@ async function loadCaseMarkdown(item) {
     try {
       const res = await fetch(url);
       if (!res.ok) continue;
-      const md = await res.text();
+      const md = preprocessCaseMarkdown(await res.text(), item);
       return { html: renderMarkdown(md, basePath), basePath };
     } catch (_) {
       /* try next */
@@ -369,8 +397,18 @@ async function renderCasePage() {
 
   const title = pick(item, 'title');
   const loaded = await loadCaseMarkdown(item);
-  // Catalog already renders <h1>; drop duplicate title heading from Markdown.
-  const bodyHtml = loaded.html.replace(/^<h1>[\s\S]*?<\/h1>\s*/i, '');
+  let bodyHtml = loaded.html
+    .replace(/^<h1>[\s\S]*?<\/h1>\s*/i, '');
+
+  // Safety: if body still starts with the same cover file as the header image, drop it.
+  if (item.image) {
+    const coverFile = item.image.split('/').pop().split('?')[0];
+    const dupImg = new RegExp(
+      `^<p>?<img[^>]+src=["'][^"']*${coverFile.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["'][^>]*>\\s*</p>\\s*`,
+      'i'
+    );
+    bodyHtml = bodyHtml.replace(dupImg, '');
+  }
 
   const cover = item.image
     ? `<img class="case-cover" src="${escapeAttr(item.image)}" alt="" onerror="this.outerHTML='<div class=\\'case-cover placeholder\\'>${escapeHtml(t('case.noImage'))}</div>'">`

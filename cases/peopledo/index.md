@@ -1,10 +1,5 @@
 # PeopleDo Discovery
 
-Industry: gigeconomy  
-End Date: 2025
-
-![image.png](images/image.png)
-
 **1. Where does the fee sit?**
 
 - Exploring client-paid commission
