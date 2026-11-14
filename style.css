@@ -399,6 +399,55 @@ body.case-page > header {
   background: #f3f3f3;
   border-bottom: 2px solid #111;
 }
+/* Wide comparisons: one card per record, label then value, read downward. */
+body.stack-tables .case-article .case-body .table-stack {
+  overflow-x: visible;
+}
+body.stack-tables .case-article .case-body .table-stack table,
+body.stack-tables .case-article .case-body .table-stack tbody,
+body.stack-tables .case-article .case-body .table-stack tr,
+body.stack-tables .case-article .case-body .table-stack td {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+body.stack-tables .case-article .case-body .table-stack thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+body.stack-tables .case-article .case-body .table-stack tr {
+  margin: 0 0 16px;
+  border: 1px solid #e4e4e4;
+  background: #fff;
+}
+body.stack-tables .case-article .case-body .table-stack td {
+  border: 0;
+  border-top: 1px solid #ececec;
+  padding: 12px 14px 14px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+body.stack-tables .case-article .case-body .table-stack td:first-child {
+  border-top: 0;
+  background: #f6f6f6;
+  font-weight: 700;
+}
+body.stack-tables .case-article .case-body .table-stack td[data-label]::before {
+  content: attr(data-label);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #666;
+}
 .case-loading, .case-error { color: #666; }
 
 @media (max-width: 720px) {
@@ -730,5 +779,65 @@ body.case-page > header {
     height: 44px;
     top: 8px;
     right: 8px;
+  }
+
+  .case-article .case-body .table-stack {
+    overflow-x: visible;
+  }
+  .case-article .case-body .table-stack table,
+  .case-article .case-body .table-stack tbody,
+  .case-article .case-body .table-stack tr,
+  .case-article .case-body .table-stack td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .case-article .case-body .table-stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  .case-article .case-body .table-stack tr {
+    margin: 0 0 16px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+  }
+  .case-article .case-body .table-stack td {
+    border: 0;
+    border-top: 1px solid #ececec;
+    padding: 12px 14px 14px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .case-article .case-body .table-wrap:not(.table-stack) {
+    overflow-x: visible;
+  }
+  .case-article .case-body .table-wrap:not(.table-stack) table {
+    width: 100%;
+    min-width: 0;
+  }
+  .case-article .case-body .table-wrap:not(.table-stack) th,
+  .case-article .case-body .table-wrap:not(.table-stack) td {
+    min-width: 0;
+  }
+  .case-article .case-body .table-stack td:first-child {
+    border-top: 0;
+    background: #f6f6f6;
+    font-weight: 700;
+  }
+  .case-article .case-body .table-stack td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #666;
   }
 }

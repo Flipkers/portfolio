@@ -384,9 +384,19 @@ function renderMarkdown(md, basePath) {
       }
       i -= 1;
       if (rows.length) {
-        const head = rows[0].map((cell) => `<th>${inlineMarkdown(cell, basePath)}</th>`).join('');
-        const body = rows.slice(1).map((row) => `<tr>${row.map((cell) => `<td>${inlineMarkdown(cell, basePath)}</td>`).join('')}</tr>`).join('');
-        html.push(`<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
+        const headers = rows[0];
+        const longest = rows.reduce((max, row) => Math.max(max, ...row.map((cell) => cell.length)), 0);
+        const wide = headers.length >= 4 || longest > 90;
+        const head = headers.map((cell) => `<th>${inlineMarkdown(cell, basePath)}</th>`).join('');
+        const body = rows.slice(1).map((row) => {
+          const cells = headers.map((header, index) => {
+            const label = wide ? ` data-label="${escapeAttr(header)}"` : '';
+            return `<td${label}>${inlineMarkdown(row[index] || '', basePath)}</td>`;
+          }).join('');
+          return `<tr>${cells}</tr>`;
+        }).join('');
+        const wrapClass = wide ? 'table-wrap table-stack' : 'table-wrap';
+        html.push(`<div class="${wrapClass}"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
       }
       continue;
     }
@@ -555,10 +565,13 @@ async function renderDetailPage(list) {
 
   const item = findById(list, id);
   if (!item) {
+    document.body.classList.remove('stack-tables');
     article.innerHTML = `<p class="case-error">${t('case.missing')}</p>`;
     document.title = t('case.missing');
     return;
   }
+
+  document.body.classList.toggle('stack-tables', item.id === 'bnpl-b2b');
 
   const title = pick(item, 'title');
   const loaded = await loadCaseMarkdown(item);
