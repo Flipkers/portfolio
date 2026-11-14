@@ -434,7 +434,7 @@ async function loadCaseMarkdown(item) {
 
   for (const url of candidates) {
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) continue;
       const md = preprocessCaseMarkdown(await res.text(), item);
       return { html: renderMarkdown(md, basePath), basePath };
@@ -503,10 +503,10 @@ async function renderDetailPage(list) {
 
 async function loadData() {
   const [profileRes, coursesRes, casesRes, testsRes] = await Promise.all([
-    fetch('data/profile.json'),
-    fetch('data/courses.json'),
-    fetch('data/cases.json'),
-    fetch('data/tests.json')
+    fetch('data/profile.json', { cache: 'no-store' }),
+    fetch('data/courses.json', { cache: 'no-store' }),
+    fetch('data/cases.json', { cache: 'no-store' }),
+    fetch('data/tests.json', { cache: 'no-store' })
   ]);
 
   if (!profileRes.ok || !coursesRes.ok || !casesRes.ok || !testsRes.ok) {

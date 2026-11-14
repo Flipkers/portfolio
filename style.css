@@ -282,6 +282,10 @@ body.case-page > header {
 .case-article .case-body {
   line-height: 1.65;
 }
+.case-article .case-body p,
+.case-article .case-body li {
+  font-weight: 400;
+}
 .case-article .case-body h2,
 .case-article .case-body h3 {
   font-size: 18px;
