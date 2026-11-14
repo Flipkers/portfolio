@@ -300,31 +300,74 @@ function bindHomeEventsOnce() {
 function renderMarkdown(md, basePath) {
   const lines = String(md || '').replace(/\r\n/g, '\n').split('\n');
   const html = [];
-  let inList = false;
+  const structure = !document.body.classList.contains('test-page');
+  let listIndents = [];
+  let liOpen = false;
   let paragraph = [];
+
+  const isRule = (value) => /^([-*_])\1{2,}$/.test(value);
+  const isTableRow = (value) => value.startsWith('|') && value.endsWith('|');
+  const isTableRule = (value) => /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(value);
+  const tableCells = (value) => value.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+  const wordCount = (value) => value.trim().split(/\s+/).filter(Boolean).length;
+
+  const numberedTitle = (text) => {
+    const match = text.match(/^(\d+)\.\s+(\S[\s\S]*)$/);
+    if (!match) return null;
+    const title = match[2].trim();
+    if (title.length > 90 || wordCount(title) > 12 || /\.\s+\S/.test(title)) return null;
+    return title;
+  };
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
     const text = paragraph.join(' ').trim();
-    if (text) html.push(`<p>${inlineMarkdown(text, basePath)}</p>`);
     paragraph = [];
+    if (!text) return;
+    if (structure && numberedTitle(text)) {
+      html.push(`<p class="step">${inlineMarkdown(text, basePath)}</p>`);
+      return;
+    }
+    if (structure && /^\d+\.\s+\S/.test(text)) {
+      html.push(`<p class="step-line">${inlineMarkdown(text, basePath)}</p>`);
+      return;
+    }
+    html.push(`<p>${inlineMarkdown(text, basePath)}</p>`);
+  };
+
+  const closeLi = () => {
+    if (!liOpen) return;
+    html.push('</li>');
+    liOpen = false;
   };
 
   const closeList = () => {
-    if (!inList) return;
-    html.push('</ul>');
-    inList = false;
+    closeLi();
+    while (listIndents.length) {
+      html.push('</ul>');
+      listIndents.pop();
+      closeLi();
+    }
   };
 
-  const isTableRow = (value) => value.startsWith('|') && value.endsWith('|');
-  const isTableRule = (value) => /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(value);
-  const tableCells = (value) => value.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+  const openLi = (text) => {
+    html.push(`<li>${inlineMarkdown(text, basePath)}`);
+    liOpen = true;
+  };
+
+  const isCaption = (value, alt) => {
+    if (!value || isRule(value) || value.startsWith('|') || value.startsWith('![')) return false;
+    if (/^(#{1,3}\s|[-*]\s|\d+\.\s)/.test(value) || value.endsWith(':')) return false;
+    const same = alt && value.replace(/\s+/g, ' ').trim().toLowerCase() === alt.replace(/\s+/g, ' ').trim().toLowerCase();
+    if (same) return true;
+    return value.length <= 80 && wordCount(value) <= 14;
+  };
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trimEnd();
     const trimmed = line.trim();
 
-    if (!trimmed || trimmed.startsWith('<!--') || trimmed === '<aside>' || trimmed === '</aside>' || /^([-*_])\1{2,}$/.test(trimmed)) {
+    if (!trimmed || trimmed.startsWith('<!--') || trimmed === '<aside>' || trimmed === '</aside>' || isRule(trimmed)) {
       flushParagraph();
       closeList();
       continue;
@@ -357,14 +400,58 @@ function renderMarkdown(md, basePath) {
       continue;
     }
 
-    const bullet = trimmed.match(/^[-*]\s+(.+)$/);
-    if (bullet) {
+    const imageLine = structure && trimmed.match(/^!\[([^\]]*)\]\((.+?)\)$/);
+    if (imageLine) {
       flushParagraph();
-      if (!inList) {
-        html.push('<ul>');
-        inList = true;
+      closeList();
+      let caption = '';
+      let j = i + 1;
+      while (j < lines.length && !lines[j].trim()) j += 1;
+      if (j < lines.length && isCaption(lines[j].trim(), imageLine[1])) {
+        caption = lines[j].trim();
+        i = j;
       }
-      html.push(`<li>${inlineMarkdown(bullet[1], basePath)}</li>`);
+      const url = resolveCaseAsset(imageLine[2], basePath);
+      const cap = caption ? `<figcaption>${inlineMarkdown(caption, basePath)}</figcaption>` : '';
+      html.push(`<figure><img src="${escapeAttr(url)}" alt="${escapeAttr(imageLine[1])}" loading="lazy">${cap}</figure>`);
+      continue;
+    }
+
+    const bullet = line.match(/^(\s*)[-*]\s+(.+)$/);
+    if (bullet && structure) {
+      flushParagraph();
+      const indent = bullet[1].replace(/\t/g, '    ').length;
+      const text = bullet[2].trim();
+      if (!listIndents.length) {
+        html.push('<ul>');
+        listIndents.push(indent);
+        openLi(text);
+      } else if (indent > listIndents[listIndents.length - 1]) {
+        html.push('<ul>');
+        listIndents.push(indent);
+        openLi(text);
+      } else {
+        closeLi();
+        while (listIndents.length > 1 && indent < listIndents[listIndents.length - 1]) {
+          html.push('</ul>');
+          listIndents.pop();
+          closeLi();
+        }
+        openLi(text);
+      }
+      continue;
+    }
+
+    const flatBullet = trimmed.match(/^[-*]\s+(.+)$/);
+    if (flatBullet) {
+      flushParagraph();
+      if (!listIndents.length) {
+        html.push('<ul>');
+        listIndents.push(0);
+      } else {
+        closeLi();
+      }
+      openLi(flatBullet[1]);
       continue;
     }
 
