@@ -149,7 +149,7 @@ function renderTests() {
     const title = pick(item, 'title');
     const summary = pick(item, 'summary');
     const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    return `<div class="card" role="button" tabindex="0" data-type="test" data-id="${escapeAttr(item.id)}">${mediaBlock(item.image, title)}<div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p><div class="tags">${tags}</div></div>`;
+    return `<div class="card" role="button" tabindex="0" data-type="test" data-id="${escapeAttr(item.id)}">${mediaBlock(item.image, title)}<div class="card-body"><div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></div>`;
   }).join('');
 }
 
@@ -160,7 +160,7 @@ function renderCases() {
     const title = pick(cs, 'title');
     const summary = pick(cs, 'summary');
     const tags = (cs.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    return `<a class="card" href="case.html?id=${encodeURIComponent(cs.id)}">${mediaBlock(cs.image, title)}<div class="year">${cs.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p><div class="tags">${tags}</div></a>`;
+    return `<a class="card" href="case.html?id=${encodeURIComponent(cs.id)}">${mediaBlock(cs.image, title)}<div class="card-body"><div class="year">${cs.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
   }).join('');
 }
 
