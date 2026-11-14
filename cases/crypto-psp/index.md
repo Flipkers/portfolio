@@ -31,45 +31,45 @@ To make it easier to analyze the information, I divided the product into subprod
 
 Some of the functionality of the product is implemented longer and more complex, so it was necessary to distribute points: from 0.5 to 2 points for a single feature.
 
-![Untitled](images/01.png)
+![Untitled](images/07.png)
 
 1. Manual scoring
 
 Configured drop-down lists and went to manually look at competitors and our solution for the lack/availability of all this functionality.
 
-![glow-3.png](images/02.png)
+![glow-3.png](images/06.png)
 
 1. Made calculations
 
 After scoring, I added up the product of the two arrays - Weight of the feature + Presence/absence of the feature.
 
-![Untitled](images/03.png)
+![Untitled](images/05.png)
 
 These calculations allowed me to create a ranking for each line of business
 
 1. Data visualization
 
-![Дизайн без названия-4.png](images/04.png)
+![Дизайн без названия-4.png](images/03.png)
 
 Having displayed this rating in the form of graphs, I was able to find out the following:
 
 - Which competitors are strong in each area (by the number of features in each area)
 - Where on this graph is our product
 
-![glow-5.png](images/05.png)
+![glow-5.png](images/04.png)
 
 We were also able to compare ourselves in terms of supported blockchains:
 
 - which blockchain is supported most often
 - how many blockchains are supported by each competitor individually
 
-![glow-4.png](images/06.png)
+![glow-4.png](images/02.png)
 
 1. Conclusions on the whole work
 
 After analyzing each area individually, I created a list of recommendations to improve our product
 
-![glow-10.png](images/07.png)
+![glow-10.png](images/01.png)
 
 | Points | Difficulty | Time |
 | --- | --- | --- |

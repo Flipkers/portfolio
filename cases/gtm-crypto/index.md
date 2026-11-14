@@ -44,7 +44,7 @@ Here I had to figure out what asset tokenization is, and how such funds attract 
 - Found [guides](https://www.theia.org/fundoperations/tokenisedfunds) on asset tokenization from an entire financial association
 - Drew a schematic drawing of tokenization and gave an example of a provider who uses such a scheme
 
-![Untitled](images/01.jpg)
+![Untitled](images/03.png)
 
 1. Identified the parameters without which an investment fund cannot exist
 
@@ -68,4 +68,4 @@ Started with examples of funds in traditional finance and gradually switched to 
 
 On the board below is a complete picture along with the conclusions
 
-![Crypto fund research - Frame 2.jpg](images/03.png)
+![Crypto fund research - Frame 2.jpg](images/01.jpg)

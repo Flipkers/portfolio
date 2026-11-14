@@ -34,7 +34,7 @@ At this stage, I talked to those who have experience using cryptocurrencies. It 
 
 In order to get more representative results, I created a survey and sent it to cryptocurrency chats.
 
-![glow-11.png](images/01.png)
+![glow-11.png](images/05.png)
 
 The survey made it possible to understand:
 
@@ -54,7 +54,7 @@ That's how I learned that almost all wallets are based on 2-3 sources of income
 
 After learning about the commissions, and the approximate number of users, I calculated the approximate level of income from each business model
 
-![glow-12.png](images/02.png)
+![glow-12.png](images/04.png)
 
 What I've learned from economics is this:
 
@@ -73,11 +73,11 @@ As a feature that could keep users in the wallet, I hypothesized a merchant dire
 
 For the same feature also claimed: crypto debit card and cryptocurrency stacking/landing. So I compared some competitive solutions here as well.
 
-![glow-15.png](images/04.png)
+![glow-15.png](images/02.png)
 
 1. Wrote the conclusions of the study
 
-![glow-14.png](images/05.png)
+![glow-14.png](images/01.png)
 
 ## Results
 

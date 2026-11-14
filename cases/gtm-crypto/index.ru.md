@@ -44,7 +44,7 @@
 - Нашёл [гайды](https://www.theia.org/fundoperations/tokenisedfunds) по токенизации активов от целой финансовой ассоциации
 - Нарисовал схему токенизации и привёл пример провайдера, который использует такую схему
 
-![Untitled](images/01.jpg)
+![Untitled](images/03.png)
 
 1. Определил параметры, без которых инвестиционный фонд не может существовать
 
@@ -68,4 +68,4 @@
 
 На доске ниже полная картина вместе с выводами
 
-![Crypto fund research - Frame 2.jpg](images/03.png)
+![Crypto fund research - Frame 2.jpg](images/01.jpg)

@@ -31,7 +31,7 @@ To see if they work at all, I plugged test networks into a cryptocurrency wallet
 
 In order to assess the reliability of platforms, I decided to look for platforms like Crunchbase, only for DAOs: to look at revenue, funding, and customers. Such an analysis would make it possible to assess the general state of this niche.
 
-![Untitled](images/01.png)
+![Untitled](images/03.png)
 
 | Name | Link | Investing fund examples | Friendly UI | Use cases | Cost to create | Funds withdraw | Security | Blockchains | Community | Active DAOs | DAOs created | AUM, $ mln | Treasury, $ mln | Secondary LP market | Example DAO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -74,6 +74,6 @@ The number of active DAOs, the amount of money inside the smart contracts, a lar
 - To create an investment fund, the DAO structure was chosen
 - The fund was successfully launched
 
-![Untitled](images/03.png)
+![Untitled](images/01.png)
 
 The whole amount of work looked something like this.

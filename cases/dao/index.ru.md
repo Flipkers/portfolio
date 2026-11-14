@@ -31,7 +31,7 @@
 
 Чтобы оценить надёжность платформ, я решил поискать платформы вроде Crunchbase, только для DAO: посмотреть выручку, финансирование и клиентов. Такой анализ позволил бы оценить общее состояние этой ниши.
 
-![Untitled](images/01.png)
+![Untitled](images/03.png)
 
 | Name | Link | Investing fund examples | Friendly UI | Use cases | Cost to create | Funds withdraw | Security | Blockchains | Community | Active DAOs | DAOs created | AUM, $ mln | Treasury, $ mln | Secondary LP market | Example DAO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -74,6 +74,6 @@
 - Для создания инвестиционного фонда выбрали структуру DAO
 - Фонд успешно запустили
 
-![Untitled](images/03.png)
+![Untitled](images/01.png)
 
 Весь объём работы выглядел примерно так.

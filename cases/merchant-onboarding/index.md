@@ -23,7 +23,7 @@ We talked to our customers and measured the onboarding time and decided to impro
 
 In the process, the hypothesis emerged that best practices could be spied on by our major competitors. So I registered everywhere and worked my way up to key product scenarios.
 
-![Дизайн без названия-5.png](images/01.png)
+![Дизайн без названия-5.png](images/04.png)
 
 Also, going through onboarding with them allowed me to do several things:
 
@@ -33,7 +33,7 @@ Also, going through onboarding with them allowed me to do several things:
 
 1. Participated in the process of creating the current CJM
 
-![Дизайн без названия-6.png](images/02.png)
+![Дизайн без названия-6.png](images/01.png)
 
 To understand the bottlenecks in the current process, I gathered information about the process from different teams, including accounts, compliance, and support. We tried to build an overall picture
 
@@ -46,13 +46,13 @@ In addition to the manual onboarding process, the customer could register on the
 - called company employees as respondents for testing
 - recorded 10 usability studies and wrote out insights
 
-![Дизайн без названия-8.png](images/03.png)
+![Дизайн без названия-8.png](images/02.png)
 
 The usability test insights served as fuel for updating the product design and the product tours themselves.
 
 1. Participated in the design of the new flow onboarding
 
-![Дизайн без названия-7.png](images/04.png)
+![Дизайн без названия-7.png](images/03.png)
 
 Given best practices, I, along with other teams, rebuilt the CJM of the new onboarding process
 
