@@ -32,7 +32,7 @@
     "title_en": "Market Discovery for a Tech Startup Expansion in Latin America",
     "summary_ru": "Анализ 5 стран Латинской Америки для запуска финтех-стартапа. Рекомендация — Аргентина.",
     "summary_en": "Conducted market research on five Latin American countries for a fintech expansion. Identified Argentina as the best opportunity.",
-    "image": "https://flipkers.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb9f7bf-c81f-428c-a5e7-4faf15b9204e%2F6816d81d-51f7-4085-8ccf-6032f5c94a6e%2FProduct_cases_presentation.png?table=block&id=32244bc3-f6b4-81a0-8d8c-f76164c8c300&spaceId=cdb9f7bf-c81f-428c-a5e7-4faf15b9204e&width=800&userId=&cache=v2",
+    "image": "cases/latam/images/cover.png",
     "path": "cases/latam",
     "lang_original": "en"
   },
@@ -82,6 +82,18 @@
     "summary_en": "Led a team to automate market research processes for Calypso, enhancing efficiency and accuracy.",
     "image": "cases/crypto-psp/images/cover.png",
     "path": "cases/crypto-psp",
+    "lang_original": "en"
+  },
+  {
+    "id": "crypto-wallet",
+    "year": 2023,
+    "tags": ["Fintech"],
+    "title_ru": "Запуск криптокошелька",
+    "title_en": "Launching crypto wallet",
+    "summary_ru": "Исследовал и разработал B2C-криптокошелёк в дополнение к существующим B2B-сервисам.",
+    "summary_en": "Researched and developed a B2C crypto wallet to complement existing B2B services.",
+    "image": "cases/crypto-wallet/images/cover.png",
+    "path": "cases/crypto-wallet",
     "lang_original": "en"
   }
 ]
