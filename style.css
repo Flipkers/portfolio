@@ -36,10 +36,15 @@ header nav {
 /* Desktop: links stay direct flex items, same as a flat nav. */
 .nav-links { display: contents; }
 
+.brand,
+.nav-toggle { display: none; }
+
 header nav a { color: #111; text-decoration: none; }
 header nav a:hover { text-decoration: underline; }
 header nav a:focus-visible,
-#lang-toggle:focus-visible {
+#lang-toggle:focus-visible,
+.nav-toggle:focus-visible,
+.brand:focus-visible {
   outline: 2px solid #111;
   outline-offset: 2px;
 }
@@ -285,15 +290,24 @@ body.case-page > header {
 
 @media (max-width: 720px) {
   html {
-    /* Sticky bar only. Section scroll-margin stays 0 here so the two
-       offsets do not stack and leave a band of the previous section. */
-    scroll-padding-top: 152px;
+    /* One short sticky bar. Section scroll-margin stays 0 so the offsets do not stack. */
+    scroll-padding-top: 68px;
     overflow-x: clip;
   }
 
+  html.nav-open,
+  html.nav-open body {
+    overflow: hidden;
+  }
+
   body {
-    padding: 16px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left));
+    padding: 0 0 48px;
     overflow-wrap: break-word;
+  }
+
+  body:not(.case-page) main {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
   }
 
   body.case-page {
@@ -311,38 +325,147 @@ body.case-page > header {
   }
 
   header {
-    padding: 4px 0;
-    margin-bottom: 28px;
+    padding: 0;
+    margin-bottom: 20px;
   }
 
   body.case-page > header {
-    margin-bottom: 28px;
+    height: 56px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
   }
 
-  /* Links wrap in two equal columns. The language control stays on the
-     first row, outside that grid, so a label never lands under the button. */
-  header nav {
+  /* Homepage: one row. The link list is an overlay, not part of the hero. */
+  body:not(.case-page) header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 56px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  body:not(.case-page) .brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    min-width: 0;
+    color: #111;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body:not(.case-page) .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #111;
+    cursor: pointer;
+  }
+
+  .nav-toggle-bars,
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    position: relative;
+  }
+
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .nav-toggle-bars::before { top: -6px; }
+  .nav-toggle-bars::after { top: 6px; }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bars { background: transparent; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { top: 0; transform: rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { top: 0; transform: rotate(-45deg); }
+
+  body:not(.case-page) header nav {
+    display: none;
+  }
+
+  body:not(.case-page) header nav.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    position: fixed;
+    z-index: 60;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    margin: 0;
+    padding: 4px max(16px, env(safe-area-inset-right)) 32px max(16px, env(safe-area-inset-left));
+    background: #fff;
+    overflow-y: auto;
+  }
+
+  body:not(.case-page) .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  body:not(.case-page) .nav-links a {
+    display: flex;
+    align-items: center;
+    flex: none;
+    min-height: 48px;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: normal;
+  }
+
+  body:not(.case-page) #lang-toggle {
+    margin: 24px 0 0;
+    align-self: flex-start;
+  }
+
+  /* Case page stays a single row: back link and language. */
+  body.case-page header nav {
     display: flex;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 12px;
+    width: 100%;
   }
 
-  .nav-links {
+  body.case-page .nav-links {
     display: flex;
     flex: 1;
     min-width: 0;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 12px;
-    row-gap: 0;
   }
 
-  .nav-links a {
-    display: flex;
+  body.case-page .nav-links a {
+    display: inline-flex;
     align-items: center;
-    flex: 1 1 calc(50% - 12px);
     min-height: 44px;
     white-space: nowrap;
   }

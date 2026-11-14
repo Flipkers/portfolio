@@ -7,6 +7,9 @@ let cases = [];
 
 const i18n = {
   ru: {
+    'brand': 'Леонид Михалев',
+    'nav.menu': 'Меню',
+    'nav.close': 'Закрыть',
     'nav.about': 'Обо мне',
     'nav.services': 'Что я делаю',
     'nav.cases': 'Исследования',
@@ -25,6 +28,9 @@ const i18n = {
     'doc.title': 'Леонид Михалев — Исследователь-аналитик'
   },
   en: {
+    'brand': 'Leonid Mikhalev',
+    'nav.menu': 'Menu',
+    'nav.close': 'Close',
     'nav.about': 'About',
     'nav.services': 'What I do',
     'nav.cases': 'Research',
@@ -63,6 +69,41 @@ function applyI18n() {
   if (pageTitle && !document.body.classList.contains('case-page')) {
     pageTitle.textContent = t('doc.title');
   }
+  syncNavToggle();
+}
+
+function setNavOpen(open) {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  nav.classList.toggle('is-open', open);
+  document.documentElement.classList.toggle('nav-open', open);
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', open ? t('nav.close') : t('nav.menu'));
+  const main = document.querySelector('main');
+  if (main) main.toggleAttribute('inert', open);
+}
+
+function syncNavToggle() {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  const open = nav.classList.contains('is-open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', open ? t('nav.close') : t('nav.menu'));
+}
+
+function bindNavToggleOnce() {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!btn || !nav || btn.dataset.bound) return;
+  btn.dataset.bound = '1';
+  btn.addEventListener('click', () => {
+    setNavOpen(!nav.classList.contains('is-open'));
+  });
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setNavOpen(false);
+  });
 }
 
 function mediaBlock(image, title) {
@@ -235,9 +276,18 @@ function bindHomeEventsOnce() {
   if (!document.body.dataset.escapeBound) {
     document.body.dataset.escapeBound = '1';
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key !== 'Escape') return;
+      const nav = document.getElementById('site-nav');
+      if (nav && nav.classList.contains('is-open')) {
+        setNavOpen(false);
+        document.querySelector('.nav-toggle')?.focus();
+        return;
+      }
+      closeModal();
     });
   }
+
+  bindNavToggleOnce();
 }
 
 /** Minimal Markdown → HTML (headings, lists, paragraphs, bold, images, links). */
