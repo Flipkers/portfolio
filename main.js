@@ -1,7 +1,6 @@
 let currentLang = localStorage.getItem('portfolio-lang') || 'ru';
 
 let profile = null;
-let courses = [];
 let testTasks = [];
 let cases = [];
 
@@ -14,12 +13,11 @@ const i18n = {
     'nav.services': 'Что я делаю',
     'nav.cases': 'Исследования',
     'nav.tests': 'Тестовые',
-    'nav.learning': 'Я учусь',
     'nav.contacts': 'Контакты',
+    'write': 'Написать',
     'services.title': 'Что я делаю',
     'cases.title': 'Исследования',
     'tests.title': 'Тестовые задания',
-    'learning.title': 'Я учусь',
     'contacts.title': 'Контакты',
     'case.back': '← К портфолио',
     'case.loading': 'Загрузка…',
@@ -35,12 +33,11 @@ const i18n = {
     'nav.services': 'What I do',
     'nav.cases': 'Research',
     'nav.tests': 'Test tasks',
-    'nav.learning': 'Studying',
     'nav.contacts': 'Contacts',
+    'write': 'Write',
     'services.title': 'What I do',
     'cases.title': 'Research',
     'tests.title': 'Test tasks',
-    'learning.title': 'Studying',
     'contacts.title': 'Contacts',
     'case.back': '← Back to portfolio',
     'case.loading': 'Loading…',
@@ -133,15 +130,6 @@ function pick(item, field) {
   return currentLang === 'ru' ? item[`${field}_ru`] : item[`${field}_en`];
 }
 
-function renderCourses() {
-  const el = document.getElementById('courses');
-  if (!el) return;
-  el.innerHTML = courses.map((c) => {
-    const name = pick(c, 'name');
-    return `<div class="course"><div class="course-name">${escapeHtml(name)}</div><div class="progress-bar"><div class="progress-fill" style="width:${c.progress}%"></div></div><div class="progress-text">${c.progress}%</div></div>`;
-  }).join('');
-}
-
 function metaLine(item) {
   const tags = (item.tags || []).join(', ');
   return item.year ? `${item.year} · ${tags}` : tags;
@@ -190,7 +178,6 @@ function renderHome() {
   if (li && profile.meta.linkedin) li.href = profile.meta.linkedin;
 
   applyI18n();
-  renderCourses();
   renderTests();
   renderCases();
 
@@ -617,19 +604,17 @@ function bindTableFitOnce() {
 }
 
 async function loadData() {
-  const [profileRes, coursesRes, casesRes, testsRes] = await Promise.all([
+  const [profileRes, casesRes, testsRes] = await Promise.all([
     fetch('data/profile.json', { cache: 'no-store' }),
-    fetch('data/courses.json', { cache: 'no-store' }),
     fetch('data/cases.json', { cache: 'no-store' }),
     fetch('data/tests.json', { cache: 'no-store' })
   ]);
 
-  if (!profileRes.ok || !coursesRes.ok || !casesRes.ok || !testsRes.ok) {
+  if (!profileRes.ok || !casesRes.ok || !testsRes.ok) {
     throw new Error('Failed to load data/*.json');
   }
 
   profile = await profileRes.json();
-  courses = await coursesRes.json();
   cases = (await casesRes.json()).slice().sort((a, b) => b.year - a.year);
   testTasks = await testsRes.json();
 }

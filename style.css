@@ -73,6 +73,24 @@ header nav a:focus-visible,
 .hero-text { flex: 1; }
 h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 .bio { margin: 0; color: #222; font-size: 16px; }
+.write-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  min-height: 44px;
+  padding: 0 22px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 4px;
+}
+.write-btn:hover { background: #333; }
+.write-btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
 
 .services { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
 .services span {
@@ -155,12 +173,6 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
   margin-top: 4px;
   border-radius: 2px;
 }
-
-.course { margin-bottom: 18px; }
-.course-name { font-size: 15px; margin-bottom: 6px; }
-.progress-bar { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
-.progress-fill { height: 100%; background: #111; }
-.progress-text { font-size: 12px; color: #888; margin-top: 4px; }
 
 #contacts a { color: #111; }
 
@@ -745,8 +757,7 @@ body.case-page > header {
   }
 
   .card .tag,
-  .card .year,
-  .progress-text {
+  .card .year {
     font-size: 12px;
   }
 
