@@ -19,15 +19,11 @@ The founder had a working investment strategy and wanted to launch a fund on it.
 
 ## How I conducted research
 
----
-
 1. **Collected links from the top results**
 
 First, I just opened all the links that the search engine showed for the result "crypto investment funds". From there I managed to find out the following:
 
 - Examples of such projects exist and are implemented even in the US (where regulation is at a serious level)
-
----
 
 2. **I highlighted the main providers**
 
@@ -36,13 +32,9 @@ After following a dozen links, I managed to find out:
 - What companies are in the business of creating crypto funds
 - What is their strategy and what assets are contained in the fund
 
----
-
 1. **Discovered how these products differ from each other**
 - For example, that some funds invest in blockchain companies, some in cryptocurrencies, and others in crypto derivatives.
 - Some funds are available to any investor through traditional brokers, and some have tokenized shares in the form of a coin on the blockchain.
-
----
 
 1. **Getting into asset tokenization**
 
@@ -54,35 +46,23 @@ Here I had to figure out what asset tokenization is, and how such funds attract 
 
 ![Untitled](images/01.jpg)
 
----
-
 1. **Identified the parameters without which an investment fund cannot exist**
 
 Gradually I gathered more parameters that relate to the creation of an investment fund: listing, jurisdiction, custodians, market makers, asset structure, fund administrators, auditors, etc.
-
----
 
 1. **Structured this information on the Miro board.**
 
 I did this so that the story would be coherent and consistent, and it would be easier to present the research.
 
----
-
 1. **Made conclusions for myself.**
-
----
 
 1. **Presented the result of the work to the partners**
 
 Started with examples of funds in traditional finance and gradually switched to tokenized funds, in which the entire infrastructure and the stock itself is on blockchain in the form of a smart contract
 
----
-
 ## Results
 
 - The partners of the founder decided to launch an investment fund, but to find a different legal and technical structure.
-
----
 
 ![Untitled](images/02.png)
 

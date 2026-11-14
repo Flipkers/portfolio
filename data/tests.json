@@ -1,6 +1,7 @@
 [
   {
     "id": "bnpl-b2b",
+    "year": 2023,
     "tags": [
       "Fintech"
     ],
@@ -14,6 +15,7 @@
   },
   {
     "id": "yandex-practicum",
+    "year": 2023,
     "tags": [
       "Edtech"
     ],
