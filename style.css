@@ -6,6 +6,7 @@ html {
 
 body {
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
   background: #fff;
   color: #111;
   line-height: 1.55;
@@ -63,17 +64,18 @@ h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 
 .services { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
 .services span {
-  border: 1px solid #111;
+  border: 1px solid #ddd;
   padding: 6px 14px;
   font-size: 13px;
-  border-radius: 20px;
+  border-radius: 2px;
 }
 
 section {
   margin-bottom: 80px;
   scroll-margin-top: 88px;
 }
-h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
+h2 { font-size: 24px; font-weight: 500; margin-bottom: 34px; }
+.modal-content h2 { margin-bottom: 24px; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
 
@@ -118,12 +120,12 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 
 .card > *:not(.card-media) { padding-left: 18px; padding-right: 18px; }
 .card .year { font-size: 12px; color: #888; padding-top: 16px; }
-.card h3 { font-size: 17px; font-weight: 500; margin: 6px 0 8px; }
+.card h3 { font-size: 19px; font-weight: 500; margin: 6px 0 8px; }
 .card p { font-size: 14px; color: #333; margin-bottom: 12px; }
 .card .tags { padding-bottom: 16px; }
 .card .tag {
   display: inline-block;
-  font-size: 11px;
+  font-size: 12px;
   border: 1px solid #ddd;
   padding: 2px 8px;
   margin-right: 4px;
@@ -138,6 +140,7 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 .progress-text { font-size: 12px; color: #888; margin-top: 4px; }
 
 #contacts a { color: #111; }
+#contacts p + p { margin-top: 12px; }
 
 .modal {
   display: none;
@@ -204,7 +207,8 @@ body.case-page {
 body.case-page > header,
 body.case-page > main {
   width: 100%;
-  max-width: 720px;
+  /* 24px padding each side, so the text measure stays 66ch */
+  max-width: calc(66ch + 48px);
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
@@ -222,9 +226,13 @@ body.case-page > header {
   max-width: none;
   margin: 0;
 }
+.case-article h1 {
+  font-size: 32px;
+  font-weight: 500;
+}
 .case-article .case-meta {
   color: #666;
-  margin: 8px 0 20px;
+  margin: 14px 0 20px;
   font-size: 14px;
 }
 .case-article .case-cover,
@@ -243,7 +251,7 @@ body.case-page > header {
   background-color: transparent;
 }
 .case-article .case-body img {
-  margin: 12px 0;
+  margin: 22px 0;
 }
 .case-article .case-cover.placeholder {
   aspect-ratio: 16 / 9;
@@ -260,13 +268,13 @@ body.case-page > header {
 .case-article .case-body h3 {
   font-size: 18px;
   font-weight: 500;
-  margin: 24px 0 10px;
+  margin: 2em 0 0.65em;
 }
 .case-article .case-body ul {
   padding-left: 1.2em;
-  margin-bottom: 12px;
+  margin-bottom: 1.05em;
 }
-.case-article .case-body p { margin-bottom: 12px; }
+.case-article .case-body p { margin-bottom: 1.05em; }
 .case-article .case-body p:has(> img:only-child) {
   margin: 0;
   padding: 0;
