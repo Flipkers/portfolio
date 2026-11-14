@@ -71,5 +71,17 @@
     "image": "cases/merchant-onboarding/images/cover.png",
     "path": "cases/merchant-onboarding",
     "lang_original": "en"
+  },
+  {
+    "id": "crypto-psp",
+    "year": 2023,
+    "tags": ["Crypto"],
+    "title_ru": "Исследование рынка крипто-PSP",
+    "title_en": "Market research on crypto PSP market",
+    "summary_ru": "Руководил командой по автоматизации процессов исследования рынка для Calypso, повысив эффективность и точность.",
+    "summary_en": "Led a team to automate market research processes for Calypso, enhancing efficiency and accuracy.",
+    "image": "cases/crypto-psp/images/cover.png",
+    "path": "cases/crypto-psp",
+    "lang_original": "en"
   }
 ]
