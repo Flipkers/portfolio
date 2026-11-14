@@ -142,6 +142,11 @@ function renderCourses() {
   }).join('');
 }
 
+function metaLine(item) {
+  const tags = (item.tags || []).join(', ');
+  return item.year ? `${item.year} · ${tags}` : tags;
+}
+
 function renderTests() {
   const grid = document.getElementById('tests-grid');
   if (!grid) return;
@@ -149,7 +154,8 @@ function renderTests() {
     const title = pick(item, 'title');
     const summary = pick(item, 'summary');
     const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    return `<div class="card" role="button" tabindex="0" data-type="test" data-id="${escapeAttr(item.id)}">${mediaBlock(item.image, title)}<div class="card-body"><div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></div>`;
+    const year = item.year ? `<div class="year">${escapeHtml(String(item.year))}</div>` : '';
+    return `<a class="card" href="test.html?id=${encodeURIComponent(item.id)}">${mediaBlock(item.image, title)}<div class="card-body">${year}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
   }).join('');
 }
 
@@ -290,7 +296,7 @@ function bindHomeEventsOnce() {
   bindNavToggleOnce();
 }
 
-/** Minimal Markdown → HTML (headings, lists, paragraphs, bold, images, links). */
+/** Minimal Markdown → HTML (headings, lists, tables, paragraphs, bold, images, links). */
 function renderMarkdown(md, basePath) {
   const lines = String(md || '').replace(/\r\n/g, '\n').split('\n');
   const html = [];
@@ -310,13 +316,35 @@ function renderMarkdown(md, basePath) {
     inList = false;
   };
 
-  for (const raw of lines) {
-    const line = raw.trimEnd();
+  const isTableRow = (value) => value.startsWith('|') && value.endsWith('|');
+  const isTableRule = (value) => /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(value);
+  const tableCells = (value) => value.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trimEnd();
     const trimmed = line.trim();
 
-    if (!trimmed || trimmed.startsWith('<!--')) {
+    if (!trimmed || trimmed.startsWith('<!--') || trimmed === '<aside>' || trimmed === '</aside>') {
       flushParagraph();
       closeList();
+      continue;
+    }
+
+    if (isTableRow(trimmed)) {
+      flushParagraph();
+      closeList();
+      const rows = [];
+      while (i < lines.length && isTableRow(lines[i].trim())) {
+        const row = lines[i].trim();
+        if (!isTableRule(row)) rows.push(tableCells(row));
+        i += 1;
+      }
+      i -= 1;
+      if (rows.length) {
+        const head = rows[0].map((cell) => `<th>${inlineMarkdown(cell, basePath)}</th>`).join('');
+        const body = rows.slice(1).map((row) => `<tr>${row.map((cell) => `<td>${inlineMarkdown(cell, basePath)}</td>`).join('')}</tr>`).join('');
+        html.push(`<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
+      }
       continue;
     }
 
@@ -419,7 +447,7 @@ async function loadCaseMarkdown(item) {
   return { html: `<p>${escapeHtml(summary)}</p>`, basePath };
 }
 
-async function renderCasePage() {
+async function renderDetailPage(list) {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   const article = document.getElementById('case-article');
@@ -431,14 +459,14 @@ async function renderCasePage() {
     toggle.addEventListener('click', () => {
       currentLang = currentLang === 'ru' ? 'en' : 'ru';
       localStorage.setItem('portfolio-lang', currentLang);
-      renderCasePage();
+      renderDetailPage(list);
     });
   }
 
   applyI18n();
   if (toggle) toggle.textContent = currentLang === 'ru' ? 'EN' : 'RU';
 
-  const item = findById(cases, id);
+  const item = findById(list, id);
   if (!item) {
     article.innerHTML = `<p class="case-error">${t('case.missing')}</p>`;
     document.title = t('case.missing');
@@ -466,7 +494,7 @@ async function renderCasePage() {
 
   article.innerHTML = `
     <h1>${escapeHtml(title)}</h1>
-    <p class="case-meta">${escapeHtml(String(item.year))} · ${escapeHtml((item.tags || []).join(', '))}</p>
+    <p class="case-meta">${escapeHtml(metaLine(item))}</p>
     ${cover}
     <div class="case-body">${bodyHtml}</div>
   `;
@@ -503,8 +531,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  if (document.body.classList.contains('case-page')) {
-    await renderCasePage();
+  if (document.body.classList.contains('test-page')) {
+    await renderDetailPage(testTasks);
+  } else if (document.body.classList.contains('case-page')) {
+    await renderDetailPage(cases);
   } else {
     bindHomeEventsOnce();
     renderHome();

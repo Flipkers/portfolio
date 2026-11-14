@@ -1,0 +1,14 @@
+{
+  "id": "ai-startup-discovery",
+  "tags": [
+    "AI"
+  ],
+  "title_ru": "Product Discovery для нового продукта в AI Startup",
+  "title_en": "Product Discovery for a new product at an AI startup",
+  "summary_ru": "Для начала надо понять, что представляет из себя эта гипотеза, и что мы под ней подразумеваем.",
+  "summary_en": "First we need to understand what this hypothesis is and what we mean by it.",
+  "cover": "images/image.png",
+  "lang_original": "ru",
+  "notion_page_id": "32244bc3f6b48003ae0ecd8db78556e2",
+  "year": 2025
+}

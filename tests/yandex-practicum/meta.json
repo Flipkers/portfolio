@@ -1,0 +1,13 @@
+{
+  "id": "yandex-practicum",
+  "tags": [
+    "Edtech"
+  ],
+  "title_ru": "Запуск курса PR-менеджера для Яндекс Практикума (RU)",
+  "title_en": "Launching of PR-Manager course for Yandex.Practicum (RU)",
+  "summary_ru": "Окей, мы решили делать курс. А есть ли потребность?",
+  "summary_en": "Okay, we decided to make a course. Is there a need?",
+  "cover": "images/3.png",
+  "lang_original": "ru",
+  "notion_page_id": "18444bc3f6b481598b1ec982ba97237b"
+}

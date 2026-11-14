@@ -282,11 +282,29 @@ body.case-page > header {
 .case-article .case-body {
   line-height: 1.65;
 }
+.case-article .case-body h2,
 .case-article .case-body h3 {
   font-size: 18px;
   font-weight: 500;
   margin: 24px 0 10px;
 }
+.case-article .case-body .table-wrap {
+  overflow-x: auto;
+  margin: 0 0 16px;
+}
+.case-article .case-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.case-article .case-body th,
+.case-article .case-body td {
+  border: 1px solid #eee;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.case-article .case-body th { font-weight: 500; }
 .case-article .case-body ul {
   padding-left: 1.2em;
   margin-bottom: 12px;

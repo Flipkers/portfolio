@@ -1,62 +1,126 @@
 [
   {
-    "id": "b2broker-roadmap",
-    "year": 2025,
-    "tags": ["Crypto"],
-    "title_ru": "Квартальный Roadmap для B2Broker",
-    "title_en": "Quarterly Roadmap for B2Broker",
-    "summary_ru": "Квартальный roadmap для B2Broker.",
-    "summary_en": "Quarterly roadmap for B2Broker.",
-    "image": ""
+    "id": "bnpl-b2b",
+    "tags": [
+      "Fintech"
+    ],
+    "title_ru": "Запуск BNPL-сервиса для B2B (RU)",
+    "title_en": "Launching BNPL service for B2B (RU)",
+    "summary_ru": "Итак мы работаем в Контур.Экстерне и сервис позволяет компаниям загружать финансовую отчетность в налоговую онлайн.",
+    "summary_en": "We work in Kontur.Extern, and the service lets companies file financial reports with the tax office online.",
+    "image": "tests/bnpl-b2b/images/2.png",
+    "path": "tests/bnpl-b2b",
+    "lang_original": "ru"
   },
   {
-    "id": "lesta-games",
-    "year": 2025,
-    "tags": ["Gaming"],
-    "title_ru": "Решение кейсов для Lesta Games",
-    "title_en": "Case solutions for Lesta Games",
-    "summary_ru": "Решение кейсов для Lesta Games.",
-    "summary_en": "Case solutions for Lesta Games.",
-    "image": ""
-  },
-  {
-    "id": "soul-publishing",
-    "year": 2025,
-    "tags": ["AI"],
-    "title_ru": "Техническая спецификация для Soul Publishing",
-    "title_en": "Technical specification for Soul Publishing",
-    "summary_ru": "Техническая спецификация для Soul Publishing.",
-    "summary_en": "Technical specification for Soul Publishing.",
-    "image": ""
-  },
-  {
-    "id": "ai-startup-discovery",
-    "year": 2025,
-    "tags": ["AI"],
-    "title_ru": "Product Discovery для AI Startup",
-    "title_en": "Product Discovery for AI Startup",
-    "summary_ru": "Product Discovery для нового продукта в AI-стартапе.",
-    "summary_en": "Product Discovery for a new product in an AI startup.",
-    "image": ""
-  },
-  {
-    "id": "finom-invoice",
-    "year": 2024,
-    "tags": ["Fintech"],
-    "title_ru": "Designing automatic invoice collection for FINOM",
-    "title_en": "Designing automatic invoice collection for FINOM",
-    "summary_ru": "Техническая спецификация системы автоматического сбора инвойсов для FINOM.",
-    "summary_en": "Created a technical specification for FINOM's automatic invoice collection system.",
-    "image": ""
+    "id": "yandex-practicum",
+    "tags": [
+      "Edtech"
+    ],
+    "title_ru": "Запуск курса PR-менеджера для Яндекс Практикума (RU)",
+    "title_en": "Launching of PR-Manager course for Yandex.Practicum (RU)",
+    "summary_ru": "Окей, мы решили делать курс. А есть ли потребность?",
+    "summary_en": "Okay, we decided to make a course. Is there a need?",
+    "image": "tests/yandex-practicum/images/3.png",
+    "path": "tests/yandex-practicum",
+    "lang_original": "ru"
   },
   {
     "id": "salmon-onboarding",
     "year": 2024,
-    "tags": ["Fintech"],
-    "title_ru": "Designing mobile onboarding for Salmon Credit Line",
+    "tags": [
+      "Fintech"
+    ],
+    "title_ru": "Проектирование мобильного онбординга для Salmon Credit Line",
     "title_en": "Designing mobile onboarding for Salmon Credit Line",
-    "summary_ru": "Мобильный онбординг для Salmon Credit Line.",
-    "summary_en": "Developed a comprehensive mobile onboarding process for Salmon Credit Line.",
-    "image": ""
+    "summary_ru": "Разработал комплексный мобильный онбординг для Salmon Credit Line с фокусом на привлечение и удержание пользователей.",
+    "summary_en": "Developed a comprehensive mobile onboarding process for Salmon Credit Line, focusing on user acquisition and retention.",
+    "image": "tests/salmon-onboarding/images/1.png",
+    "path": "tests/salmon-onboarding",
+    "lang_original": "en"
+  },
+  {
+    "id": "finom-invoice",
+    "year": 2024,
+    "tags": [
+      "Fintech"
+    ],
+    "title_ru": "Проектирование автоматического сбора инвойсов для FINOM",
+    "title_en": "Designing automatic invoice collection for FINOM",
+    "summary_ru": "Составил техническую спецификацию системы автоматического сбора инвойсов для FINOM.",
+    "summary_en": "Created a technical specification for FINOM's automatic invoice collection system.",
+    "image": "tests/finom-invoice/images/UX_Design_Basics_Presentation.png",
+    "path": "tests/finom-invoice",
+    "lang_original": "en"
+  },
+  {
+    "id": "b2broker-roadmap",
+    "year": 2025,
+    "tags": [
+      "Crypto"
+    ],
+    "title_ru": "Квартальный Roadmap для B2Broker",
+    "title_en": "Quarterly Roadmap for B2Broker",
+    "summary_ru": "Это симуляция, чтобы показать ход мысли. Большая часть — допущения, не реальные данные, только для демонстрации.",
+    "summary_en": "This is all simulation, to show my thinking process. Most things are assumptions, aren't real, just for demonstration.",
+    "image": "tests/b2broker-roadmap/images/image.png",
+    "path": "tests/b2broker-roadmap",
+    "lang_original": "en"
+  },
+  {
+    "id": "lesta-games",
+    "year": 2025,
+    "tags": [
+      "Gaming"
+    ],
+    "title_ru": "Решение кейсов для Lesta Games",
+    "title_en": "Case solutions for Lesta Games",
+    "summary_ru": "Тестовое задание для Lesta Games. Выполнил Леонид Михалев",
+    "summary_en": "Test task for Lesta Games. Completed by Leonid Mikhalev",
+    "image": "tests/lesta-games/images/image.png",
+    "path": "tests/lesta-games",
+    "lang_original": "ru"
+  },
+  {
+    "id": "soul-publishing",
+    "year": 2025,
+    "tags": [
+      "AI"
+    ],
+    "title_ru": "Техническая спецификация для Soul Publishing",
+    "title_en": "Technical specification for Soul Publishing",
+    "summary_ru": "Задача — создать систему, которая автоматически отслеживает использование музыки в видео TikTok у партнёрских авторов и считает выплаты по числу просмотров.",
+    "summary_en": "The problem is to create a system that automates the tracking of music usage in TikTok videos created by partnered creators, and calculates payouts based on the number of views these videos generate.",
+    "image": "tests/soul-publishing/images/image.png",
+    "path": "tests/soul-publishing",
+    "lang_original": "en"
+  },
+  {
+    "id": "ai-startup-discovery",
+    "year": 2025,
+    "tags": [
+      "AI"
+    ],
+    "title_ru": "Product Discovery для нового продукта в AI Startup",
+    "title_en": "Product Discovery for a new product at an AI startup",
+    "summary_ru": "Для начала надо понять, что представляет из себя эта гипотеза, и что мы под ней подразумеваем.",
+    "summary_en": "First we need to understand what this hypothesis is and what we mean by it.",
+    "image": "tests/ai-startup-discovery/images/image.png",
+    "path": "tests/ai-startup-discovery",
+    "lang_original": "ru"
+  },
+  {
+    "id": "project-planning",
+    "year": 2025,
+    "tags": [
+      "Tech"
+    ],
+    "title_ru": "Планирование проекта",
+    "title_en": "Project planning",
+    "summary_ru": "Сначала я провожу короткий звонок с клиентом.",
+    "summary_en": "First I have a short call with the client.",
+    "image": "tests/project-planning/images/image.png",
+    "path": "tests/project-planning",
+    "lang_original": "ru"
   }
 ]
