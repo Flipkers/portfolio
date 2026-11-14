@@ -49,14 +49,14 @@ These calculations allowed me to create a ranking for each line of business
 
 1. Data visualization
 
-![Дизайн без названия-4.png](images/03.png)
+![Дизайн без названия-4.png](images/04.png)
 
 Having displayed this rating in the form of graphs, I was able to find out the following:
 
 - Which competitors are strong in each area (by the number of features in each area)
 - Where on this graph is our product
 
-![glow-5.png](images/04.png)
+![glow-5.png](images/03.png)
 
 We were also able to compare ourselves in terms of supported blockchains:
 
