@@ -1,0 +1,14 @@
+{
+  "id": "soul-publishing",
+  "tags": [
+    "AI"
+  ],
+  "title_ru": "Техническая спецификация для Soul Publishing",
+  "title_en": "Technical specification for Soul Publishing",
+  "summary_ru": "Задача — создать систему, которая автоматически отслеживает использование музыки в видео TikTok у партнёрских авторов и считает выплаты по числу просмотров.",
+  "summary_en": "The problem is to create a system that automates the tracking of music usage in TikTok videos created by partnered creators, and calculates payouts based on the number of views these videos generate.",
+  "cover": "images/image.png",
+  "lang_original": "en",
+  "notion_page_id": "32244bc3f6b480e39e72c1a6c2dd4ed8",
+  "year": 2025
+}
