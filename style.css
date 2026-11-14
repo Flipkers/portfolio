@@ -99,7 +99,8 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
   aspect-ratio: 16 / 10;
   background: #f3f3f3;
   display: block;
-  object-fit: contain;
+  object-fit: cover; /* fill media box — no grey letterbox gutters */
+  object-position: center;
   max-height: 200px;
 }
 
