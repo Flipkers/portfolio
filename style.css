@@ -483,6 +483,16 @@ body.case-page > header {
 }
 .case-loading, .case-error { color: #666; }
 
+@media (max-width: 880px) {
+  .hero-text .bio {
+    line-height: 1.46;
+  }
+
+  html[lang="en"] .hero-text .bio {
+    line-height: 1.2;
+  }
+}
+
 @media (max-width: 720px) {
   html {
     /* One short sticky bar. Section scroll-margin stays 0 so the offsets do not stack. */
