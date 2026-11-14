@@ -186,7 +186,16 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 }
 .modal-body-text { line-height: 1.6; }
 
-.case-article { max-width: 720px; }
+/* Case page: one centered column (nav + article share width) */
+body.case-page {
+  max-width: 720px;
+}
+
+.case-article {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
 .case-article .case-meta {
   color: #666;
   margin: 8px 0 20px;
@@ -194,10 +203,14 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 }
 .case-article .case-cover {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 24px;
-  background: #f8f8f8;
+  height: auto;
   display: block;
+  margin: 0 0 24px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  object-fit: cover;
+  object-position: center;
 }
 .case-article .case-cover.placeholder {
   aspect-ratio: 16 / 9;
@@ -206,7 +219,7 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
   justify-content: center;
   color: #999;
   font-size: 13px;
-  border: 1px solid #eee;
+  background: #f3f3f3;
 }
 .case-article .case-body {
   line-height: 1.65;
