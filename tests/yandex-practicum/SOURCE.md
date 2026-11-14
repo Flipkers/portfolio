@@ -5,4 +5,4 @@
 - Original language: ru
 - Cover: `3.png` copied from this task's own folder
 - Body images: `Untitled.png`
-- Industry and End Date removed. Nested Notion database dumps were not copied; their labels stay in the text. External links kept.
+- Industry and End Date removed. Inline Notion databases are markdown tables. External links kept.

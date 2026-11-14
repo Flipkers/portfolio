@@ -4,14 +4,14 @@ This is all simulation, to show my thinking process. Most things are assumptions
 
 ### Product Definition
 
-We’re building a **mobile-first crypto wallet** designed for emerging markets. It enables users to:
+We’re building a mobile-first crypto wallet designed for emerging markets. It enables users to:
 
 - Onboard easily using email (no seed phrase at signup)
 - Store and swap major tokens (ETH, BTC, USDT)
 - Withdraw crypto to fiat (local bank or card) with minimal friction
 - Earn through staking and rewards — once trust is built
 
-The product targets **crypto-curious and light users** in regions like LATAM, India, and Southeast Asia — people who want practical financial tools, not DeFi complexity.
+The product targets crypto-curious and light users in regions like LATAM, India, and Southeast Asia — people who want practical financial tools, not DeFi complexity.
 
 ### Before Roadmap
 
@@ -23,13 +23,13 @@ Roadmap starts not from features, but from company’s goals. So our first step 
 - $100k+ in fiat withdrawal volume
 - 95% regulatory compliance (no violations)
 
-**Objective 2: Deliver core wallet experience**
+Objective 2: Deliver core wallet experience
 
 - 80% onboarding completion (without seed phrase friction)
 - 30% of users complete at least one swap
 - <5% support tickets on basic wallet operations
 
-**Objective 3: Early growth signals**
+Objective 3: Early growth signals
 
 - 200+ successful referrals
 - 15% week-over-week user growth
@@ -38,8 +38,6 @@ Roadmap starts not from features, but from company’s goals. So our first step 
 Our OKR is answer to “WHAT” question. After knowing “WHAT” we need to understand “HOW”. Our “HOW” is what we’re going to build to accomplish these goals. Before our feature planning, we need to build a context, in which product gonna exist.
 
 It means understand the needs of the market, its users, and stakeholders.
-
----
 
 ### Product Discovery
 
@@ -58,11 +56,11 @@ I compared the most popular crypto wallets among each other. Here is the result:
 | Zerion | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
 | Exodus | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
 
-**Competitive analysis shows us several things:**
+Competitive analysis shows us several things:
 
 - All wallets provide swaps → it’s table stakes
-- Staking is common, but **not universal** → opportunity for retention
-- **Crypto-to-fiat is completely missing** → massive gap we can address
+- Staking is common, but not universal → opportunity for retention
+- Crypto-to-fiat is completely missing → massive gap we can address
 - Only a couple of wallets avoid immediate seed setup → onboarding is a major barrier
 - Educational UX is rare, despite complexity of crypto
 - UI is usually designed for pros, not beginners
@@ -83,14 +81,12 @@ Since this is a demonstration, I asume the input from crypto stakeholders based 
 
 We also talked to the users, and created 2 personas as a result.
 
-| **Persona** | **Maria (27, Argentina)** | **Ravi (33, India)** |
+| Persona | Maria (27, Argentina) | Ravi (33, India) |
 | --- | --- | --- |
-| **Background** | Freelance designer, receives USDT | Tech support worker, crypto-curious |
-| **Motivations** | Protect savings from inflation, convert to fiat | Explore staking, try token swapping |
-| **Pains** | Afraid of seed phrase loss, confused by technical UX | Doesn’t understand staking/gas, dislikes upfront KYC |
-| **Behaviors** | Mobile-first, uses WhatsApp/Telegram, tried Binance | Has Trust Wallet, doesn’t use it, prefers messenger-based sharing |
-
----
+| Background | Freelance designer, receives USDT | Tech support worker, crypto-curious |
+| Motivations | Protect savings from inflation, convert to fiat | Explore staking, try token swapping |
+| Pains | Afraid of seed phrase loss, confused by technical UX | Doesn’t understand staking/gas, dislikes upfront KYC |
+| Behaviors | Mobile-first, uses WhatsApp/Telegram, tried Binance | Has Trust Wallet, doesn’t use it, prefers messenger-based sharing |
 
 ### Product Hypotheses
 
@@ -107,55 +103,49 @@ Our product hypotheses based on what users said, stakeholder requirements, and m
 
 Now we going to convert our hypotheses into real Product Roadmap. As previously we started we’re going top-bottom approach, from themes, to epics and features.
 
----
-
 ### Product Themes
 
 I derived the following five themes from earlier hypotheses, user needs, and business OKRs:
 
 | Theme | Description | Why it matters |
 | --- | --- | --- |
-| **Onboarding & Simplicity** | Make it easy for new users to create and access their wallet | Most users fear seed phrases and complexity |
-| **Core Wallet Experience** | Enable users to store, swap, and withdraw assets | Functional foundation of any wallet |
-| **Compliance & Risk Management** | Implement KYC and safeguards for regulated actions | Required for fiat, improves trust |
-| **Value & Retention** | Help users earn from their assets via staking/rewards | Needed to improve engagement and 7-day retention |
-| **Growth & Virality** | Allow users to invite others and expand organically | Aligns with business priority of fast user growth |
-
----
+| Onboarding & Simplicity | Make it easy for new users to create and access their wallet | Most users fear seed phrases and complexity |
+| Core Wallet Experience | Enable users to store, swap, and withdraw assets | Functional foundation of any wallet |
+| Compliance & Risk Management | Implement KYC and safeguards for regulated actions | Required for fiat, improves trust |
+| Value & Retention | Help users earn from their assets via staking/rewards | Needed to improve engagement and 7-day retention |
+| Growth & Virality | Allow users to invite others and expand organically | Aligns with business priority of fast user growth |
 
 ## Roadmap Planning
 
 I prioritised epics and scheduled them across Q3 and Q4 based on four inputs:
 
-1. **User Value**
+1. User Value
 
 - What solves the most urgent user problems?
 
 - What reduces friction and builds trust?
 
-2. **Strategic Leverage** (alignment with OKRs)
+2. Strategic Leverage (alignment with OKRs)
 
 - Q3 focuses on activation and usability (wallet, swap, onboarding)
 
 - Q4 focuses on growth and monetization (staking, referral, fiat)
 
-3. **Stakeholder Constraints**
+3. Stakeholder Constraints
 
 - Backend team is limited in Q3 → no staking infrastructure until Q4
 
 - Legal requires KYC only before fiat → onboarding stays frictionless early on
 
-4. **Technical & Delivery Risk**
+4. Technical & Delivery Risk
 
 - We ship what’s feasible quickly: email auth, balance viewer, swap (via 1inch)
 
 - We delay infra-heavy and risky items (fiat payouts, staking) to Q4
 
----
-
 ### Epics & Features
 
-Once product hypotheses were defined, I grouped them into **Epics** — high-level initiatives that deliver value aligned with user needs, stakeholder input, and technical feasibility.
+Once product hypotheses were defined, I grouped them into Epics — high-level initiatives that deliver value aligned with user needs, stakeholder input, and technical feasibility.
 
 | Theme | Epic Name | Quarter | Description |
 | --- | --- | --- | --- |
@@ -171,15 +161,13 @@ Once product hypotheses were defined, I grouped them into **Epics** — high-lev
 | Growth & Virality | Referral System (part 1) | Q3 | Basic referral link generation |
 | Growth & Virality | Referral Expansion | Q4 | Full flow: tracking, bonuses, messenger UX |
 
----
-
 ### How I Approached This Roadmap
 
-This roadmap is not just a timeline of features — it's a layered response to market gaps, stakeholder constraints, and user needs. My goal was not to blindly build features, but to show how product thinking drives **"what"**, **"when"**, and **"why"**.
+This roadmap is not just a timeline of features — it's a layered response to market gaps, stakeholder constraints, and user needs. My goal was not to blindly build features, but to show how product thinking drives "what", "when", and "why".
 
 I started by simulating business OKRs — to understand what success looks like.
 
-Then I collected market analysis and stakeholder input, and created user personas — to see **what actually matters** to users and the team.
+Then I collected market analysis and stakeholder input, and created user personas — to see what actually matters to users and the team.
 
 Each hypothesis was derived from that input, and then translated into product themes and features.
 
@@ -190,4 +178,3 @@ I explicitly chose to:
 - Avoid building features for power users — and instead aim at first-time wallet users
 - Frame everything around business value, not just functionality
 
----

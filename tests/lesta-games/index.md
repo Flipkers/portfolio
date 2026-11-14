@@ -1,14 +1,14 @@
 ### Test task for Lesta Games. Completed by Leonid Mikhalev
 
-**Case 1: A missed deadline**
+Case 1: A missed deadline
 
-**Immediate steps:**
+Immediate steps:
 
 1. The first thing I see to do is call the team. On the call I would clarify which tasks are not ready, where the bottlenecks are right now, and what will be ready by tomorrow.
 2. Then I would gather the assets that are ready and that we can show.
 3. I would shift the team’s focus, and my own planning, to “we must show X”, instead of “bring the current work to perfection”.
 
-**Communication with the client:**
+Communication with the client:
 
 Next we have to talk to the client. This should happen in parallel, and we should tell them immediately and honestly:
 
@@ -16,7 +16,7 @@ Next we have to talk to the client. This should happen in parallel, and we shoul
 
 What matters here is to show that there is a way out, rather than focusing on the fact that there is a problem.
 
-**A strategy to avoid situations like this:**
+A strategy to avoid situations like this:
 
 There is no single fix that will solve the problem once and for all, but I can suggest a few preventive steps that can improve things in the future.
 
@@ -24,9 +24,7 @@ There is no single fix that will solve the problem once and for all, but I can s
 - set aside a 10–15% time buffer for more accurate planning
 - work on the definition of done, so a misunderstanding about unreadiness does not surface on the last day.
 
----
-
-**Case 2: Planning a graphic production project**
+Case 2: Planning a graphic production project
 
 I can see that the project stages depend on each other: the final art is impossible without finished concepts and 3D models, and the print layouts depend on completed posters.
 
@@ -36,7 +34,7 @@ For each stage I will set aside days for approval and small fixes, using 10–20
 
 Stage 2 (3D models) can be started partly in parallel with the end of the first stage, so the team is not idle. Stage 3 is critical and starts only after the concepts and models are ready. Stage 4 is the final check before delivery to the client.
 
-**Project plan:**
+Project plan:
 
 1. Concept art (1–6 June) — the concept artist creates and agrees the visual style, composition, and color palette of the whole series. I include 1 day for client approval and small fixes.
 2. 3D models (3–12 June) — the 3D artist models the characters and key objects. Partly in parallel with stage 1, to cut idle time. 1–2 days added for fixes after review.
@@ -45,11 +43,9 @@ Stage 2 (3D models) can be started partly in parallel with the end of the first 
 
 Total minimum time: ~31–32 working days including approvals and fixes.
 
----
+Case 3: The result does not match the client’s expectations
 
-**Case 3: The result does not match the client’s expectations**
-
-**My steps**
+My steps
 
 1. What matters here is not to argue or defend yourself, but to listen and clarify exactly where the result misses expectations, and in which places.
 2. Then take the brief and compare it with the comments. This is needed to show the places where the reading could have been ambiguous.
@@ -57,7 +53,7 @@ Total minimum time: ~31–32 working days including approvals and fixes.
 - Make the corrections within the current budget and timeline, if they are not large.
 - If the changes are large, extend the brief and the timeline to fix the situation.
 
-**Actions inside the team**
+Actions inside the team
 
 With the team we also have to be careful. The job is not to blame someone and demoralize the team.
 
@@ -65,16 +61,14 @@ With the team we also have to be careful. The job is not to blame someone and de
 2. At the same time I would support the team. No accusations, focus on the process.
 3. To avoid this in the future, we make a rule: every doubtful point is raised for discussion in advance.
 
-**What to change in the process**
+What to change in the process
 
 1. It is important to agree prototypes and references before the main production starts. If that rule does not exist, we introduce it.
 2. I would make a checklist for reviewing the brief. The wording should be clear, and there should be examples and criteria).
 
----
+Case 4: A conflict of priorities and resources
 
-**Case 4: A conflict of priorities and resources**
-
-**Deciding the final priority**
+Deciding the final priority
 
 When there are many tasks and all of them seem important, I ask myself: “What happens if we do not do this today?” Against the task list, that question separates what is actually critical from what is merely wanted.
 
@@ -84,7 +78,7 @@ Looking at the tasks, there are a few things I would look at:
 2. Urgency by contract — I focus on tasks where there are obligations and hard deadlines.
 3. Dependencies and the risk of idle time — I look at tasks that pull others along. If we do not do X, we cannot move further.
 
-**The order of the tasks**
+The order of the tasks
 
 First we take:
 
@@ -98,7 +92,7 @@ First we take:
 
 5) And last we take improving the UI visuals on the designers’ initiative. The task is not critical, its priority is low, so we close it at the end.
 
-**Communication with stakeholders**
+Communication with stakeholders
 
 On communication with the team and stakeholders, I first explain to the team why we do the tasks in this order, backing it with the arguments above.
 
@@ -106,31 +100,27 @@ Separately I should talk to the team lead and explain that this is a temporary c
 
 We also need to write to the client about how the priorities changed, and why. What matters is to show that the situation stayed under the client’s control.
 
----
+Case 5: A departure from the brief during the work
 
-**Case 5: A departure from the brief during the work**
-
-**What to do with the task itself**
+What to do with the task itself
 
 First we need to assess whether the result is actually better than the brief. If yes, I will show it to the client as an alternative.
 
 If not, I record the departure, prioritize bringing it strictly back to the brief, and avoid redoing it from scratch if that is possible.
 
-**How to talk to the specialist**
+How to talk to the specialist
 
 Here I need to stay calm and not push. I need to ask the specialist why they decided to leave the brief and take another path. Then I need to explain that because of the departure we lost time and created risks for the client. I will stress that initiative is welcome, but these things have to be agreed in advance, not sent straight into production.
 
-**What to do to avoid departures**
+What to do to avoid departures
 
 This is a delicate point, because I want to avoid micromanagement, but I would insist on an internal check of the assets at 30–40% completion, so this does not happen again.
 
 Then I would introduce a rule that any departure from the brief has to be discussed and agreed. First we discuss, then we do it.
 
----
+Case 6: Writing an implementation plan
 
-**Case 6: Writing an implementation plan**
-
-Today is 1 June. To improve how we work, our department decided to create a more optimized system for storing working files **by the end of this year**. The new system will have new naming and a new storage structure. Within this task we need to design and roll out this system together with the lead specialists of the projects. The final structure has to be agreed with the head of the department. The task will require every specialist’s time to rename all existing files, and also technical support.
+Today is 1 June. To improve how we work, our department decided to create a more optimized system for storing working files by the end of this year. The new system will have new naming and a new storage structure. Within this task we need to design and roll out this system together with the lead specialists of the projects. The final structure has to be agreed with the head of the department. The task will require every specialist’s time to rename all existing files, and also technical support.
 
 Conditions:
 
@@ -142,13 +132,13 @@ Conditions:
 - Production tasks arrive at the department in a constant stream. The volume of production tasks can vary from 700 to 900 hours a month.
 - By your estimate, renaming will mean processing about 45,000 files.
 
-**Your actions**:
+Your actions:
 
 1. Make an implementation plan with dates. You do not need to invent your own file structure.
 
 Before writing the plan, the conditions need to be restated in a clearer form. For example,
 
-**Restating the conditions**
+Restating the conditions
 
 Our total capacity is 1000 hours. Typical tasks take 700 to 900 hours. That means
 
@@ -165,7 +155,7 @@ So we know we have to rename 45,000 files. To work with that number we again hav
 
 With overhead (finding errors, organizing the structure, communication) I round to 450–500 hours. And we have 200 hours available a month. So the whole job takes 2.5–3 months without vacations. With vacations and approvals, 4–5 months.
 
-**The project plan, by item**
+The project plan, by item
 
 ### Stage 1 — Analysis and preparation (1–15 June)
 

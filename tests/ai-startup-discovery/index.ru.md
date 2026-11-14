@@ -1,4 +1,4 @@
-## **1. Problem Discovery + Jobs To Be Done**
+## 1. Problem Discovery + Jobs To Be Done
 
 ### a) Расшифровка гипотезы: *AI-агенты для автоматизации SEO и GEO AI (фокус на закрытие ручных, скучных задач)*
 
@@ -13,8 +13,6 @@
 - Чем занимаются SEO агентства?
 - Какие их задачи могут считаться ручными и скучными?
 
----
-
 ### б) Разбор работы SEO-агентств и их задач
 
 Для разбора я сделал две вещи: 
@@ -24,24 +22,22 @@
 
 Вот, что у меня получилось: 
 
-**Общий перечень задач:** 
+Общий перечень задач: 
 
-1. **Исследование ключевых слов** – сбор, фильтрация, кластеризация.
-2. **Технический аудит** – проверка страниц, скорости, ошибок, дублирования.
-3. **Контент-план и оптимизация** – подбор тем, meta, заголовки.
-4. **Отчёты клиентам** – ежемесячные или по проекту, графики, таблицы.
-5. **Линкбилдинг/аутрич** – поиск доноров, коммуникация, отслеживание ссылок.
+1. Исследование ключевых слов – сбор, фильтрация, кластеризация.
+2. Технический аудит – проверка страниц, скорости, ошибок, дублирования.
+3. Контент-план и оптимизация – подбор тем, meta, заголовки.
+4. Отчёты клиентам – ежемесячные или по проекту, графики, таблицы.
+5. Линкбилдинг/аутрич – поиск доноров, коммуникация, отслеживание ссылок.
 
 Дальше предположим какие задачи отсюда являются скучными и рутинными. Мы лишь предполагаем, в идеале я бы пообщался с реальными агентствами, чтобы валидировать информацию о наборе услуг и задачах, которые вызывают больше всего проблем. 
 
-**Скучные и рутинные задачи (гипотеза):** 
+Скучные и рутинные задачи (гипотеза): 
 
 - Сбор и кластеризация ключевых слов
 - Составление отчётов и визуализаций
 - Проверка страниц на ошибки (тех-аудит)
 - Мелкие правки контента под SEO
-
----
 
 ### в) Приоритизируем и формируем JBTD
 
@@ -56,7 +52,7 @@
 | Проверка страниц на ошибки | Средняя | Да | Важно для запуска новых страниц |
 | Мелкие правки контента | Низкая | Да | Можно добавить как дополнительную фичу, но не критично |
 
-**Выбор 3 ключевых JTBD:**
+Выбор 3 ключевых JTBD:
 
 1. Сбор и кластеризация ключевых слов
 2. Автоматическое создание SEO-отчётов
@@ -64,19 +60,17 @@
 
 Теперь можем перевести наши paint points в JBTD: 
 
-**Сбор и кластеризация ключевых слов**
+Сбор и кластеризация ключевых слов
 
-- **JTBD:** Когда я веду несколько сайтов клиентов, я хочу быстро собирать и группировать ключевые запросы, чтобы экономить время и ускорить запуск контент-стратегии.
+- JTBD: Когда я веду несколько сайтов клиентов, я хочу быстро собирать и группировать ключевые запросы, чтобы экономить время и ускорить запуск контент-стратегии.
 
-**Составление отчётов и визуализаций**
+Составление отчётов и визуализаций
 
-- **JTBD:** Когда мне нужно отчитаться перед клиентом, я хочу автоматически генерировать SEO-отчёт с графиками и метриками, чтобы не тратить часы на ручную подготовку.
+- JTBD: Когда мне нужно отчитаться перед клиентом, я хочу автоматически генерировать SEO-отчёт с графиками и метриками, чтобы не тратить часы на ручную подготовку.
 
-**Проверка страниц на ошибки (тех-аудит)**
+Проверка страниц на ошибки (тех-аудит)
 
-- **JTBD:** Когда запускается новая страница или лендинг, я хочу автоматически проверять технические SEO-ошибки, чтобы минимизировать проблемы при индексации.
-
----
+- JTBD: Когда запускается новая страница или лендинг, я хочу автоматически проверять технические SEO-ошибки, чтобы минимизировать проблемы при индексации.
 
 После описания JBTD мы можем описать конкретные use cases, где будет использоваться наш ИИ-агент. 
 
@@ -84,41 +78,37 @@
 
 ### 1. Сбор и кластеризация ключевых слов
 
-**Use Case:**
+Use Case:
 
 - SEO-агент подключает AI-агента к GSC/SEMrush/Ahrefs.
 - Агент собирает список ключевых запросов для проекта.
 - Ключи автоматически группируются по intent, объёму поиска и конкурентности.
 - Агент выдаёт готовый список для копирайтеров и контент-плана.
 
-**Пример сценария:**
+Пример сценария:
 
 «Агентство запускает новый сайт клиента в нише кофеен. Вместо ручного поиска 500+ ключевых слов AI-агент собирает все запросы, делит их на категории: «информационные», «коммерческие», «локальные», и сразу выдаёт таблицу с приоритетом для контента».
 
----
-
 ### 2. Автоматическое создание SEO-отчётов
 
-**Use Case:**
+Use Case:
 
 - AI-агент подключается к GA4/GSC и собирает данные по трафику, позициям и CTR.
 - Автоматически строит графики и KPI-таблицы.
 - Формирует PDF-отчёт для клиента с инсайтами и рекомендациями.
 
-**Пример сценария:**
+Пример сценария:
 
 «Каждый месяц агентство готовит отчёт для клиента из e-commerce. AI-агент собирает данные о позициях ключевых слов, трафике, CTR и формирует PDF с графиками, который сразу можно отправить клиенту».
 
----
-
 ### 3. Технический аудит страниц
 
-**Use Case:**
+Use Case:
 
 - Агент прогоняет новые лендинги и страницы сайта через чек-лист: скорость загрузки, meta tags, H1/H2, canonical, robots.txt.
 - Автоматически выявляет ошибки и выдаёт рекомендации по исправлению.
 
-**Пример сценария:**
+Пример сценария:
 
 «Агентство запускает промо-страницу для акции. AI-агент проверяет страницу на технические SEO-ошибки, сообщает, что не настроен canonical, H1 отсутствует и скорость загрузки низкая, а также выдаёт инструкции по исправлению».
 
@@ -128,7 +118,7 @@
 
 Я бы пошел двумя путями, и выбирал между ними в зависимости от объема наших ресурсов. Интервью могут дать более высокую точность, но займут больше времени и будут стоить дороже. Создание простого прототипа займет меньше, но даст меньше понимания ЦА их их проблем, а лишь покажет реакцию в цифрах. 
 
-**Качественная проверка (интервью и опросы)**
+Качественная проверка (интервью и опросы)
 
 - Провести 5–10 коротких интервью с SEO-специалистами и агентствами.
 - Задавать вопросы:
@@ -137,7 +127,7 @@
     - «Какие процессы вы хотели бы автоматизировать прямо сейчас?»
 - Слушать, какие JTBD вызывают наибольшую боль.
 
-**Количественная проверка (минимальный тест)**
+Количественная проверка (минимальный тест)
 
 - Создать простой лендинг с описанием AI-агента для конкретного use case.
 - Привлекать аудиторию через LinkedIn/Twitter/Reddit.
@@ -148,24 +138,24 @@
 
 ⸻
 
-## **2. AI Tools & SEO AI**
+## 2. AI Tools & SEO AI
 
 ### a) Находим 3 конкурентных продукта и разбираем их позиционирование
 
 1. Первое что я сделаю это выберу инструмент, с помощью которого буду собирать информацию: это будет Perplexity. Почему? В исследовании Harward модель показала себя как наиболее точная (не смог быстро найти science paper) 
 2. Составлю промпт. Нужно найти 3 конкурентных продукта и разобрать их позиционирование (название, аудиторию, ключевые фичи, боли пользователей, позиционирование на рынке. Использовать буду такую комбинацию: 
 
-**"Find 3 modern AI-first SEO tools (AI agents) that automate routine SEO tasks such as keyword research, content planning, SEO reporting, and technical audits. For each tool, provide:**
+"Find 3 modern AI-first SEO tools (AI agents) that automate routine SEO tasks such as keyword research, content planning, SEO reporting, and technical audits. For each tool, provide:
 
-1. **Name**
-2. **Key features / functions**
-3. **Target audience (SEO agencies, SMBs, freelancers)**
-4. **User pain points it solves**
-5. **Market positioning – how the tool is marketed, the main value proposition, and what differentiates it from competitors"**
+1. Name
+2. Key features / functions
+3. Target audience (SEO agencies, SMBs, freelancers)
+4. User pain points it solves
+5. Market positioning – how the tool is marketed, the main value proposition, and what differentiates it from competitors"
 
 И вот какие результаты выдала мне LLM: 
 
-| **Name** | **Key Features / Functions** | **Target Audience** | **User Pain Points Solved** | **Market Positioning & Differentiators** |
+| Name | Key Features / Functions | Target Audience | User Pain Points Solved | Market Positioning & Differentiators |
 | --- | --- | --- | --- | --- |
 | SEO.ai | AI-driven content creation in 50+ languages, predictive keyword intelligence, dynamic content gap analysis, AI-powered internal linking, real-time SEO optimization, interactive AI chat assistant. | Content teams, SEO professionals, SMBs | Automates complex SEO tasks, predictive trend spotting, seamless content creation with SEO, internal linking automation. | AI-first tool built from ground up for SEO with deep automation; positioned as a futuristic, comprehensive AI SEO solution for efficiency and scale. |
 | Nightwatch SEO AI Agent | AI chatbot for keyword research, clustering, competitor analysis, SEO-friendly content generation, technical SEO issue identification, integration with Google tools. | SEO professionals, agencies | Automates keyword and content organization, detects technical issues, supports hands-off SEO task execution. | Positioned as a 24/7 AI SEO assistant linked to Google data for accuracy; stands out by interactive AI chatbot format explicitly tailored for SEO. |
@@ -183,39 +173,39 @@
 
 Я выбираю второй путь: получить некую температуру по больнице и уже с этим работать. Для этого создадим еще один промпт и отправим его в Perplexity:
 
-**“Based on user reviews, testimonials, and comparison articles available online, summarize the 5 most common user pain points for the following AI SEO tools:**
+“Based on user reviews, testimonials, and comparison articles available online, summarize the 5 most common user pain points for the following AI SEO tools:
 
-1. **SEO.ai**
-2. **Nightwatch SEO AI Agent**
-3. **Chatsonic SEO AI Agent**
+1. SEO.ai
+2. Nightwatch SEO AI Agent
+3. Chatsonic SEO AI Agent
 
-**For each tool, list its specific user pain points. Then, provide a short synthesis: what are the 5 most common pain points across all three tools?”**
+For each tool, list its specific user pain points. Then, provide a short synthesis: what are the 5 most common pain points across all three tools?”
 
-| **Tool** | **Specific User Pain Points** |
+| Tool | Specific User Pain Points |
 | --- | --- |
-| **SEO.ai** | - AI content sometimes sounds mechanical or robotic |
+| SEO.ai | - AI content sometimes sounds mechanical or robotic |
 |  | - Requires human oversight and fact-checking |
 |  | - Uneven performance on highly technical or niche topics |
 |  | - Steep learning curve for advanced AI features like internal linking and keyword prediction |
 |  | - Limited full potential without integration with other SEO/content tools |
-| **Nightwatch SEO AI Agent** | - Limited advanced/custom reporting beyond keyword tracking and competitor analysis |
+| Nightwatch SEO AI Agent | - Limited advanced/custom reporting beyond keyword tracking and competitor analysis |
 |  | - Complex setup and integration of Google Analytics/Search Console |
 |  | - User interface can become overwhelming if more features are added |
 |  | - Data refresh speed could be faster for real-time insights |
 |  | - Lacks full automation coverage for all SEO tasks |
-| **Chatsonic SEO AI Agent** | - AI content may require multiple revisions due to inaccuracies or lack of context |
+| Chatsonic SEO AI Agent | - AI content may require multiple revisions due to inaccuracies or lack of context |
 |  | - Trial-and-error needed for prompt engineering |
 |  | - Recommendations sometimes require manual fact-checking due to AI hallucinations |
 |  | - Balancing automation with quality control needs frequent user intervention |
 |  | - Falls short on highly specialized or technical SEO tasks without expert input |
 
-**Synthesis: 5 Most Common Pain Points Across All Tools**
+Synthesis: 5 Most Common Pain Points Across All Tools
 
-1. **Need for human oversight and fact-checking of AI outputs**
-2. **AI-generated content can be mechanical, generic, or inaccurate**
-3. **Steep learning curve and setup complexity with advanced AI features and integrations**
-4. **Partial automation—Tools require manual intervention for complex SEO and specialized tasks**
-5. **Desire for faster, real-time data updates and more comprehensive automation coverage**
+1. Need for human oversight and fact-checking of AI outputs
+2. AI-generated content can be mechanical, generic, or inaccurate
+3. Steep learning curve and setup complexity with advanced AI features and integrations
+4. Partial automation—Tools require manual intervention for complex SEO and specialized tasks
+5. Desire for faster, real-time data updates and more comprehensive automation coverage
 
 Мы знаем конкурентов, знаем их позиционирование, знаем боли их пользователей. Теперь нужно задизайнить собственное решение, исходя из всей этой информации. Я предлагаю отобразить это в формате таблицы боли = решения и потом собрать из этого концепцию продукта. 
 
@@ -225,11 +215,11 @@
 
 | Боль | Как решаем |
 | --- | --- |
-| **1. Нужен человеческий контроль и фактчекинг AI-результатов** | Встраиваемый «Human-in-the-loop» модуль: редактор получает подсветку сомнительных фактов (сверка с базами данных, новостями, ссылками). AI не публикует напрямую, а предлагает черновик с комментариями. |
-| **2. AI-контент механический, общий или неточный** | Персонализированные «SEO-аватары» (AI-профили), которые обучаются на истории бренда, тоне и базе прошлых публикаций. Система адаптирует стиль и глубину анализа. |
-| **3. Сложность освоения и настройки** | «Plug&Play» сценарии: готовые воркфлоу (генерация статьи, оптимизация, внутренняя перелинковка, публикация). UX — как у Notion/Trello, где настройка идёт через drag&drop. |
-| **4. Частичная автоматизация, необходимость ручного вмешательства** | Агентная модель: SEO-агент берёт задачу «под ключ» (написать + оптимизировать + опубликовать). Пользователь только утверждает результат. Для сложных задач (например, подбор ссылок) агент вызывает специализированные под-агенты. |
-| **5. Желание быстрее и в реальном времени обновлять данные** | Подключение к живым API (Google Search Console, Ahrefs, Semrush, Google Trends). AI обновляет дэшборд автоматически и пересчитывает приоритеты в реальном времени. |
+| 1. Нужен человеческий контроль и фактчекинг AI-результатов | Встраиваемый «Human-in-the-loop» модуль: редактор получает подсветку сомнительных фактов (сверка с базами данных, новостями, ссылками). AI не публикует напрямую, а предлагает черновик с комментариями. |
+| 2. AI-контент механический, общий или неточный | Персонализированные «SEO-аватары» (AI-профили), которые обучаются на истории бренда, тоне и базе прошлых публикаций. Система адаптирует стиль и глубину анализа. |
+| 3. Сложность освоения и настройки | «Plug&Play» сценарии: готовые воркфлоу (генерация статьи, оптимизация, внутренняя перелинковка, публикация). UX — как у Notion/Trello, где настройка идёт через drag&drop. |
+| 4. Частичная автоматизация, необходимость ручного вмешательства | Агентная модель: SEO-агент берёт задачу «под ключ» (написать + оптимизировать + опубликовать). Пользователь только утверждает результат. Для сложных задач (например, подбор ссылок) агент вызывает специализированные под-агенты. |
+| 5. Желание быстрее и в реальном времени обновлять данные | Подключение к живым API (Google Search Console, Ahrefs, Semrush, Google Trends). AI обновляет дэшборд автоматически и пересчитывает приоритеты в реальном времени. |
 
 Теперь, мы можем описать наше решение как целостный продукт. Будем использовать ChatGPT. 
 
@@ -241,11 +231,11 @@
 
 ### 2. Основные боли ЦА
 
-1. **Необходимость ручного контроля и фактчекинга AI-результатов**
-2. **Контент часто шаблонный и механический**
-3. **Сложная настройка и интеграции с различными SEO-инструментами**
-4. **Частичная автоматизация — остаются ручные задачи**
-5. **Медленные обновления / нет real-time данных**
+1. Необходимость ручного контроля и фактчекинга AI-результатов
+2. Контент часто шаблонный и механический
+3. Сложная настройка и интеграции с различными SEO-инструментами
+4. Частичная автоматизация — остаются ручные задачи
+5. Медленные обновления / нет real-time данных
 
 ### 3. Как наше решение решает боли
 
@@ -269,9 +259,9 @@
 
 ### 5. Позиционирование
 
-**AI SEO агент для агентств**, который автоматизирует рутинные SEO-задачи, интерпретирует данные в понятные бизнес-инсайты и позволяет сосредоточиться на стратегических решениях.
+AI SEO агент для агентств, который автоматизирует рутинные SEO-задачи, интерпретирует данные в понятные бизнес-инсайты и позволяет сосредоточиться на стратегических решениях.
 
-**Отличие:** не просто генерация контента, а **полный рабочий цикл SEO с минимальным ручным контролем** и актуальными данными.
+Отличие: не просто генерация контента, а полный рабочий цикл SEO с минимальным ручным контролем и актуальными данными.
 
 ### 6. Ценность для клиента
 
@@ -282,46 +272,44 @@
 
 ⸻
 
-## **3. Go-to-Market & Growth Funnel**
+## 3. Go-to-Market & Growth Funnel
 
 ### а) Draft воронки (LinkedIn / Twitter / Reddit)
 
 Мы имеем $0 на маркетинг, поэтому используем каналы, где SEO-специалисты реально проводят время и где можно достучаться органически: LinkedIn (B2B профессионалы), Twitter (SEO community), Reddit (r/SEO, r/BigSEO, профессиональные сабреддиты). 
 
-Цель — **создать внимание → интерес → подписку / демо** без затрат на рекламу.
+Цель — создать внимание → интерес → подписку / демо без затрат на рекламу.
 
 | Этап | Действие / Инструмент | Цель | Рассуждение |
 | --- | --- | --- | --- |
-| **ToFu** (Top-of-Funnel) | Публикации с кейсами: «AI SEO агент экономит 70% времени на рутине», карусели с примерами real-time insights | Привлечение внимания | Показываем, что продукт решает реальные боли агентств; контент формирует экспертность и доверие |
-| **MoFu** (Middle-of-Funnel) | Бесплатный гайд / PDF / Notion с мини-кейсами «до/после использования агента» | Сбор лидов | Даем что-то ценное за контакт, переводим аудиторию в «теплый лид» |
-| **BoFu** (Bottom-of-Funnel) | Персональный outreach через LinkedIn DM / Reddit PM / Twitter reply + приглашение на демо | Получение sign-up на бета | Демонстрация готового прототипа и сбор обратной связи от реальных пользователей |
+| ToFu (Top-of-Funnel) | Публикации с кейсами: «AI SEO агент экономит 70% времени на рутине», карусели с примерами real-time insights | Привлечение внимания | Показываем, что продукт решает реальные боли агентств; контент формирует экспертность и доверие |
+| MoFu (Middle-of-Funnel) | Бесплатный гайд / PDF / Notion с мини-кейсами «до/после использования агента» | Сбор лидов | Даем что-то ценное за контакт, переводим аудиторию в «теплый лид» |
+| BoFu (Bottom-of-Funnel) | Персональный outreach через LinkedIn DM / Reddit PM / Twitter reply + приглашение на демо | Получение sign-up на бета | Демонстрация готового прототипа и сбор обратной связи от реальных пользователей |
 
-**Итог:** контент образовывает → заинтересовывает → переводит в персональный контакт.
-
----
+Итог: контент образовывает → заинтересовывает → переводит в персональный контакт.
 
 ### б) Growth-hack инициативы для первых 50 бета-тестеров
 
 На старте важнее быстро собрать ранних пользователей и получить инсайты, чем масштабировать. Поэтому нужны инициативы, которые создают ощущение эксклюзивности и вовлекают аудиторию органически.
 
-1. **Эксклюзивный доступ + feature voting**
+1. Эксклюзивный доступ + feature voting
     - Первые пользователи могут влиять на roadmap: какие функции добавлять/изменять
     - Мотивирует участвовать и делиться с коллегами (эффект «founder/early-adopter»).
-2. **Gamified sharing**
+2. Gamified sharing
     - Поделился постом о бета-тесте → бонусный функционал (например, +5 AI reports / месяц).
     - Работает как органическое привлечение, social proof.
-3. **Бета-челлендж «30 минут SEO audit»**
+3. Бета-челлендж «30 минут SEO audit»
     - Пользователь делает SEO аудит с агентом за 30 минут → делится результатами → создается UGC и social proof.
     - Мотивирует тестеров использовать продукт активно и создавать примеры кейсов для маркетинга.
 
 ### в) Sales pitch для аутрича SEO-специалиста
 
-**Option 1 (LinkedIn DM / email):**
+Option 1 (LinkedIn DM / email):
 
 > “Hi! Our AI SEO agent helps agencies automate routine SEO tasks and instantly visualize ROI through clear dashboards. I can show you a 10-minute demo — would you be interested?”
 > 
 
-**Option 2 (Twitter / Reddit reply):**
+Option 2 (Twitter / Reddit reply):
 
 > “Is your SEO team spending 70% of its time on repetitive tasks? Our AI SEO agent automates keyword research, competitor analysis, and content generation, so your team can focus on strategy. Want to see a quick demo?”
 > 
@@ -341,16 +329,12 @@
     - Среднее время от запуска анализа до получения actionable insight / отчета.
     - Если слишком долго — сигнал, что UX или AI-пайплайн нужно оптимизировать.
 
----
-
 ### б) Сигналы, что продукт нужен аудитории
 
 - Пользователи повторно используют MVP (ещё 1–2 сессии на одного человека).
 - Воронка «активность → демо» конвертируется выше 20–30% (для первых бета-тестеров).
 - Пользователи делятся результатами или спрашивают функционал, даже если это просто скриншоты / примеры отчета.
 - В каст-дев звонках люди говорят, что испытывают ту же боль в реальной работе и хотят решение.
-
----
 
 ### в) Как изменим продукт после первых 5 каст-дев звонков
 

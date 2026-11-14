@@ -6,8 +6,6 @@ Content
 2. Feedback for designer’s flow
 3. Architecture of IT systems
 
----
-
 1. We have business requirements. We have some border conditions and business goals, and in order to succeed we need to decompose the task. 
 2. So, we need to set up an online acquisition channel. How does online acquisition look on mobile? It includes these steps:
 - awareness (the client sees the commercial)
@@ -17,9 +15,9 @@ Content
 
 1. Now it looks more clear, what increments we need to provide to succeed in every stage:
 
-**Stage: he sees the commercial.** 
+Stage: he sees the commercial. 
 
-## **1 step. Awareness. How people will acknowledge Salmon RCL?**
+## 1 step. Awareness. How people will acknowledge Salmon RCL?
 
 💡 The goal of this stage — design the process “from the idea of RCL to acquiring customers”, including creating commercials, and calculating economics. List of increments after this stage down below.
 
@@ -57,33 +55,31 @@ We also should consider that we’ll have different cohorts of users, some of th
 - Unit-economics model to forecast results and manage expectations.
 - P&L — overall financial view on this project. Our investments and business impact.
 
----
+Stage: he enters the AppStore/Google and thinks about downloading our app
 
-**Stage: he enters the AppStore/Google and thinks about downloading our app**
-
-## **2 step. Сonsideration (Decision-making). How will we earn trust? Why us?**
+## 2 step. Сonsideration (Decision-making). How will we earn trust? Why us?
 
 💡 The goal of this stage — design the process of earning trust against clients, and creating reputation, as they’ll decide if should they trust us with their money.
 
 Usually, this stage includes working with reviews, ASO, FAQ, website, press releases. Some of them are already fine, but others require attention and effort from the team: 
 
-1. **Reviews** — The App Store should represent reviews, ratings, and how Salmon as a company interacts with the current customer base. I thought about working with all stores, but they’re fine in the App Store and Google Play, where we get the majority of traffic. 
+1. Reviews — The App Store should represent reviews, ratings, and how Salmon as a company interacts with the current customer base. I thought about working with all stores, but they’re fine in the App Store and Google Play, where we get the majority of traffic. 
 
-Excepting **AppGallery**. Review, rating, and comments fields are empty there, which is not a representation of trust. I would do something about it, but it depends on the final impact. At first, I had concerns about an actual number of Huawei users in the Philippines and the potential upside of acquiring more. But after discovering the data, which says there are 9 million Huawei users in Philippines, they’re gone. We need to implement reviews for Huawei too, so we need: 
+Excepting AppGallery. Review, rating, and comments fields are empty there, which is not a representation of trust. I would do something about it, but it depends on the final impact. At first, I had concerns about an actual number of Huawei users in the Philippines and the potential upside of acquiring more. But after discovering the data, which says there are 9 million Huawei users in Philippines, they’re gone. We need to implement reviews for Huawei too, so we need: 
     - Mobile developer(Android) — to implement the script allowing to trigger review pop-up and release open testing version to App Gallery. Source: [AppGallery Documentation](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/agc-comments-introduction-0000001063018306)
     - Product Manager — test the open testing version, trigger the pop-up, and see how submitting testimonials works.
 
 But if we have already implemented this feature, then why we don’t have them in AppGallery?  We actually didn’t ask. (bug) It was an inappropriate moment? Users are not happy? To resolve this open question, we need to look at the amount of requests for review, the actual user base in our analytics panel.
 
-1. **FAQ/Help Center** — We don’t launch new products, but we should bring some explanation and clarity about the new flow in Salmon’s app. For that purpose, we can add simple guidelines to our FAQ. Users should understand how online onboarding differs from POS and will affect it. Who do we need:
+1. FAQ/Help Center — We don’t launch new products, but we should bring some explanation and clarity about the new flow in Salmon’s app. For that purpose, we can add simple guidelines to our FAQ. Users should understand how online onboarding differs from POS and will affect it. Who do we need:
     - Marketer (Copywriter) — will write guides according to release and features in it.
     - Product Manager — checking the final result, testing the final solution.
-2. **App page in Stores** — Online onboarding is a completely different way to start using Salmon, by filling out the form in the app, without visiting a local merchant. Our goal — to make this statement pretty clear.  For that purpose we need to update: screenshots of the app, update “Description”, add info into “What’s new”, etc. 
+2. App page in Stores — Online onboarding is a completely different way to start using Salmon, by filling out the form in the app, without visiting a local merchant. Our goal — to make this statement pretty clear.  For that purpose we need to update: screenshots of the app, update “Description”, add info into “What’s new”, etc. 
     - ASO Specialist, who’ll release new builds with updates in ASO, pictures, etc.
     - Marketer (Copywriter) — to write new texts on Google Play, AppStore, and AppGallery pages.
     - Product Manager — help the designer to represent this update to users, and manage this project.
     - Designer — to design new materials for stores (mockups)
-3. **ASO** — We need to optimize our app’s page in Google Play, AppGallery, and App Store. It won’t help with paid traffic directly, but can potentially bring some organic or referral traffic (word of mouth), so we better make sure, we’ve optimized our pages in stores. Who do we need:
+3. ASO — We need to optimize our app’s page in Google Play, AppGallery, and App Store. It won’t help with paid traffic directly, but can potentially bring some organic or referral traffic (word of mouth), so we better make sure, we’ve optimized our pages in stores. Who do we need:
     - ASO Specialist, external contractor, who’ll optimize keywords, proper pictures, subtitle, app name, etc.
     - Product Manager — find a contractor, write TA, accept the job, and make sure everything is done.
 
@@ -96,9 +92,7 @@ We can skip the ASO step if we’ve already done it, but I would double-check.
 - Completed App Store page with new description, screenshots, mentioning new flow.
 - Reviews for AppGallery (Huawei)
 
----
-
-**Stage: he has downloaded and opened the app**
+Stage: he has downloaded and opened the app
 
 ## Step 3. Onboarding. First contact with the client. How to help him with a new product?
 
@@ -122,23 +116,23 @@ Our designer already made a potential onboarding flow in Figma, but if he didn�
     - We can’t mislead our clients with dark patterns. Not acceptable.
     - We can’t mislead our clients in terms of financial products. All slogans and plans must be clear.
     - We must make onboarding flow painless, because we request a lot of data, which means filling out long forms = users find it annoying, they could leave the app and forget it. Fewer clicks = better. Revolut has 24 to open an account.
-    - The crucial goal for our onboarding — passing the KYC and getting your credit limit, according to the filled data. **It means we shouldn’t collect data, that we won’t use in the KYC process and risk scoring.**
+    - The crucial goal for our onboarding — passing the KYC and getting your credit limit, according to the filled data. It means we shouldn’t collect data, that we won’t use in the KYC process and risk scoring.
     
     Who do we need here: 
     
     - Risk manager — to identify all risks related to commercials, terms of financial products, etc.
     - Product Manager — to implement these restrictions on the onboarding flow.
     
-    **Shortly, our main goals in the Onboarding stage:** 
+    Shortly, our main goals in the Onboarding stage: 
     
-    - **our client should pass KYC**
-    - **show how to use credit line, provide a credit line after risk scoring**
-    - **Encourage the user to use the credit line**
+    - our client should pass KYC
+    - show how to use credit line, provide a credit line after risk scoring
+    - Encourage the user to use the credit line
     
-    **Plus we have secondary goals:**
+    Plus we have secondary goals:
     
-    - **Fewer clicks, faster onboard**
-    - **Shorter as possible without impacting our risk-scoring model**
+    - Fewer clicks, faster onboard
+    - Shorter as possible without impacting our risk-scoring model
     
 3. Knowing all of that, we can start the process of planning. Somebody already solved a similar puzzle, so I would check the best practices here — competitors and similar financial apps. 
 
@@ -174,7 +168,7 @@ Who do we need here:
 
 💡 Goal of this stage — to evaluate a quality of potential onboarding in our app. To challenge it a bit and make sure we’ve chosen the best options to implement it.
 
-**I checked onboarding in Figma, and here are things I like:**
+I checked onboarding in Figma, and here are things I like:
 
 - Email domain autofilling
 - 5 minutes till approval is pretty fast.
@@ -182,18 +176,16 @@ Who do we need here:
 - I like the idea, that the user, is just filling forms, but we as magicians running risk scoring behind the scenes. This is a snowball of variables.
 - Verification services (ID screening) are seamless, looks like in-house development.
 
-**Things I would change in the current onboarding flow shortly:**
+Things I would change in the current onboarding flow shortly:
 
-- We have **33** different pages in our flow and we need approximately **58** clicks to pass the onboarding (plus you need to fill all fields). I would optimize it a bit.
+- We have 33 different pages in our flow and we need approximately 58 clicks to pass the onboarding (plus you need to fill all fields). I would optimize it a bit.
 - I left comments on “What I would change” on the original flow in Figma.
 
 [https://www.figma.com/file/TD6Xe7fiNTVdDMHAeJm0gz/Test-task---Leonid-Mikhalev-Online-acqusition?type=design&node-id=0%3A1&mode=design&t=dmMb3VwjFf9OBgg1-1](https://www.figma.com/file/TD6Xe7fiNTVdDMHAeJm0gz/Test-task---Leonid-Mikhalev-Online-acqusition?type=design&node-id=0%3A1&mode=design&t=dmMb3VwjFf9OBgg1-1)
 
-- Plus I proposed the flow (the red one) with **26** screens and only **55** clicks + automating autofiling wherever it’s possible. There are explanations for some solutions on the red flow. Check it out.
+- Plus I proposed the flow (the red one) with 26 screens and only 55 clicks + automating autofiling wherever it’s possible. There are explanations for some solutions on the red flow. Check it out.
 
----
-
-### **How would I make decisions on improvements of the flow?**
+### How would I make decisions on improvements of the flow?
 
 💡 Goal of this stage — describe process of incremental improvements in onboarding flow.
 
@@ -211,9 +203,7 @@ Who do we need here:
 - Stakeholder — to make sure, we are on the same page in terms of goals, actions, deadlines.
 - Product Analyst — to gather insights and anomalies from product analytics, provide that brief to the product.
 
----
-
-1. Let’s get back to our onboarding stage. W**e have a design, and we need to implement it in the app.** 
+1. Let’s get back to our onboarding stage. We have a design, and we need to implement it in the app. 
 
 Who do we need here:
 
@@ -228,11 +218,11 @@ This flow is complex, with many sides involved, so I’m going to create a simpl
 
 ![Untitled](images/Untitled.png)
 
-**Glossary**
+Glossary
 
-**AMLC — The Anti-Money Laundering Council of the Philippines (AMLC) is a government agency established to combat money laundering and other financial crimes in the country**
+AMLC — The Anti-Money Laundering Council of the Philippines (AMLC) is a government agency established to combat money laundering and other financial crimes in the country
 
-**CIC — The Credit Information Corporation (CIC) is a government-owned and controlled corporation providing credit information system in the Philippines.**
+CIC — The Credit Information Corporation (CIC) is a government-owned and controlled corporation providing credit information system in the Philippines.
 
 1. To make our scheme more accurate, we must discuss nuances with technical side. Who do we need to find the best technical solution:
 - CTO — to approve technical solution in terms of efficiency (scalability, etc), provide some feedback for potential improvements.
@@ -264,15 +254,11 @@ It’s an iterative process. So we will collect feedback and iterate again and a
 - Product Designer — to design a picture for press-release and posts on social media.
 - Product Manager — to manage the process, report to stakeholders.
 
----
-
 ### Deliverables at the end of the Onboarding stage:
 
 - Completed design of onboarding flow in Figma
 - Releasing Salmon app with online onboarding.
 - Bird view on Salmon’s architecture during Onboarding stage.
-
----
 
 We made a design, implemented in the app, connected product analytics. So it’s time to talk about recurrent activities here. Onboarding isn’t the finish point, but a process, so we need to do keep going with enhancing the flow. Here is how: 
 
@@ -294,9 +280,7 @@ We made a design, implemented in the app, connected product analytics. So it’s
 - Personalized onboarding for different segments (repetitive)
 - Conducted research and collected feedback (repetitive)
 
----
-
-## **Success metrics for 1-3-6 month after launch.**
+## Success metrics for 1-3-6 month after launch.
 
 💡 Goal of this stage — to identify how close we are to our goals. Also could be used to make changes in the product/onboarding flow for better conversion, margin,etc.
 
@@ -317,9 +301,9 @@ We made a design, implemented in the app, connected product analytics. So it’s
 - Size of Loan portfolio — How much did we lend? What’s the dynamics?
 - Clients in interest-free period/clients who’s been charged with interest — ratio will show, the quality of our leads, as “too smart” clients will pay within interest-free period. Majority of them would be bad for our model.
 
-**Plus**
+Plus
 
-- **All metrics we’ve tracked after 1 month**
+- All metrics we’ve tracked after 1 month
     - Downloads from the stores — users who we acquired actually downloaded the app.
     - Passed Onboarding (Adoption rate) — they passed the KYC and were approved.
     - Issued loans (Signing the agreement) — they sign the agreement and got the credit line. We need 1000 in first month
@@ -334,9 +318,9 @@ We made a design, implemented in the app, connected product analytics. So it’s
 - Net interest Margin — interest rate on assets/interest on liabilities
 - Pull Through Rate — ratio between issued loans / applications submitted during a period. It will show as the health of our finances, and allow to forecast where will we need another financing for Salmon,etc.
 
-**Plus**
+Plus
 
-- **All metrics we’ve tracked after 1-3 month**
+- All metrics we’ve tracked after 1-3 month
     - Downloads from the stores — users who we acquired actually downloaded the app.
     - Passed Onboarding (Adoption rate) — they passed the KYC and were approved.
     - Issued loans (Signing the agreement) — they sign the agreement and got the credit line. We need 1000 in first month
