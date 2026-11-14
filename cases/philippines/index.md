@@ -16,15 +16,15 @@ To achieve this, they required an in-depth market screening using data from cent
 
 I conducted a deep-dive research project into the Philippine fintech market by:
 
-1. **Identifying and Analyzing Public Data Sources**
+1. Identifying and Analyzing Public Data Sources
     - Explored government and company databases aggregating financial market data.
     - Researched Central Bank of the Philippines’ regulations on fintech licensing.
-2. **Evaluating Licensing Structures**
+2. Evaluating Licensing Structures
     - Collected data on payment provider licenses, including:
         - License types required for operations.
         - Application costs and procedures.
         - Regulatory compliance requirements.
-3. **Assessing Market Entry Feasibility**
+3. Assessing Market Entry Feasibility
     - Screened the market to determine how many new payment providers were entering.
     - Compared licensing models with other Southeast Asian markets to benchmark opportunities.
 

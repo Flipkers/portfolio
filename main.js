@@ -324,7 +324,7 @@ function renderMarkdown(md, basePath) {
     const line = lines[i].trimEnd();
     const trimmed = line.trim();
 
-    if (!trimmed || trimmed.startsWith('<!--') || trimmed === '<aside>' || trimmed === '</aside>') {
+    if (!trimmed || trimmed.startsWith('<!--') || trimmed === '<aside>' || trimmed === '</aside>' || /^([-*_])\1{2,}$/.test(trimmed)) {
       flushParagraph();
       closeList();
       continue;

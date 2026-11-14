@@ -16,14 +16,14 @@ Given my expertise in fintech market research and product discovery, he hired me
 
 To conduct a comprehensive market assessment, I:
 
-1. **Collected & Analyzed Macroeconomic Data**
+1. Collected & Analyzed Macroeconomic Data
     - Researched central bank reports and government statistics for key metrics:
         - Population, GDP, financial assets, stock market participation, banking adoption, and fintech growth rates.
     - Used translations to extract and compare data across countries.
-2. **Evaluated Competitive Landscape**
+2. Evaluated Competitive Landscape
     - Analyzed existing fintech players and the level of market saturation in Brazil, Mexico, Argentina, Chile, and Colombia.
     - Considered regulatory frameworks, business costs, and expansion challenges.
-3. **Recommended the Best Market: Argentina**
+3. Recommended the Best Market: Argentina
     - Brazil and Mexico were too competitive and expensive for an early-stage launch.
     - Argentina had a growing fintech adoption rate and a favorable business environment at the time.
     - The political and economic climate under the new president made it a promising bet.

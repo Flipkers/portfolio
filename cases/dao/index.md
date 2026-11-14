@@ -19,15 +19,15 @@ The founder gave me the task to find all the platforms for creating DAOs and com
 
 ## How I conducted research
 
-1. **Finding all the DAO platforms**
+1. Finding all the DAO platforms
 
 Moving from link to link, I've collected all the working platforms that allow you to build a smart contract organization.
 
-2. **Registered accounts everywhere**
+2. Registered accounts everywhere
 
 To see if they work at all, I plugged test networks into a cryptocurrency wallet, minted test tokens and went to create DAOs on different platforms.
 
-1. **Found analytics platforms**
+1. Found analytics platforms
 
 In order to assess the reliability of platforms, I decided to look for platforms like Crunchbase, only for DAOs: to look at revenue, funding, and customers. Such an analysis would make it possible to assess the general state of this niche.
 
@@ -41,11 +41,11 @@ In order to assess the reliability of platforms, I decided to look for platforms
 | DAOStack | https://daostack.io/ | — | Да | Grants, brint and mortar, mobile apps, alliances | No info | No Info | No info | | 15000 | 5 | 58 | — | 41 | — | https://genesisdao.com/ |
 | DAOHaus (DAO) | https://daohaus.club/ | https://www.metacartel.org/ | Да | treasury management, web 3 integration, charity, venture | No info | Yes | Trust it or leave it | ETH, xDAI, Polygon | 22000 | 786 | 3400 | 2-3 project host everything (MetaCartel included) | 17,4 | Да | https://app.daohaus.club/dao/0x1/0x4570b4faf71e23942b8b9f934b47ccedf7540162/vaults |
 
-1. **Identified criteria for evaluating DAO platforms**
+1. Identified criteria for evaluating DAO platforms
 
 My reasoning is that in DAOs money is stored, so one of the criteria should be the funds inside the created DAOs (treasury), as well as: the cost of creating the Dao, assets under management (AUM), supported blockchains, the size of the community, the number of clients, and the working support.
 
-1. **I found examples of investment DAOs**
+1. I found examples of investment DAOs
 
 ![Untitled](images/02.png)
 
@@ -61,13 +61,13 @@ My reasoning is that in DAOs money is stored, so one of the criteria should be t
 
 Since it was originally planned to make an investment fund, it was necessary to find examples of similar organizations launched in the format of DAO.
 
-1. **Selected favorites based on identified criteria**
+1. Selected favorites based on identified criteria
 
 The number of active DAOs, the amount of money inside the smart contracts, a large community and working support. This made it possible to choose the two leading platforms.
 
-1. **Structured the data into one table**
+1. Structured the data into one table
 
-1. **Presented the result of the study to the funder**
+1. Presented the result of the study to the funder
 
 ## Results
 
