@@ -33,8 +33,16 @@ header nav {
   margin-bottom: 0;
 }
 
+/* Desktop: links stay direct flex items, same as a flat nav. */
+.nav-links { display: contents; }
+
 header nav a { color: #111; text-decoration: none; }
 header nav a:hover { text-decoration: underline; }
+header nav a:focus-visible,
+#lang-toggle:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
 
 #lang-toggle {
   margin-left: auto;
@@ -276,8 +284,198 @@ body.case-page > header {
 .case-loading, .case-error { color: #666; }
 
 @media (max-width: 720px) {
-  .hero-top { flex-direction: column; gap: 20px; }
-  .hero-photo img { width: 180px; height: 180px; }
-  body { padding: 24px 16px; }
-  header nav { gap: 16px; }
+  html {
+    /* Sticky bar only. Section scroll-margin stays 0 here so the two
+       offsets do not stack and leave a band of the previous section. */
+    scroll-padding-top: 152px;
+    overflow-x: clip;
+  }
+
+  body {
+    padding: 16px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left));
+    overflow-wrap: break-word;
+  }
+
+  body.case-page {
+    padding: 0 0 48px;
+  }
+
+  html:has(body.case-page) {
+    scroll-padding-top: 64px;
+  }
+
+  body.case-page > header,
+  body.case-page > main {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  header {
+    padding: 4px 0;
+    margin-bottom: 28px;
+  }
+
+  body.case-page > header {
+    margin-bottom: 28px;
+  }
+
+  /* Links wrap in two equal columns. The language control stays on the
+     first row, outside that grid, so a label never lands under the button. */
+  header nav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 0;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    flex: 1 1 calc(50% - 12px);
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  #lang-toggle {
+    margin-left: 0;
+    flex: 0 0 auto;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero {
+    margin-bottom: 48px;
+  }
+
+  .hero-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .hero-photo {
+    width: 100%;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    text-wrap: pretty;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    text-wrap: pretty;
+  }
+
+  .bio,
+  .case-article .case-body {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .services {
+    gap: 8px;
+    margin: 4px 0 8px;
+  }
+
+  .services span {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.35;
+    padding: 8px 14px;
+    overflow-wrap: break-word;
+  }
+
+  section {
+    margin-bottom: 48px;
+    scroll-margin-top: 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card-media,
+  .case-article .case-cover,
+  .case-article .case-body img,
+  .modal-body-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .card .tag,
+  .card .year,
+  .progress-text {
+    font-size: 12px;
+  }
+
+  #contacts p {
+    margin: 0;
+  }
+
+  #contacts a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .modal {
+    padding: 12px;
+  }
+
+  .modal-content {
+    padding: 16px 16px 20px;
+    border-radius: 12px;
+    max-height: min(85vh, 100%);
+  }
+
+  .modal-content h2 {
+    padding-right: 48px;
+  }
+
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    top: 8px;
+    right: 8px;
+  }
 }
