@@ -385,18 +385,15 @@ function renderMarkdown(md, basePath) {
       i -= 1;
       if (rows.length) {
         const headers = rows[0];
-        const longest = rows.reduce((max, row) => Math.max(max, ...row.map((cell) => cell.length)), 0);
-        const wide = headers.length >= 4 || longest > 90;
         const head = headers.map((cell) => `<th>${inlineMarkdown(cell, basePath)}</th>`).join('');
         const body = rows.slice(1).map((row) => {
           const cells = headers.map((header, index) => {
-            const label = wide ? ` data-label="${escapeAttr(header)}"` : '';
+            const label = header ? ` data-label="${escapeAttr(header)}"` : '';
             return `<td${label}>${inlineMarkdown(row[index] || '', basePath)}</td>`;
           }).join('');
           return `<tr>${cells}</tr>`;
         }).join('');
-        const wrapClass = wide ? 'table-wrap table-stack' : 'table-wrap';
-        html.push(`<div class="${wrapClass}"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
+        html.push(`<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
       }
       continue;
     }
@@ -565,13 +562,10 @@ async function renderDetailPage(list) {
 
   const item = findById(list, id);
   if (!item) {
-    document.body.classList.remove('stack-tables');
     article.innerHTML = `<p class="case-error">${t('case.missing')}</p>`;
     document.title = t('case.missing');
     return;
   }
-
-  document.body.classList.toggle('stack-tables', item.id === 'bnpl-b2b');
 
   const title = pick(item, 'title');
   const loaded = await loadCaseMarkdown(item);
@@ -599,6 +593,27 @@ async function renderDetailPage(list) {
     <div class="case-body">${bodyHtml}</div>
   `;
   document.title = `${title} — ${currentLang === 'ru' ? profile.meta.name : profile.meta.name_en}`;
+  fitArticleTables(article);
+}
+
+function fitArticleTables(root) {
+  if (!root) return;
+  const wraps = [...root.querySelectorAll('.table-wrap')];
+  wraps.forEach((wrap) => wrap.classList.remove('is-stacked'));
+  wraps.forEach((wrap) => {
+    const table = wrap.querySelector('table');
+    if (table && table.scrollWidth > wrap.clientWidth + 8) wrap.classList.add('is-stacked');
+  });
+}
+
+function bindTableFitOnce() {
+  if (document.body.dataset.tableFit) return;
+  document.body.dataset.tableFit = '1';
+  let frame = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => fitArticleTables(document.getElementById('case-article')));
+  });
 }
 
 async function loadData() {
@@ -632,8 +647,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (document.body.classList.contains('test-page')) {
+    bindTableFitOnce();
     await renderDetailPage(testTasks);
   } else if (document.body.classList.contains('case-page')) {
+    bindTableFitOnce();
     await renderDetailPage(cases);
   } else {
     bindHomeEventsOnce();
