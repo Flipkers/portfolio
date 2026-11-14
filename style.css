@@ -96,15 +96,16 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 
 .card-media {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  background: #f3f3f3;
+  height: auto;
   display: block;
-  object-fit: cover; /* fill media box — no grey letterbox gutters */
-  object-position: center;
-  max-height: 200px;
+  /* intrinsic image ratio — no fixed box, no crop, no letterbox */
+  background: transparent;
 }
 
 .card-media.placeholder {
+  aspect-ratio: 16 / 10;
+  min-height: 120px;
+  background: #f3f3f3;
   display: flex;
   align-items: center;
   justify-content: center;
