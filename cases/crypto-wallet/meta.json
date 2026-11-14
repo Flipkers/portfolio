@@ -1,0 +1,12 @@
+{
+  "id": "crypto-wallet",
+  "year": 2023,
+  "tags": ["Fintech"],
+  "title_ru": "Запуск криптокошелька",
+  "title_en": "Launching crypto wallet",
+  "summary_ru": "Исследовал и разработал B2C-криптокошелёк в дополнение к существующим B2B-сервисам.",
+  "summary_en": "Researched and developed a B2C crypto wallet to complement existing B2B services.",
+  "cover": "images/cover.png",
+  "lang_original": "en",
+  "notion_page_id": "32244bc3f6b481839e19f971484973d8"
+}

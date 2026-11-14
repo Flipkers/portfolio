@@ -1,0 +1,13 @@
+{
+  "id": "bnpl-b2b",
+  "tags": [
+    "Fintech"
+  ],
+  "title_ru": "Запуск BNPL-сервиса для B2B (RU)",
+  "title_en": "Launching BNPL service for B2B (RU)",
+  "summary_ru": "Итак мы работаем в Контур.Экстерне и сервис позволяет компаниям загружать финансовую отчетность в налоговую онлайн.",
+  "summary_en": "We work in Kontur.Extern, and the service lets companies file financial reports with the tax office online.",
+  "cover": "images/2.png",
+  "lang_original": "ru",
+  "notion_page_id": "18444bc3f6b4810bb336dc061f55ea14"
+}

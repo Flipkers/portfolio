@@ -7,6 +7,9 @@ let cases = [];
 
 const i18n = {
   ru: {
+    'brand': 'Леонид Михалев',
+    'nav.menu': 'Меню',
+    'nav.close': 'Закрыть',
     'nav.about': 'Обо мне',
     'nav.services': 'Что я делаю',
     'nav.cases': 'Исследования',
@@ -25,6 +28,9 @@ const i18n = {
     'doc.title': 'Леонид Михалев — Исследователь-аналитик'
   },
   en: {
+    'brand': 'Leonid Mikhalev',
+    'nav.menu': 'Menu',
+    'nav.close': 'Close',
     'nav.about': 'About',
     'nav.services': 'What I do',
     'nav.cases': 'Research',
@@ -63,6 +69,41 @@ function applyI18n() {
   if (pageTitle && !document.body.classList.contains('case-page')) {
     pageTitle.textContent = t('doc.title');
   }
+  syncNavToggle();
+}
+
+function setNavOpen(open) {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  nav.classList.toggle('is-open', open);
+  document.documentElement.classList.toggle('nav-open', open);
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', open ? t('nav.close') : t('nav.menu'));
+  const main = document.querySelector('main');
+  if (main) main.toggleAttribute('inert', open);
+}
+
+function syncNavToggle() {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  const open = nav.classList.contains('is-open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', open ? t('nav.close') : t('nav.menu'));
+}
+
+function bindNavToggleOnce() {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!btn || !nav || btn.dataset.bound) return;
+  btn.dataset.bound = '1';
+  btn.addEventListener('click', () => {
+    setNavOpen(!nav.classList.contains('is-open'));
+  });
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setNavOpen(false);
+  });
 }
 
 function mediaBlock(image, title) {
@@ -101,6 +142,11 @@ function renderCourses() {
   }).join('');
 }
 
+function metaLine(item) {
+  const tags = (item.tags || []).join(', ');
+  return item.year ? `${item.year} · ${tags}` : tags;
+}
+
 function renderTests() {
   const grid = document.getElementById('tests-grid');
   if (!grid) return;
@@ -108,7 +154,8 @@ function renderTests() {
     const title = pick(item, 'title');
     const summary = pick(item, 'summary');
     const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    return `<div class="card" role="button" tabindex="0" data-type="test" data-id="${escapeAttr(item.id)}">${mediaBlock(item.image, title)}<div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p><div class="tags">${tags}</div></div>`;
+    const year = item.year ? `<div class="year">${escapeHtml(String(item.year))}</div>` : '';
+    return `<a class="card" href="test.html?id=${encodeURIComponent(item.id)}">${mediaBlock(item.image, title)}<div class="card-body">${year}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
   }).join('');
 }
 
@@ -119,7 +166,7 @@ function renderCases() {
     const title = pick(cs, 'title');
     const summary = pick(cs, 'summary');
     const tags = (cs.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    return `<a class="card" href="case.html?id=${encodeURIComponent(cs.id)}">${mediaBlock(cs.image, title)}<div class="year">${cs.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p><div class="tags">${tags}</div></a>`;
+    return `<a class="card" href="case.html?id=${encodeURIComponent(cs.id)}">${mediaBlock(cs.image, title)}<div class="card-body"><div class="year">${cs.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
   }).join('');
 }
 
@@ -235,38 +282,119 @@ function bindHomeEventsOnce() {
   if (!document.body.dataset.escapeBound) {
     document.body.dataset.escapeBound = '1';
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key !== 'Escape') return;
+      const nav = document.getElementById('site-nav');
+      if (nav && nav.classList.contains('is-open')) {
+        setNavOpen(false);
+        document.querySelector('.nav-toggle')?.focus();
+        return;
+      }
+      closeModal();
     });
   }
+
+  bindNavToggleOnce();
 }
 
-/** Minimal Markdown → HTML (headings, lists, paragraphs, bold, images, links). */
+/** Minimal Markdown → HTML (headings, lists, tables, paragraphs, bold, images, links). */
 function renderMarkdown(md, basePath) {
   const lines = String(md || '').replace(/\r\n/g, '\n').split('\n');
   const html = [];
-  let inList = false;
+  const structure = !document.body.classList.contains('test-page');
+  let listIndents = [];
+  let liOpen = false;
   let paragraph = [];
+
+  const isRule = (value) => /^([-*_])\1{2,}$/.test(value);
+  const isTableRow = (value) => value.startsWith('|') && value.endsWith('|');
+  const isTableRule = (value) => /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(value);
+  const tableCells = (value) => value.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+  const wordCount = (value) => value.trim().split(/\s+/).filter(Boolean).length;
+
+  const numberedTitle = (text) => {
+    const match = text.match(/^(\d+)\.\s+(\S[\s\S]*)$/);
+    if (!match) return null;
+    const title = match[2].trim();
+    if (title.length > 90 || wordCount(title) > 12 || /\.\s+\S/.test(title)) return null;
+    return title;
+  };
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
     const text = paragraph.join(' ').trim();
-    if (text) html.push(`<p>${inlineMarkdown(text, basePath)}</p>`);
     paragraph = [];
+    if (!text) return;
+    if (structure && numberedTitle(text)) {
+      html.push(`<p class="step">${inlineMarkdown(text, basePath)}</p>`);
+      return;
+    }
+    if (structure && /^\d+\.\s+\S/.test(text)) {
+      html.push(`<p class="step-line">${inlineMarkdown(text, basePath)}</p>`);
+      return;
+    }
+    html.push(`<p>${inlineMarkdown(text, basePath)}</p>`);
+  };
+
+  const closeLi = () => {
+    if (!liOpen) return;
+    html.push('</li>');
+    liOpen = false;
   };
 
   const closeList = () => {
-    if (!inList) return;
-    html.push('</ul>');
-    inList = false;
+    closeLi();
+    while (listIndents.length) {
+      html.push('</ul>');
+      listIndents.pop();
+      closeLi();
+    }
   };
 
-  for (const raw of lines) {
-    const line = raw.trimEnd();
+  const openLi = (text) => {
+    html.push(`<li>${inlineMarkdown(text, basePath)}`);
+    liOpen = true;
+  };
+
+  const isCaption = (value, alt) => {
+    if (!value || isRule(value) || value.startsWith('|') || value.startsWith('![')) return false;
+    if (/^(#{1,3}\s|[-*]\s|\d+\.\s)/.test(value) || value.endsWith(':')) return false;
+    const same = alt && value.replace(/\s+/g, ' ').trim().toLowerCase() === alt.replace(/\s+/g, ' ').trim().toLowerCase();
+    if (same) return true;
+    return value.length <= 80 && wordCount(value) <= 14;
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trimEnd();
     const trimmed = line.trim();
 
-    if (!trimmed || trimmed.startsWith('<!--')) {
+    if (!trimmed || trimmed.startsWith('<!--') || trimmed === '<aside>' || trimmed === '</aside>' || isRule(trimmed)) {
       flushParagraph();
       closeList();
+      continue;
+    }
+
+    if (isTableRow(trimmed)) {
+      flushParagraph();
+      closeList();
+      const rows = [];
+      while (i < lines.length && isTableRow(lines[i].trim())) {
+        const row = lines[i].trim();
+        if (!isTableRule(row)) rows.push(tableCells(row));
+        i += 1;
+      }
+      i -= 1;
+      if (rows.length) {
+        const headers = rows[0];
+        const head = headers.map((cell) => `<th>${inlineMarkdown(cell, basePath)}</th>`).join('');
+        const body = rows.slice(1).map((row) => {
+          const cells = headers.map((header, index) => {
+            const label = header ? ` data-label="${escapeAttr(header)}"` : '';
+            return `<td${label}>${inlineMarkdown(row[index] || '', basePath)}</td>`;
+          }).join('');
+          return `<tr>${cells}</tr>`;
+        }).join('');
+        html.push(`<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
+      }
       continue;
     }
 
@@ -279,14 +407,58 @@ function renderMarkdown(md, basePath) {
       continue;
     }
 
-    const bullet = trimmed.match(/^[-*]\s+(.+)$/);
-    if (bullet) {
+    const imageLine = structure && trimmed.match(/^!\[([^\]]*)\]\((.+?)\)$/);
+    if (imageLine) {
       flushParagraph();
-      if (!inList) {
-        html.push('<ul>');
-        inList = true;
+      closeList();
+      let caption = '';
+      let j = i + 1;
+      while (j < lines.length && !lines[j].trim()) j += 1;
+      if (j < lines.length && isCaption(lines[j].trim(), imageLine[1])) {
+        caption = lines[j].trim();
+        i = j;
       }
-      html.push(`<li>${inlineMarkdown(bullet[1], basePath)}</li>`);
+      const url = resolveCaseAsset(imageLine[2], basePath);
+      const cap = caption ? `<figcaption>${inlineMarkdown(caption, basePath)}</figcaption>` : '';
+      html.push(`<figure><img src="${escapeAttr(url)}" alt="${escapeAttr(imageLine[1])}" loading="lazy">${cap}</figure>`);
+      continue;
+    }
+
+    const bullet = line.match(/^(\s*)[-*]\s+(.+)$/);
+    if (bullet && structure) {
+      flushParagraph();
+      const indent = bullet[1].replace(/\t/g, '    ').length;
+      const text = bullet[2].trim();
+      if (!listIndents.length) {
+        html.push('<ul>');
+        listIndents.push(indent);
+        openLi(text);
+      } else if (indent > listIndents[listIndents.length - 1]) {
+        html.push('<ul>');
+        listIndents.push(indent);
+        openLi(text);
+      } else {
+        closeLi();
+        while (listIndents.length > 1 && indent < listIndents[listIndents.length - 1]) {
+          html.push('</ul>');
+          listIndents.pop();
+          closeLi();
+        }
+        openLi(text);
+      }
+      continue;
+    }
+
+    const flatBullet = trimmed.match(/^[-*]\s+(.+)$/);
+    if (flatBullet) {
+      flushParagraph();
+      if (!listIndents.length) {
+        html.push('<ul>');
+        listIndents.push(0);
+      } else {
+        closeLi();
+      }
+      openLi(flatBullet[1]);
       continue;
     }
 
@@ -356,7 +528,7 @@ async function loadCaseMarkdown(item) {
 
   for (const url of candidates) {
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) continue;
       const md = preprocessCaseMarkdown(await res.text(), item);
       return { html: renderMarkdown(md, basePath), basePath };
@@ -369,7 +541,7 @@ async function loadCaseMarkdown(item) {
   return { html: `<p>${escapeHtml(summary)}</p>`, basePath };
 }
 
-async function renderCasePage() {
+async function renderDetailPage(list) {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   const article = document.getElementById('case-article');
@@ -381,14 +553,14 @@ async function renderCasePage() {
     toggle.addEventListener('click', () => {
       currentLang = currentLang === 'ru' ? 'en' : 'ru';
       localStorage.setItem('portfolio-lang', currentLang);
-      renderCasePage();
+      renderDetailPage(list);
     });
   }
 
   applyI18n();
   if (toggle) toggle.textContent = currentLang === 'ru' ? 'EN' : 'RU';
 
-  const item = findById(cases, id);
+  const item = findById(list, id);
   if (!item) {
     article.innerHTML = `<p class="case-error">${t('case.missing')}</p>`;
     document.title = t('case.missing');
@@ -416,19 +588,40 @@ async function renderCasePage() {
 
   article.innerHTML = `
     <h1>${escapeHtml(title)}</h1>
-    <p class="case-meta">${escapeHtml(String(item.year))} · ${escapeHtml((item.tags || []).join(', '))}</p>
+    <p class="case-meta">${escapeHtml(metaLine(item))}</p>
     ${cover}
     <div class="case-body">${bodyHtml}</div>
   `;
   document.title = `${title} — ${currentLang === 'ru' ? profile.meta.name : profile.meta.name_en}`;
+  fitArticleTables(article);
+}
+
+function fitArticleTables(root) {
+  if (!root) return;
+  const wraps = [...root.querySelectorAll('.table-wrap')];
+  wraps.forEach((wrap) => wrap.classList.remove('is-stacked'));
+  wraps.forEach((wrap) => {
+    const table = wrap.querySelector('table');
+    if (table && table.scrollWidth > wrap.clientWidth + 8) wrap.classList.add('is-stacked');
+  });
+}
+
+function bindTableFitOnce() {
+  if (document.body.dataset.tableFit) return;
+  document.body.dataset.tableFit = '1';
+  let frame = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => fitArticleTables(document.getElementById('case-article')));
+  });
 }
 
 async function loadData() {
   const [profileRes, coursesRes, casesRes, testsRes] = await Promise.all([
-    fetch('data/profile.json'),
-    fetch('data/courses.json'),
-    fetch('data/cases.json'),
-    fetch('data/tests.json')
+    fetch('data/profile.json', { cache: 'no-store' }),
+    fetch('data/courses.json', { cache: 'no-store' }),
+    fetch('data/cases.json', { cache: 'no-store' }),
+    fetch('data/tests.json', { cache: 'no-store' })
   ]);
 
   if (!profileRes.ok || !coursesRes.ok || !casesRes.ok || !testsRes.ok) {
@@ -453,8 +646,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  if (document.body.classList.contains('case-page')) {
-    await renderCasePage();
+  if (document.body.classList.contains('test-page')) {
+    bindTableFitOnce();
+    await renderDetailPage(testTasks);
+  } else if (document.body.classList.contains('case-page')) {
+    bindTableFitOnce();
+    await renderDetailPage(cases);
   } else {
     bindHomeEventsOnce();
     renderHome();

@@ -1,0 +1,14 @@
+{
+  "id": "project-planning",
+  "tags": [
+    "Tech"
+  ],
+  "title_ru": "Планирование проекта",
+  "title_en": "Project planning",
+  "summary_ru": "Сначала я провожу короткий звонок с клиентом.",
+  "summary_en": "First I have a short call with the client.",
+  "cover": "images/image.png",
+  "lang_original": "ru",
+  "notion_page_id": "32244bc3f6b4808d8fcaf9bb4e6631fb",
+  "year": 2025
+}

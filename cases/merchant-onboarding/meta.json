@@ -2,11 +2,11 @@
   "id": "merchant-onboarding",
   "year": 2023,
   "tags": ["Fintech"],
-  "title_ru": "Designing merchant onboarding",
+  "title_ru": "Проектирование онбординга мерчантов",
   "title_en": "Designing merchant onboarding",
   "summary_ru": "Переработка процесса онбординга мерчантов для ускорения KYB.",
   "summary_en": "Revamped the merchant onboarding process to expedite Know Your Business (KYB) procedures.",
-  "cover": "",
+  "cover": "images/cover.png",
   "lang_original": "en",
-  "notion_page_id": ""
+  "notion_page_id": "32244bc3f6b481919248f2bbcf9ac016"
 }
