@@ -107,11 +107,11 @@ header nav a:focus-visible,
   container-type: inline-size;
 }
 .hero-text h1 {
-  font-size: min(41px, 6.37cqw);
+  font-size: 80px;
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.32;
   margin: 0;
-  white-space: nowrap;
+  white-space: pre-line;
 }
 .hero > .bio {
   width: 100%;
@@ -560,6 +560,12 @@ body.case-page > header {
 }
 .case-loading, .case-error { color: #666; }
 
+@media (max-width: 980px) {
+  .hero-text h1 {
+    font-size: min(80px, 12.2cqw);
+  }
+}
+
 @media (max-width: 720px) {
   html {
     /* One short sticky bar. Section scroll-margin stays 0 so the offsets do not stack. */
@@ -770,9 +776,9 @@ body.case-page > header {
 
   .hero-text h1 {
     font-size: 46px;
-    line-height: 1.05;
+    line-height: 1.12;
     margin: 0;
-    white-space: normal;
+    white-space: pre-line;
   }
 
   .hero > .bio,

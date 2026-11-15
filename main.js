@@ -30,7 +30,7 @@ const i18n = {
     'case.loading': 'Загрузка…',
     'case.missing': 'Кейс не найден.',
     'case.noImage': 'Нет изображения',
-    'hero.role': 'Продуктовый исследователь',
+    'hero.role': 'Продуктовый\nисследователь',
     'doc.title': 'Леонид Михалев — Исследователь-аналитик'
   },
   en: {
@@ -57,7 +57,7 @@ const i18n = {
     'case.loading': 'Loading…',
     'case.missing': 'Case not found.',
     'case.noImage': 'No image',
-    'hero.role': 'Product Researcher',
+    'hero.role': 'Product\nResearcher',
     'doc.title': 'Leonid Mikhalev — Product Researcher & Analyst'
   }
 };
