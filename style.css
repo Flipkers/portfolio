@@ -61,7 +61,7 @@ header nav a:focus-visible,
 }
 #lang-toggle:hover { background: #333; }
 
-/* Desktop home bar: one even gap, language switch in that row. */
+/* Desktop home bar: links keep an even gap; the language switch sits on the right edge. */
 @media (min-width: 721px) {
   body:not(.case-page) header nav {
     flex-wrap: nowrap;
@@ -76,7 +76,7 @@ header nav a:focus-visible,
   }
 
   body:not(.case-page) #lang-toggle {
-    margin-left: 0;
+    margin-left: auto;
     min-height: 32px;
     padding: 0 13px;
     display: inline-flex;
