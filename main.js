@@ -140,6 +140,10 @@ function metaLine(item) {
   return item.year ? `${item.year} · ${tags}` : tags;
 }
 
+function cardImage(item) {
+  return (item && (item.thumb || item.image)) || '';
+}
+
 function renderTests() {
   const grid = document.getElementById('tests-grid');
   if (!grid) return;
@@ -148,7 +152,7 @@ function renderTests() {
     const summary = pick(item, 'summary');
     const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
     const year = item.year ? `<div class="year">${escapeHtml(String(item.year))}</div>` : '';
-    return `<a class="card" href="test.html?id=${encodeURIComponent(item.id)}">${mediaBlock(item.image, title)}<div class="card-body">${year}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
+    return `<a class="card" href="test.html?id=${encodeURIComponent(item.id)}">${mediaBlock(cardImage(item), title)}<div class="card-body">${year}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
   }).join('');
 }
 
@@ -156,7 +160,7 @@ function cardMarkup(item) {
   const title = pick(item, 'title');
   const summary = pick(item, 'summary');
   const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-  return `<a class="card" href="case.html?id=${encodeURIComponent(item.id)}">${mediaBlock(item.image, title)}<div class="card-body"><div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
+  return `<a class="card" href="case.html?id=${encodeURIComponent(item.id)}">${mediaBlock(cardImage(item), title)}<div class="card-body"><div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
 }
 
 function renderCases() {
