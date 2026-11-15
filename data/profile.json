@@ -8,25 +8,35 @@
     "telegram": "https://t.me/leomihalev",
     "linkedin": "https://www.linkedin.com/in/leonidmikhalev",
     "github": "Flipkers",
-    "bio_ru": "Я продуктовый исследователь и консультант с опытом в разных доменах, от финтеха до healthtech. Помогаю компаниям принимать стратегические решения через анализ рынка, исследование конкурентов и разработку продуктового позиционирования.",
-    "bio_en": "I am a product researcher and consultant with experience across domains from fintech to healthtech. I help companies make strategic decisions through market analysis, competitor research, and product positioning."
+    "bio_ru": "Я Леонид Михалев, продуктовый исследователь и консультант. Работал в финтехе, крипте, е-коммерсе, хэлфтехе и других областях. Помогаю компаниям принимать стратегические решения через анализ рынка, исследование конкурентов и разработку продуктового позиционирования.",
+    "bio_en": "I'm Leonid Mikhalev, a product researcher and consultant. I've worked in fintech, crypto, e-commerce, healthtech, and other domains. I help companies make strategic decisions through market analysis, competitor research, and product positioning."
   },
   "services_ru": [
-    "Исследование рынка",
-    "Оценка объёма рынка (TAM/SAM/SOM)",
-    "Анализ конкурентов",
-    "Анализ отрасли",
-    "Сегментация клиентов",
-    "Продуктовое позиционирование",
-    "Исследование выхода на рынок"
+    {
+      "title": "Рынок",
+      "items": ["Рыночные исследования", "Конкурентный анализ"]
+    },
+    {
+      "title": "Люди",
+      "items": ["CustDev и интервью", "UX-исследования"]
+    },
+    {
+      "title": "Путь",
+      "items": ["Customer Journey Mapping", "Воронки и сценарии"]
+    }
   ],
   "services_en": [
-    "Market Research",
-    "Market Sizing (TAM/SAM/SOM)",
-    "Competitor Analysis",
-    "Industry Analysis",
-    "Customer Segmentation",
-    "Product Positioning",
-    "Go-To-Market Research"
+    {
+      "title": "Market",
+      "items": ["Market research", "Competitive analysis"]
+    },
+    {
+      "title": "People",
+      "items": ["CustDev and interviews", "UX research"]
+    },
+    {
+      "title": "Journey",
+      "items": ["Customer Journey Mapping", "Funnels and scenarios"]
+    }
   ]
 }

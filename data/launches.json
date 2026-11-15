@@ -8,6 +8,7 @@
     "summary_ru": "Кейс здесь не представлен (NDA). Подробности можно спросить на созвоне.",
     "summary_en": "The case isn’t presented here (NDA). Ask for details on the call.",
     "image": "launches/otc-broker/images/20.png",
+    "thumb": "launches/otc-broker/images/20.card.webp",
     "path": "launches/otc-broker",
     "notion_page_id": "32244bc3f6b481309e19cd0f8ce6ee8c",
     "lang_original": "en"
@@ -21,6 +22,7 @@
     "summary_ru": "Курс по инвестициям для Тинькофф: от требований заказчика до уроков, проверок и передачи в продакшен.",
     "summary_en": "An investing course for Tinkoff, from the customer brief through lessons, checks, and production.",
     "image": "launches/tinkoff-courses/images/Product_cases_presentation_(1).png",
+    "thumb": "launches/tinkoff-courses/images/Product_cases_presentation_(1).card.webp",
     "path": "launches/tinkoff-courses",
     "notion_page_id": "32244bc3f6b481349303c847fef268b7",
     "lang_original": "en"
@@ -34,6 +36,7 @@
     "summary_ru": "Собрал магазин мерча notcoin как мини-приложение в Telegram: криптооплата, логистика и поддержка. За неделю — тысячи заказов, и notcoin стало можно потратить, а не только держать.",
     "summary_en": "Built a Telegram mini-app store for notcoin, integrating crypto payments, logistics, and support. Achieved thousands of orders in a week, making notcoin a spendable asset beyond speculation.",
     "image": "launches/notcoin-store/images/limiteddrop.png",
+    "thumb": "launches/notcoin-store/images/limiteddrop.card.webp",
     "path": "launches/notcoin-store",
     "notion_page_id": "32244bc3f6b481f0a559c9e0a53d09e1",
     "lang_original": "en"
