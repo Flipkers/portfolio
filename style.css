@@ -359,6 +359,17 @@ body.case-page > header {
   margin-bottom: 40px;
 }
 
+@media (min-width: 721px) {
+  body,
+  body.case-page {
+    padding-top: 0;
+  }
+
+  header {
+    padding-top: 8px;
+  }
+}
+
 .case-article {
   width: 100%;
   max-width: none;
