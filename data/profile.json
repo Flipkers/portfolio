@@ -12,21 +12,85 @@
     "bio_en": "I'm Leonid Mikhalev, a product researcher and consultant. I've worked in fintech, crypto, e-commerce, healthtech, and other domains. I help companies make strategic decisions through market analysis, competitor research, and product positioning."
   },
   "services_ru": [
-    "Исследование рынка",
-    "Оценка объёма рынка (TAM/SAM/SOM)",
-    "Анализ конкурентов",
-    "Анализ отрасли",
-    "Сегментация клиентов",
-    "Продуктовое позиционирование",
-    "Исследование выхода на рынок"
+    {
+      "title": "Рынок",
+      "items": [
+        {
+          "name": "Рыночные исследования",
+          "text": "Анализ рынков, конкурентов, размеров рынка, моделей монетизации, регуляторных ограничений и трендов."
+        },
+        {
+          "name": "Конкурентный анализ",
+          "text": "Разбор решений, UX-паттернов, ценообразования и позиционирования. Что работает, что нет и где точки входа."
+        },
+        {
+          "name": "Регуляторный и платёжный анализ",
+          "text": "Для финтеха, крипты и gig-economy: ограничения по юрисдикциям, KYB/KYC, платёжные модели."
+        }
+      ]
+    },
+    {
+      "title": "Люди",
+      "items": [
+        {
+          "name": "CustDev и глубинные интервью",
+          "text": "Jobs to be Done, pain points, сценарии. Интервью 1:1 с целевой аудиторией."
+        },
+        {
+          "name": "UX-исследования",
+          "text": "Коридорные тесты, usability, воронки и сценарии. Узкие места и рекомендации."
+        }
+      ]
+    },
+    {
+      "title": "Путь",
+      "items": [
+        {
+          "name": "Customer Journey Mapping",
+          "text": "CJM as is → to be на основе интервью и данных. Карта опыта и приоритеты для продукта."
+        }
+      ]
+    }
   ],
   "services_en": [
-    "Market Research",
-    "Market Sizing (TAM/SAM/SOM)",
-    "Competitor Analysis",
-    "Industry Analysis",
-    "Customer Segmentation",
-    "Product Positioning",
-    "Go-To-Market Research"
+    {
+      "title": "Market",
+      "items": [
+        {
+          "name": "Market research",
+          "text": "Analysis of markets, competitors, market size, monetization models, regulatory constraints, and trends."
+        },
+        {
+          "name": "Competitive analysis",
+          "text": "A review of solutions, UX patterns, pricing, and positioning. What works, what does not, and where the entry points are."
+        },
+        {
+          "name": "Regulatory and payments analysis",
+          "text": "For fintech, crypto, and the gig economy: jurisdictional limits, KYB/KYC, and payment models."
+        }
+      ]
+    },
+    {
+      "title": "People",
+      "items": [
+        {
+          "name": "CustDev and in-depth interviews",
+          "text": "Jobs to be Done, pain points, and scenarios. One-to-one interviews with the target audience."
+        },
+        {
+          "name": "UX research",
+          "text": "Hallway tests, usability, funnels, and scenarios. Bottlenecks and recommendations."
+        }
+      ]
+    },
+    {
+      "title": "Journey",
+      "items": [
+        {
+          "name": "Customer Journey Mapping",
+          "text": "An as-is to to-be journey based on interviews and data. An experience map and priorities for the product."
+        }
+      ]
+    }
   ]
 }

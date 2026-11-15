@@ -128,12 +128,32 @@ html[lang="en"] .hero > .bio {
 h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 .bio { margin: 0; color: #222; font-size: 16px; }
 
-.services { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
-.services span {
-  border: 1px solid #111;
-  padding: 6px 14px;
-  font-size: 13px;
-  border-radius: 20px;
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin: 0;
+  align-items: start;
+}
+.service-col h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 18px;
+}
+.service-item + .service-item { margin-top: 18px; }
+.service-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 6px;
+}
+.service-item p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #222;
 }
 
 section {
@@ -819,16 +839,8 @@ body.case-page > header {
   }
 
   .services {
-    gap: 8px;
-    margin: 4px 0 8px;
-  }
-
-  .services span {
-    max-width: 100%;
-    font-size: 14px;
-    line-height: 1.35;
-    padding: 8px 14px;
-    overflow-wrap: break-word;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   section {

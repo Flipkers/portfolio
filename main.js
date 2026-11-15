@@ -226,8 +226,18 @@ function renderHome() {
 
   const servicesEl = document.getElementById('services-list');
   if (servicesEl) {
-    const services = currentLang === 'ru' ? profile.services_ru : profile.services_en;
-    servicesEl.innerHTML = services.map((s) => `<span>${escapeHtml(s)}</span>`).join('');
+    const columns = currentLang === 'ru' ? profile.services_ru : profile.services_en;
+    servicesEl.innerHTML = columns.map((col) => `
+      <div class="service-col">
+        <h3>${escapeHtml(col.title)}</h3>
+        ${col.items.map((item) => `
+          <div class="service-item">
+            <h4>${escapeHtml(item.name)}</h4>
+            <p>${escapeHtml(item.text)}</p>
+          </div>
+        `).join('')}
+      </div>
+    `).join('');
   }
 
   if (profile.meta.email) setContact('email-link', `mailto:${profile.meta.email}`);
