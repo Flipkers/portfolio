@@ -212,19 +212,10 @@ function renderLaunches() {
   grid.innerHTML = launches.map((item) => cardMarkup(item, `case.html?id=${encodeURIComponent(item.id)}`)).join('');
 }
 
-function addressLabel(href) {
-  return String(href)
-    .replace(/^mailto:/i, '')
-    .replace(/^https?:\/\//i, '')
-    .replace(/^www\./i, '')
-    .replace(/\/$/, '');
-}
-
 function setContact(id, href) {
   const link = document.getElementById(id);
   if (!link || !href) return;
   link.href = href;
-  link.textContent = addressLabel(href);
 }
 
 function renderHome() {

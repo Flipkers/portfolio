@@ -12,7 +12,7 @@
   <meta property="og:locale" content="ru_RU">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta http-equiv="Cache-Control" content="no-cache">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
   <header>
@@ -69,21 +69,12 @@
 
     <section id="contacts">
       <h2 data-i18n="contacts.title">Контакты</h2>
-      <dl class="contact-list">
-        <div class="contact-row">
-          <dt data-i18n="contacts.email">Почта</dt>
-          <dd><a id="email-link" href="mailto:leomikhalev@proton.me">leomikhalev@proton.me</a></dd>
-        </div>
-        <div class="contact-row">
-          <dt data-i18n="contacts.telegram">Telegram</dt>
-          <!-- TODO(telegram): verify handle. Email is leomikhalev@…; current link is t.me/leomihalev (one “k”). Both t.me/leomihalev and t.me/leomikhalev resolve — do not change until confirmed. -->
-          <dd><a id="telegram-link" href="https://t.me/leomihalev" target="_blank" rel="noopener noreferrer">t.me/leomihalev</a></dd>
-        </div>
-        <div class="contact-row">
-          <dt data-i18n="contacts.linkedin">LinkedIn</dt>
-          <dd><a id="linkedin-link" href="https://www.linkedin.com/in/leonidmikhalev" target="_blank" rel="noopener noreferrer">linkedin.com/in/leonidmikhalev</a></dd>
-        </div>
-      </dl>
+      <div class="contact-pills">
+        <a id="email-link" class="contact-pill" href="mailto:leomikhalev@proton.me" data-i18n="contacts.email">Почта</a>
+        <!-- TODO(telegram): verify handle. Email is leomikhalev@…; current link is t.me/leomihalev (one “k”). Both t.me/leomihalev and t.me/leomikhalev resolve — do not change until confirmed. -->
+        <a id="telegram-link" class="contact-pill" href="https://t.me/leomihalev" target="_blank" rel="noopener noreferrer" data-i18n="contacts.telegram">Telegram</a>
+        <a id="linkedin-link" class="contact-pill" href="https://www.linkedin.com/in/leonidmikhalev" target="_blank" rel="noopener noreferrer" data-i18n="contacts.linkedin">LinkedIn</a>
+      </div>
     </section>
   </main>
 
@@ -94,6 +85,6 @@
     </div>
   </div>
 
-  <script src="main.js?v=9"></script>
+  <script src="main.js?v=10"></script>
 </body>
 </html>
