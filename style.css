@@ -8,7 +8,7 @@ body {
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   background: #fff;
   color: #111;
-  line-height: 1.55;
+  line-height: 1.68;
   max-width: 960px;
   margin: 0 auto;
   padding: 40px 24px;
@@ -19,7 +19,7 @@ header {
   top: 0;
   background: #fff;
   z-index: 50;
-  padding: 16px 0 12px;
+  padding: 14px 0;
   border-bottom: 1px solid #eee;
   margin-bottom: 40px;
 }
@@ -61,6 +61,31 @@ header nav a:focus-visible,
 }
 #lang-toggle:hover { background: #333; }
 
+/* Desktop home bar: one even gap, language switch in that row. */
+@media (min-width: 721px) {
+  body:not(.case-page) header nav {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 28px;
+  }
+
+  body:not(.case-page) header nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+  }
+
+  body:not(.case-page) #lang-toggle {
+    margin-left: 0;
+    min-height: 32px;
+    padding: 0 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+}
+
 .hero { margin-bottom: 80px; }
 .hero-top { display: flex; gap: 48px; align-items: flex-start; }
 .hero-photo img {
@@ -79,13 +104,13 @@ header nav a:focus-visible,
   min-height: 220px;
 }
 .hero-text h1 {
-  font-size: 40px;
-  line-height: 1.15;
+  font-size: 44px;
+  line-height: 46px;
   margin-bottom: 10px;
 }
 .hero-text .bio {
   font-size: 16.5px;
-  line-height: 1.62;
+  line-height: 1.7;
 }
 html[lang="en"] .hero-text .bio {
   font-size: 20px;
@@ -124,6 +149,11 @@ h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 section {
   margin-bottom: 80px;
   scroll-margin-top: 88px;
+}
+#cases,
+#launches,
+#tests {
+  margin-bottom: 112px;
 }
 h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 
@@ -179,12 +209,20 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  gap: 14px;
+  padding: 14px 18px 16px;
 }
-.card > *:not(.card-media) { padding-left: 18px; padding-right: 18px; }
-.card .year { font-size: 12px; color: #888; padding-top: 16px; }
-.card h3 { font-size: 17px; font-weight: 500; margin: 6px 0 8px; }
-.card p { font-size: 14px; color: #333; margin-bottom: 0; }
-.card .tags { margin-top: auto; padding-top: 12px; padding-bottom: 16px; }
+.card .year,
+.card h3,
+.card p,
+.card .tags {
+  margin: 0;
+  padding: 0;
+}
+.card .year { font-size: 12px; line-height: 1.4; color: #888; }
+.card h3 { font-size: 17px; font-weight: 500; line-height: 1.35; }
+.card p { font-size: 14px; line-height: 1.55; color: #333; }
+.card .tags { margin-top: auto; }
 .card .tag {
   display: inline-block;
   font-size: 11px;
@@ -195,7 +233,38 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
   border-radius: 2px;
 }
 
-#contacts a { color: #111; }
+#contacts {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-row {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: baseline;
+}
+.contact-row dt {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #666;
+}
+.contact-row dd {
+  margin: 0;
+  min-width: 0;
+}
+#contacts a {
+  color: #111;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
 
 .modal {
   display: none;
@@ -323,7 +392,7 @@ body.case-page > header {
 }
 .case-article .case-body {
   font-size: 17px;
-  line-height: 1.55;
+  line-height: 1.7;
   font-weight: 400;
 }
 .case-article .case-body p,
@@ -333,7 +402,7 @@ body.case-page > header {
 }
 .case-article .case-body p {
   margin: 0 0 0.95em;
-  line-height: 1.55;
+  line-height: 1.7;
 }
 .case-article .case-body p:has(+ ul),
 .case-article .case-body .step + ul {
@@ -348,11 +417,11 @@ body.case-page > header {
 }
 .case-article .case-body h2 {
   font-size: 26px;
-  margin: 2em 0 0.55em;
+  margin: 2.15em 0 0.95em;
 }
 .case-article .case-body h3 {
   font-size: 20px;
-  margin: 1.7em 0 0.45em;
+  margin: 1.9em 0 0.85em;
 }
 .case-article .case-body h2:first-child,
 .case-article .case-body h3:first-child {
@@ -360,7 +429,7 @@ body.case-page > header {
 }
 .case-article .case-body .step {
   font-size: 17px;
-  margin: 1.45em 0 0.35em;
+  margin: 1.6em 0 0.7em;
 }
 .case-article .case-body .step-line {
   font-weight: 400;
@@ -374,18 +443,18 @@ body.case-page > header {
   list-style-position: outside;
 }
 .case-article .case-body li {
-  line-height: 1.4;
-  margin: 0.38em 0;
+  line-height: 1.6;
+  margin: 0.4em 0;
   padding-left: 0.3em;
 }
 .case-article .case-body li > ul {
   margin: 0.25em 0 0.4em;
 }
 .case-article .case-body figure {
-  margin: 1.7em 0 1.85em;
+  margin: 2.35em 0 2.5em;
 }
 .case-article .case-body p:has(> img:only-child) {
-  margin: 1.7em 0 1.85em;
+  margin: 2.35em 0 2.5em;
   padding: 0;
   line-height: 0;
   font-size: 0;
@@ -702,15 +771,15 @@ body.case-page > header {
   }
 
   .hero-text h1 {
-    font-size: 32px;
-    line-height: 1.2;
+    font-size: 36px;
+    line-height: 1.15;
     margin-bottom: 8px;
   }
 
   .hero-text .bio,
   html[lang="en"] .hero-text .bio {
     font-size: 17px;
-    line-height: 1.45;
+    line-height: 1.6;
   }
 
   .write-btn {
@@ -746,7 +815,7 @@ body.case-page > header {
   .bio,
   .case-article .case-body {
     font-size: 17px;
-    line-height: 1.55;
+    line-height: 1.7;
   }
 
   .case-article h1 {
@@ -784,6 +853,12 @@ body.case-page > header {
     scroll-margin-top: 0;
   }
 
+  #cases,
+  #launches,
+  #tests {
+    margin-bottom: 64px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -805,7 +880,7 @@ body.case-page > header {
 
   .card p {
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .card .tag,

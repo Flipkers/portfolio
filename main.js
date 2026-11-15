@@ -22,6 +22,10 @@ const i18n = {
     'launches.title': 'Запуски',
     'tests.title': 'Тестовые задания',
     'contacts.title': 'Контакты',
+    'contacts.email': 'Почта',
+    'contacts.telegram': 'Telegram',
+    'contacts.linkedin': 'LinkedIn',
+    'doc.description': 'Леонид Михалев — продуктовый исследователь и консультант',
     'case.back': '← К портфолио',
     'case.loading': 'Загрузка…',
     'case.missing': 'Кейс не найден.',
@@ -44,6 +48,10 @@ const i18n = {
     'launches.title': 'Launches',
     'tests.title': 'Test tasks',
     'contacts.title': 'Contacts',
+    'contacts.email': 'Email',
+    'contacts.telegram': 'Telegram',
+    'contacts.linkedin': 'LinkedIn',
+    'doc.description': 'Leonid Mikhalev — product researcher and consultant',
     'case.back': '← Back to portfolio',
     'case.loading': 'Loading…',
     'case.missing': 'Case not found.',
@@ -54,6 +62,35 @@ const i18n = {
 
 function t(key) {
   return (i18n[currentLang] && i18n[currentLang][key]) || (i18n.ru[key] || key);
+}
+
+function upsertMeta(attr, key, content) {
+  if (!content) return;
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', content);
+}
+
+function absoluteUrl(src) {
+  try {
+    return new URL(src, window.location.href).href;
+  } catch (_) {
+    return src;
+  }
+}
+
+function setPageMeta({ title, description, image }) {
+  if (title) document.title = title;
+  if (description) upsertMeta('name', 'description', description);
+  upsertMeta('property', 'og:title', title || document.title);
+  if (description) upsertMeta('property', 'og:description', description);
+  if (image) upsertMeta('property', 'og:image', absoluteUrl(image));
+  upsertMeta('property', 'og:type', document.body.classList.contains('case-page') ? 'article' : 'website');
+  upsertMeta('property', 'og:locale', currentLang === 'ru' ? 'ru_RU' : 'en_US');
 }
 
 function applyI18n() {
@@ -67,9 +104,13 @@ function applyI18n() {
       el.textContent = t(key);
     }
   });
-  const pageTitle = document.querySelector('title');
-  if (pageTitle && !document.body.classList.contains('case-page')) {
-    pageTitle.textContent = t('doc.title');
+  if (!document.body.classList.contains('case-page')) {
+    const portrait = document.querySelector('.hero-photo img');
+    setPageMeta({
+      title: t('doc.title'),
+      description: t('doc.description'),
+      image: portrait ? portrait.getAttribute('src') : ''
+    });
   }
   syncNavToggle();
 }
@@ -144,35 +185,46 @@ function cardImage(item) {
   return (item && (item.thumb || item.image)) || '';
 }
 
-function renderTests() {
-  const grid = document.getElementById('tests-grid');
-  if (!grid) return;
-  grid.innerHTML = testTasks.map((item) => {
-    const title = pick(item, 'title');
-    const summary = pick(item, 'summary');
-    const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-    const year = item.year ? `<div class="year">${escapeHtml(String(item.year))}</div>` : '';
-    return `<a class="card" href="test.html?id=${encodeURIComponent(item.id)}">${mediaBlock(cardImage(item), title)}<div class="card-body">${year}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
-  }).join('');
-}
-
-function cardMarkup(item) {
+function cardMarkup(item, href) {
   const title = pick(item, 'title');
   const summary = pick(item, 'summary');
   const tags = (item.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-  return `<a class="card" href="case.html?id=${encodeURIComponent(item.id)}">${mediaBlock(cardImage(item), title)}<div class="card-body"><div class="year">${item.year}</div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p></div><div class="tags">${tags}</div></a>`;
+  const year = item.year ? `<div class="year">${escapeHtml(String(item.year))}</div>` : '';
+  const tagBlock = tags ? `<div class="tags">${tags}</div>` : '';
+  return `<a class="card" href="${href}">${mediaBlock(cardImage(item), title)}<div class="card-body">${year}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(summary)}</p>${tagBlock}</div></a>`;
+}
+
+function renderTests() {
+  const grid = document.getElementById('tests-grid');
+  if (!grid) return;
+  grid.innerHTML = testTasks.map((item) => cardMarkup(item, `test.html?id=${encodeURIComponent(item.id)}`)).join('');
 }
 
 function renderCases() {
   const grid = document.getElementById('cases-grid');
   if (!grid) return;
-  grid.innerHTML = cases.map(cardMarkup).join('');
+  grid.innerHTML = cases.map((item) => cardMarkup(item, `case.html?id=${encodeURIComponent(item.id)}`)).join('');
 }
 
 function renderLaunches() {
   const grid = document.getElementById('launches-grid');
   if (!grid) return;
-  grid.innerHTML = launches.map(cardMarkup).join('');
+  grid.innerHTML = launches.map((item) => cardMarkup(item, `case.html?id=${encodeURIComponent(item.id)}`)).join('');
+}
+
+function addressLabel(href) {
+  return String(href)
+    .replace(/^mailto:/i, '')
+    .replace(/^https?:\/\//i, '')
+    .replace(/^www\./i, '')
+    .replace(/\/$/, '');
+}
+
+function setContact(id, href) {
+  const link = document.getElementById(id);
+  if (!link || !href) return;
+  link.href = href;
+  link.textContent = addressLabel(href);
 }
 
 function renderHome() {
@@ -189,10 +241,9 @@ function renderHome() {
     servicesEl.innerHTML = services.map((s) => `<span>${escapeHtml(s)}</span>`).join('');
   }
 
-  const tg = document.getElementById('telegram-link');
-  if (tg && profile.meta.telegram) tg.href = profile.meta.telegram;
-  const li = document.getElementById('linkedin-link');
-  if (li && profile.meta.linkedin) li.href = profile.meta.linkedin;
+  if (profile.meta.email) setContact('email-link', `mailto:${profile.meta.email}`);
+  if (profile.meta.telegram) setContact('telegram-link', profile.meta.telegram);
+  if (profile.meta.linkedin) setContact('linkedin-link', profile.meta.linkedin);
 
   applyI18n();
   renderTests();
@@ -568,7 +619,7 @@ async function renderDetailPage(list) {
   const item = findById(list, id);
   if (!item) {
     article.innerHTML = `<p class="case-error">${t('case.missing')}</p>`;
-    document.title = t('case.missing');
+    setPageMeta({ title: t('case.missing'), description: t('case.missing') });
     return;
   }
 
@@ -597,7 +648,12 @@ async function renderDetailPage(list) {
     ${cover}
     <div class="case-body">${bodyHtml}</div>
   `;
-  document.title = `${title} — ${currentLang === 'ru' ? profile.meta.name : profile.meta.name_en}`;
+  const person = currentLang === 'ru' ? profile.meta.name : profile.meta.name_en;
+  setPageMeta({
+    title: `${title} — ${person}`,
+    description: pick(item, 'summary') || title,
+    image: item.image || ''
+  });
   fitArticleTables(article);
 }
 
