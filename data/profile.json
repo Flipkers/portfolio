@@ -14,29 +14,29 @@
   "services_ru": [
     {
       "title": "Рынок",
-      "items": ["Рыночные исследования", "Конкурентный анализ", "Оценка рынка"]
+      "items": ["Рыночные исследования", "Конкурентный анализ"]
     },
     {
       "title": "Люди",
-      "items": ["CustDev и интервью", "UX-исследования", "Jobs to be Done"]
+      "items": ["CustDev и интервью", "UX-исследования"]
     },
     {
       "title": "Путь",
-      "items": ["Customer Journey Mapping", "Воронки и сценарии", "Позиционирование продукта"]
+      "items": ["Customer Journey Mapping", "Воронки и сценарии"]
     }
   ],
   "services_en": [
     {
       "title": "Market",
-      "items": ["Market research", "Competitive analysis", "Market sizing"]
+      "items": ["Market research", "Competitive analysis"]
     },
     {
       "title": "People",
-      "items": ["CustDev and interviews", "UX research", "Jobs to be Done"]
+      "items": ["CustDev and interviews", "UX research"]
     },
     {
       "title": "Journey",
-      "items": ["Customer Journey Mapping", "Funnels and scenarios", "Product positioning"]
+      "items": ["Customer Journey Mapping", "Funnels and scenarios"]
     }
   ]
 }
