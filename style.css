@@ -235,7 +235,7 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 
 #contacts {
   max-width: 720px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
 }
 .contact-list {
