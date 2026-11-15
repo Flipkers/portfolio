@@ -127,25 +127,6 @@ html[lang="en"] .hero > .bio {
 }
 h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 .bio { margin: 0; color: #222; font-size: 16px; }
-.write-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  align-self: flex-start;
-  min-height: 44px;
-  padding: 0 22px;
-  background: #111;
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  border-radius: 4px;
-}
-.write-btn:hover { background: #333; }
-.write-btn:focus-visible {
-  outline: 2px solid #111;
-  outline-offset: 2px;
-}
 
 .services { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
 .services span {
@@ -786,10 +767,6 @@ body.case-page > header {
     font-size: 17px;
     line-height: 1.7;
     margin-top: 20px;
-  }
-
-  .write-btn {
-    margin-top: 14px;
   }
 
   .hero-photo {
