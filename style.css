@@ -241,15 +241,23 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 .contact-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  border: 1px solid #eee;
+  border-radius: 12px;
 }
 .contact-row {
-  display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr);
-  column-gap: 16px;
+  display: flex;
   align-items: baseline;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+.contact-row:first-child {
+  border-top: 0;
 }
 .contact-row dt {
+  flex: 0 0 auto;
+  margin: 0;
   font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
@@ -258,12 +266,23 @@ h2 { font-size: 26px; font-weight: 500; margin-bottom: 24px; }
 .contact-row dd {
   margin: 0;
   min-width: 0;
+  text-align: right;
 }
-#contacts a {
+#contacts a,
+#contacts a:visited {
   color: #111;
   font-size: 16px;
   line-height: 1.5;
+  font-weight: 400;
+  text-decoration: none;
   overflow-wrap: anywhere;
+}
+#contacts a:hover {
+  text-decoration: underline;
+}
+#contacts a:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
 }
 
 .modal {
