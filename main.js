@@ -30,6 +30,7 @@ const i18n = {
     'case.loading': 'Загрузка…',
     'case.missing': 'Кейс не найден.',
     'case.noImage': 'Нет изображения',
+    'hero.role': 'Продуктовый исследователь',
     'doc.title': 'Леонид Михалев — Исследователь-аналитик'
   },
   en: {
@@ -56,6 +57,7 @@ const i18n = {
     'case.loading': 'Loading…',
     'case.missing': 'Case not found.',
     'case.noImage': 'No image',
+    'hero.role': 'Product Researcher',
     'doc.title': 'Leonid Mikhalev — Product Researcher & Analyst'
   }
 };
@@ -221,9 +223,7 @@ function setContact(id, href) {
 function renderHome() {
   if (!profile) return;
 
-  const nameEl = document.getElementById('name');
   const bioEl = document.getElementById('bio');
-  if (nameEl) nameEl.textContent = currentLang === 'ru' ? profile.meta.name : profile.meta.name_en;
   if (bioEl) bioEl.textContent = currentLang === 'ru' ? profile.meta.bio_ru : profile.meta.bio_en;
 
   const servicesEl = document.getElementById('services-list');

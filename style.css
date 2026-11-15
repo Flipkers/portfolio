@@ -87,7 +87,12 @@ header nav a:focus-visible,
 }
 
 .hero { margin-bottom: 80px; }
-.hero-top { display: flex; gap: 48px; align-items: flex-start; }
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
 .hero-photo img {
   display: block;
   width: 220px;
@@ -97,23 +102,24 @@ header nav a:focus-visible,
   border-radius: 12px;
 }
 .hero-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
-  min-height: 220px;
+  width: 100%;
+  min-width: 0;
 }
 .hero-text h1 {
-  font-size: 110px;
+  font-size: 96px;
   font-weight: 600;
   line-height: 1.05;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
-.hero-text .bio {
+.hero > .bio {
+  width: 100%;
+  max-width: none;
+  margin-top: 28px;
   font-size: 16.5px;
+  font-weight: 400;
   line-height: 1.7;
 }
-html[lang="en"] .hero-text .bio {
+html[lang="en"] .hero > .bio {
   font-size: 20px;
   line-height: 1.42;
 }
@@ -123,7 +129,7 @@ h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
+  margin-top: 20px;
   align-self: flex-start;
   min-height: 44px;
   padding: 0 22px;
@@ -558,13 +564,9 @@ body.case-page > header {
   }
 }
 
-@media (max-width: 880px) {
-  .hero-text .bio {
-    line-height: 1.46;
-  }
-
-  html[lang="en"] .hero-text .bio {
-    line-height: 1.2;
+@media (max-width: 736px) {
+  .hero-text h1 {
+    font-size: 84px;
   }
 }
 
@@ -777,15 +779,16 @@ body.case-page > header {
   }
 
   .hero-text h1 {
-    font-size: 80px;
+    font-size: 46px;
     line-height: 1.05;
-    margin-bottom: 8px;
+    margin-bottom: 0;
   }
 
-  .hero-text .bio,
-  html[lang="en"] .hero-text .bio {
+  .hero > .bio,
+  html[lang="en"] .hero > .bio {
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-top: 20px;
   }
 
   .write-btn {
