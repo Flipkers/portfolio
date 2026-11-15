@@ -230,12 +230,9 @@ function renderHome() {
     servicesEl.innerHTML = columns.map((col) => `
       <div class="service-col">
         <h3>${escapeHtml(col.title)}</h3>
-        ${col.items.map((item) => `
-          <div class="service-item">
-            <h4>${escapeHtml(item.name)}</h4>
-            <p>${escapeHtml(item.text)}</p>
-          </div>
-        `).join('')}
+        <ul>
+          ${col.items.map((name) => `<li>${escapeHtml(name)}</li>`).join('')}
+        </ul>
       </div>
     `).join('');
   }
