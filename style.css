@@ -128,17 +128,22 @@ html[lang="en"] .hero > .bio {
 h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 .bio { margin: 0; color: #222; font-size: 16px; }
 
+/* Desktop: three columns as one centered group, sized to the copy.
+   They do not stretch to the page edges. Text stays left-aligned. */
 .services {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 64px;
   margin: 0;
-  align-items: stretch;
+  text-align: left;
 }
 .service-col {
   display: flex;
   flex-direction: column;
+  flex: 0 1 auto;
   min-width: 0;
+  text-align: left;
 }
 .service-col h3 {
   font-size: 20px;
@@ -866,7 +871,9 @@ body.case-page > header {
   }
 
   .services {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 28px;
   }
 
