@@ -9,6 +9,8 @@
     "summary_en": "Research on platform fees and freelancer payouts.",
     "image": "cases/peopledo/images/image.png",
     "thumb": "cases/peopledo/images/image.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 673,
     "path": "cases/peopledo",
     "notion_page_id": "32244bc3f6b4819ab82bf13e71a52098",
     "lang_original": "en"
@@ -23,6 +25,8 @@
     "summary_en": "Developed a comprehensive go-to-market strategy for a crypto investment fund by researching global best practices.",
     "image": "cases/gtm-crypto/images/cover.png",
     "thumb": "cases/gtm-crypto/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/gtm-crypto",
     "lang_original": "en"
   },
@@ -36,6 +40,8 @@
     "summary_en": "Conducted market research on five Latin American countries for a fintech expansion. Identified Argentina as the best opportunity.",
     "image": "cases/latam/images/cover.png",
     "thumb": "cases/latam/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/latam",
     "lang_original": "en"
   },
@@ -49,6 +55,8 @@
     "summary_en": "Conducted comprehensive research on DAO platforms and investment-focused DAOs for a founder exploring a DAO-based fund.",
     "image": "cases/dao/images/cover.png",
     "thumb": "cases/dao/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/dao",
     "lang_original": "en"
   },
@@ -62,6 +70,8 @@
     "summary_en": "In-depth analysis of the Philippine market focusing on central bank regulations concerning payment provider licenses.",
     "image": "cases/philippines/images/cover.png",
     "thumb": "cases/philippines/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/philippines",
     "lang_original": "en"
   },
@@ -75,6 +85,8 @@
     "summary_en": "Revamped the merchant onboarding process to expedite Know Your Business (KYB) procedures.",
     "image": "cases/merchant-onboarding/images/cover.png",
     "thumb": "cases/merchant-onboarding/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/merchant-onboarding",
     "lang_original": "en"
   },
@@ -88,6 +100,8 @@
     "summary_en": "Led a team to automate market research processes for Calypso, enhancing efficiency and accuracy.",
     "image": "cases/crypto-psp/images/cover.png",
     "thumb": "cases/crypto-psp/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/crypto-psp",
     "lang_original": "en"
   },
@@ -101,6 +115,8 @@
     "summary_en": "Researched and developed a B2C crypto wallet to complement existing B2B services.",
     "image": "cases/crypto-wallet/images/cover.png",
     "thumb": "cases/crypto-wallet/images/cover.card.webp",
+    "thumb_width": 1200,
+    "thumb_height": 675,
     "path": "cases/crypto-wallet",
     "lang_original": "en"
   }

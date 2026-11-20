@@ -12,7 +12,7 @@
   <meta property="og:locale" content="ru_RU">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta http-equiv="Cache-Control" content="no-cache">
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
   <header>
@@ -20,7 +20,7 @@
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Меню">
       <span class="nav-toggle-bars" aria-hidden="true"></span>
     </button>
-    <nav id="site-nav">
+    <nav id="site-nav" data-i18n="nav.menu" data-i18n-attr="aria-label" aria-label="Меню">
       <div class="nav-links">
         <a href="#about" data-i18n="nav.about">Обо мне</a>
         <a href="#services" data-i18n="nav.services">Что я делаю</a>
@@ -29,7 +29,7 @@
         <a href="#tests" data-i18n="nav.tests">Тестовые</a>
         <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
       </div>
-      <button id="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      <button id="lang-toggle" type="button" data-i18n="lang.switch" data-i18n-attr="aria-label" aria-label="Переключить язык">EN</button>
     </nav>
   </header>
 
@@ -85,6 +85,6 @@
     </div>
   </div>
 
-  <script src="main.js?v=16"></script>
+  <script src="main.js?v=17"></script>
 </body>
 </html>
