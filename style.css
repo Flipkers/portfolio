@@ -1036,3 +1036,45 @@ body.case-page > header {
     transition: none;
   }
 }
+
+/* Research, launches, and tests: two cards on a phone, then a toggle.
+   Desktop keeps every card and never shows the button. */
+.grid-toggle {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  #cases:not(.is-expanded) > .grid > .card:nth-child(n + 3),
+  #launches:not(.is-expanded) > .grid > .card:nth-child(n + 3),
+  #tests:not(.is-expanded) > .grid > .card:nth-child(n + 3) {
+    display: none;
+  }
+
+  .grid-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid #111;
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .grid-toggle:hover {
+    background: #111;
+    color: #fff;
+  }
+
+  .grid-toggle:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+  }
+}

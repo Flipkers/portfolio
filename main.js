@@ -31,7 +31,9 @@ const i18n = {
     'case.missing': 'Кейс не найден.',
     'case.noImage': 'Нет изображения',
     'hero.role': 'Продуктовый\nисследователь',
-    'doc.title': 'Леонид Михалев — Исследователь-аналитик'
+    'doc.title': 'Леонид Михалев — Исследователь-аналитик',
+    'grid.showAll': 'Показать все',
+    'grid.showLess': 'Свернуть'
   },
   en: {
     'brand': 'Leonid Mikhalev',
@@ -58,7 +60,9 @@ const i18n = {
     'case.missing': 'Case not found.',
     'case.noImage': 'No image',
     'hero.role': 'Product\nResearcher',
-    'doc.title': 'Leonid Mikhalev — Product Researcher & Analyst'
+    'doc.title': 'Leonid Mikhalev — Product Researcher & Analyst',
+    'grid.showAll': 'Show all',
+    'grid.showLess': 'Show less'
   }
 };
 
@@ -320,6 +324,42 @@ function renderLaunches() {
   grid.innerHTML = launches.map((item) => cardMarkup(item, `case/${encodeURIComponent(item.id)}.html`)).join('');
 }
 
+const FOLD_GRIDS = ['cases-grid', 'launches-grid', 'tests-grid'];
+const FOLD_LIMIT = 2;
+
+function syncCardFolds() {
+  FOLD_GRIDS.forEach((id) => {
+    const grid = document.getElementById(id);
+    const section = grid && grid.parentElement;
+    if (!grid || !section) return;
+    const extra = grid.querySelectorAll(':scope > .card').length > FOLD_LIMIT;
+    let btn = section.querySelector(':scope > .grid-toggle');
+    if (!extra) {
+      if (btn) btn.remove();
+      section.classList.remove('is-expanded');
+      return;
+    }
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'grid-toggle';
+      btn.setAttribute('aria-controls', id);
+      grid.insertAdjacentElement('afterend', btn);
+      btn.addEventListener('click', () => {
+        const open = section.classList.toggle('is-expanded');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = t(open ? 'grid.showLess' : 'grid.showAll');
+        if (!open && btn.getBoundingClientRect().top < 80) {
+          btn.scrollIntoView({ block: 'end' });
+        }
+      });
+    }
+    const open = section.classList.contains('is-expanded');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = t(open ? 'grid.showLess' : 'grid.showAll');
+  });
+}
+
 function setContact(id, href) {
   const link = document.getElementById(id);
   if (!link || !href) return;
@@ -353,6 +393,7 @@ function renderHome() {
   renderTests();
   renderCases();
   renderLaunches();
+  syncCardFolds();
 
   const toggle = document.getElementById('lang-toggle');
   if (toggle) toggle.textContent = currentLang === 'ru' ? 'EN' : 'RU';
