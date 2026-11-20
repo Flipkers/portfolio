@@ -128,22 +128,21 @@ html[lang="en"] .hero > .bio {
 h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 .bio { margin: 0; color: #222; font-size: 16px; }
 
-/* Desktop: three columns as one centered group, sized to the copy.
-   They do not stretch to the page edges. Text stays left-aligned. */
+/* Same tracks and gap as .grid, so each column sits on the case card below it.
+   The column stays full width; the copy is centered inside it. */
 .services {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
   margin: 0;
-  text-align: left;
+  align-items: start;
+  text-align: center;
 }
 .service-col {
   display: flex;
   flex-direction: column;
-  flex: 0 1 auto;
   min-width: 0;
-  text-align: left;
+  text-align: center;
 }
 .service-col h3 {
   font-size: 20px;
@@ -871,10 +870,13 @@ body.case-page > header {
   }
 
   .services {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+    grid-template-columns: 1fr;
     gap: 28px;
+    text-align: left;
+  }
+
+  .service-col {
+    text-align: left;
   }
 
   section {
