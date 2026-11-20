@@ -5,7 +5,8 @@
 ## Структура
 
 - `index.html` — главная
-- `case.html?id=<slug>` — страница кейса (читает Markdown)
+- `case/<slug>.html` — страница кейса или запуска. В файле сразу стоят заголовок, описание и обложка этого материала, чтобы превью ссылки не брало главную. `case.html?id=<slug>` открывает ту же страницу.
+- `test/<slug>.html` — тестовое задание, с тем же заголовком в файле. `test.html?id=<slug>` открывает ту же страницу.
 - `style.css`, `main.js`, `favicon.svg`
 - `data/` — каталог для сетки и прочего (`cases.json`, `profile.json`, `courses.json`, `tests.json`)
 - `cases/<slug>/` — **текст и картинки кейса** (Markdown workflow)
@@ -21,7 +22,7 @@ cases/<slug>/
   SOURCE.md
 ```
 
-Шаблон: `cases/_template/`. Новый кейс = копия шаблона + строка в `data/cases.json`.
+Шаблон: `cases/_template/`. Новый кейс = копия шаблона + строка в `data/cases.json`, затем `python3 scripts/build-article-pages.py` (то же после правок заголовка, описания или обложки в `data/cases.json`, `data/launches.json`, `data/tests.json`).
 
 ## Локально
 
