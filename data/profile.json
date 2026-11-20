@@ -22,7 +22,7 @@
     },
     {
       "title": "Путь",
-      "items": ["Customer Journey Mapping", "Воронки и сценарии"]
+      "items": ["Customer Journey Mapping", "Пользовательские сценарии"]
     }
   ],
   "services_en": [
@@ -36,7 +36,7 @@
     },
     {
       "title": "Journey",
-      "items": ["Customer Journey Mapping", "Funnels and scenarios"]
+      "items": ["Customer Journey Mapping", "User scenarios"]
     }
   ]
 }

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <script>
+  (function () {
+    var ids = [/* article-ids */"ai-startup-discovery", "b2broker-roadmap", "bnpl-b2b", "finom-invoice", "lesta-games", "project-planning", "salmon-onboarding", "soul-publishing", "yandex-practicum"/* /article-ids */];
+    var id = new URLSearchParams(location.search).get("id");
+    if (id && ids.indexOf(id) !== -1) location.replace("test/" + id + ".html");
+  })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Леонид Михалев — продуктовый исследователь и консультант">
@@ -12,7 +19,7 @@
   <meta property="og:locale" content="ru_RU">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta http-equiv="Cache-Control" content="no-cache">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=26">
 </head>
 <body class="case-page test-page">
   <header>
@@ -30,6 +37,6 @@
     </article>
   </main>
 
-  <script src="main.js?v=9"></script>
+  <script src="main.js?v=16"></script>
 </body>
 </html>

@@ -83,6 +83,22 @@ function absoluteUrl(src) {
   }
 }
 
+// Article files live in case/ and test/, so their assets are one level up.
+function siteRoot() {
+  return (document.body && document.body.getAttribute('data-root')) || '';
+}
+
+function asset(path) {
+  if (!path || /^(https?:|data:|mailto:|#)/i.test(path)) return path;
+  return siteRoot() + String(path).replace(/^\.\//, '');
+}
+
+function articleId() {
+  const fromQuery = new URLSearchParams(window.location.search).get('id');
+  if (fromQuery) return fromQuery;
+  return (document.body && document.body.getAttribute('data-article-id')) || '';
+}
+
 function setPageMeta({ title, description, image }) {
   if (title) document.title = title;
   if (description) upsertMeta('name', 'description', description);
@@ -182,7 +198,7 @@ function metaLine(item) {
 }
 
 function cardImage(item) {
-  return (item && (item.thumb || item.image)) || '';
+  return asset((item && (item.thumb || item.image)) || '');
 }
 
 function cardMarkup(item, href) {
@@ -197,19 +213,19 @@ function cardMarkup(item, href) {
 function renderTests() {
   const grid = document.getElementById('tests-grid');
   if (!grid) return;
-  grid.innerHTML = testTasks.map((item) => cardMarkup(item, `test.html?id=${encodeURIComponent(item.id)}`)).join('');
+  grid.innerHTML = testTasks.map((item) => cardMarkup(item, `test/${encodeURIComponent(item.id)}.html`)).join('');
 }
 
 function renderCases() {
   const grid = document.getElementById('cases-grid');
   if (!grid) return;
-  grid.innerHTML = cases.map((item) => cardMarkup(item, `case.html?id=${encodeURIComponent(item.id)}`)).join('');
+  grid.innerHTML = cases.map((item) => cardMarkup(item, `case/${encodeURIComponent(item.id)}.html`)).join('');
 }
 
 function renderLaunches() {
   const grid = document.getElementById('launches-grid');
   if (!grid) return;
-  grid.innerHTML = launches.map((item) => cardMarkup(item, `case.html?id=${encodeURIComponent(item.id)}`)).join('');
+  grid.innerHTML = launches.map((item) => cardMarkup(item, `case/${encodeURIComponent(item.id)}.html`)).join('');
 }
 
 function setContact(id, href) {
@@ -264,7 +280,7 @@ function openModal(item) {
   body.innerHTML = `
     <h2 id="modal-title">${escapeHtml(title)}</h2>
     <p class="modal-body-meta">${escapeHtml(String(item.year))} · ${escapeHtml((item.tags || []).join(', '))}</p>
-    ${item.image ? `<img class="modal-body-image" src="${escapeAttr(item.image)}" alt="">` : `<div class="card-media placeholder" style="margin-bottom:16px">${t('case.noImage')}</div>`}
+    ${item.image ? `<img class="modal-body-image" src="${escapeAttr(asset(item.image))}" alt="">` : `<div class="card-media placeholder" style="margin-bottom:16px">${t('case.noImage')}</div>`}
     <div class="modal-body-text">${full}</div>
   `;
 
@@ -573,7 +589,7 @@ function preprocessCaseMarkdown(md, item) {
 }
 
 async function loadCaseMarkdown(item) {
-  const basePath = item.path || `cases/${item.id}`;
+  const basePath = asset(item.path || `cases/${item.id}`);
   const candidates = currentLang === 'ru'
     ? [`${basePath}/index.ru.md`, `${basePath}/index.md`]
     : [`${basePath}/index.md`, `${basePath}/index.ru.md`];
@@ -594,8 +610,7 @@ async function loadCaseMarkdown(item) {
 }
 
 async function renderDetailPage(list) {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
+  const id = articleId();
   const article = document.getElementById('case-article');
   if (!article) return;
 
@@ -620,6 +635,14 @@ async function renderDetailPage(list) {
   }
 
   const title = pick(item, 'title');
+  const person = currentLang === 'ru' ? profile.meta.name : profile.meta.name_en;
+  const coverSrc = item.image ? asset(item.image) : '';
+  setPageMeta({
+    title: `${title} — ${person}`,
+    description: pick(item, 'summary') || title,
+    image: coverSrc
+  });
+
   const loaded = await loadCaseMarkdown(item);
   let bodyHtml = loaded.html
     .replace(/^<h1>[\s\S]*?<\/h1>\s*/i, '');
@@ -634,8 +657,8 @@ async function renderDetailPage(list) {
     bodyHtml = bodyHtml.replace(dupImg, '');
   }
 
-  const cover = item.image
-    ? `<img class="case-cover" src="${escapeAttr(item.image)}" alt="" onerror="this.outerHTML='<div class=\\'case-cover placeholder\\'>${escapeHtml(t('case.noImage'))}</div>'">`
+  const cover = coverSrc
+    ? `<img class="case-cover" src="${escapeAttr(coverSrc)}" alt="" onerror="this.outerHTML='<div class=\\'case-cover placeholder\\'>${escapeHtml(t('case.noImage'))}</div>'">`
     : `<div class="case-cover placeholder">${t('case.noImage')}</div>`;
 
   article.innerHTML = `
@@ -644,12 +667,6 @@ async function renderDetailPage(list) {
     ${cover}
     <div class="case-body">${bodyHtml}</div>
   `;
-  const person = currentLang === 'ru' ? profile.meta.name : profile.meta.name_en;
-  setPageMeta({
-    title: `${title} — ${person}`,
-    description: pick(item, 'summary') || title,
-    image: item.image || ''
-  });
   fitArticleTables(article);
 }
 
@@ -675,10 +692,10 @@ function bindTableFitOnce() {
 
 async function loadData() {
   const [profileRes, casesRes, launchesRes, testsRes] = await Promise.all([
-    fetch('data/profile.json', { cache: 'no-store' }),
-    fetch('data/cases.json', { cache: 'no-store' }),
-    fetch('data/launches.json', { cache: 'no-store' }),
-    fetch('data/tests.json', { cache: 'no-store' })
+    fetch(asset('data/profile.json'), { cache: 'no-store' }),
+    fetch(asset('data/cases.json'), { cache: 'no-store' }),
+    fetch(asset('data/launches.json'), { cache: 'no-store' }),
+    fetch(asset('data/tests.json'), { cache: 'no-store' })
   ]);
 
   if (!profileRes.ok || !casesRes.ok || !launchesRes.ok || !testsRes.ok) {
