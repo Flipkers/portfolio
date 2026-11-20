@@ -758,12 +758,17 @@ body.case-page > header {
     top: calc(56px + env(safe-area-inset-top, 0px));
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: auto;
+    width: auto;
     height: auto;
+    max-height: calc(100vh - 56px - env(safe-area-inset-top, 0px));
+    max-height: calc(100dvh - 56px - env(safe-area-inset-top, 0px));
     margin: 0;
-    padding: 4px max(16px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left));
+    padding: 4px max(16px, env(safe-area-inset-right)) 16px max(16px, env(safe-area-inset-left));
     background: #fff;
+    border-bottom: 1px solid #eee;
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   body:not(.case-page) .nav-links {
