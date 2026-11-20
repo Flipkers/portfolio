@@ -98,7 +98,7 @@ def render(item, kind, name_ru, name_en):
   {EARLY_LANG}
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <meta http-equiv="Cache-Control" content="no-cache">
-  <link rel="stylesheet" href="../style.css?v=28">
+  <link rel="stylesheet" href="../style.css?v=29">
 </head>
 <body class="{body_class}" data-root="../" data-article-id="{esc(item['id'])}">
   <header>
@@ -116,7 +116,7 @@ def render(item, kind, name_ru, name_en):
     </article>
   </main>
 
-  <script src="../main.js?v=17"></script>
+  <script src="../main.js?v=18"></script>
 </body>
 </html>
 """

@@ -632,12 +632,17 @@ body.case-page > header {
     overscroll-behavior: none;
   }
 
-  /* The locked page is shifted up, so the sticky bar would leave the screen. */
+  /* The locked page is shifted up, so the sticky bar would leave the screen.
+     The bar leaves normal flow, so main keeps the same gap underneath it. */
   html.nav-open body:not(.case-page) header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+  }
+
+  html.nav-open body:not(.case-page) main {
+    padding-top: calc(56px + env(safe-area-inset-top, 0px) + 20px);
   }
 
   body {
@@ -726,7 +731,7 @@ body.case-page > header {
     height: 1.5px;
     background: currentColor;
     position: relative;
-    transition: transform 160ms ease, top 160ms ease, background-color 160ms ease;
+    transition: transform 240ms ease, top 240ms ease, background-color 240ms ease;
   }
 
   .nav-toggle-bars::before,
@@ -744,10 +749,6 @@ body.case-page > header {
   .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { top: 0; transform: rotate(-45deg); }
 
   body:not(.case-page) header nav {
-    display: none;
-  }
-
-  body:not(.case-page) header nav.is-open {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -769,6 +770,19 @@ body.case-page > header {
     border-bottom: 1px solid #eee;
     overflow-y: auto;
     overscroll-behavior: contain;
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 240ms ease, transform 240ms ease, visibility 0s linear 240ms;
+  }
+
+  body:not(.case-page) header nav.is-open {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 240ms ease, transform 240ms ease, visibility 0s linear 0s;
   }
 
   body:not(.case-page) .nav-links {
@@ -1000,7 +1014,9 @@ body.case-page > header {
 @media (prefers-reduced-motion: reduce) {
   .nav-toggle-bars,
   .nav-toggle-bars::before,
-  .nav-toggle-bars::after {
+  .nav-toggle-bars::after,
+  body:not(.case-page) header nav,
+  body:not(.case-page) header nav.is-open {
     transition: none;
   }
 }
