@@ -129,20 +129,20 @@ h1 { font-size: 40px; font-weight: 500; margin-bottom: 12px; }
 .bio { margin: 0; color: #222; font-size: 16px; }
 
 /* Same tracks and gap as .grid, so each column sits on the case card below it.
-   The column stays full width; the copy is centered inside it. */
+   The column stays full width; titles and names stay left-aligned. */
 .services {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
   margin: 0;
   align-items: start;
-  text-align: center;
+  text-align: left;
 }
 .service-col {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  text-align: center;
+  text-align: left;
 }
 .service-col h3 {
   font-size: 20px;
